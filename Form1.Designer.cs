@@ -80,7 +80,8 @@
             txtUsuario.Size = new System.Drawing.Size(239, 22);
             txtUsuario.TabIndex = 2;
             txtUsuario.Text = "Ingrese su Usuario";
-            txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            txtUsuario.TextChanged += txtUsuario_TextChanged;
+            txtUsuario.Enter += txtUsuario_Enter;
             // 
             // txtPass
             // 
@@ -90,7 +91,7 @@
             txtPass.Size = new System.Drawing.Size(239, 22);
             txtPass.TabIndex = 3;
             txtPass.Text = "Ingrese su Contraseña";
-            txtPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            txtPass.Enter += txtPass_Enter;
             // 
             // checkBox1mostar
             // 
