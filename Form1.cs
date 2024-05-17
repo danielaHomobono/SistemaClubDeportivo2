@@ -1,4 +1,5 @@
 ﻿using Org.BouncyCastle.Pqc.Crypto.Lms;
+using SistemaClubDeportivo2.Datos;
 using System;
 using System.Data;
 using System.Drawing;
@@ -69,14 +70,19 @@ namespace SistemaClubDeportivo2
             {
                 // quiere decir que el resultado tiene 1 fila por lo que el  usuario EXISTE
                 MessageBox.Show("Ingreso exitoso");
+                
+                frmPrincipal Principal = new frmPrincipal();
+               
+
+                Principal.Show();
+                this.Hide();
+
             }
             else
             {
                 MessageBox.Show("Usuario y/o password incorrecto");
             }
-            frmPrincipal Principal = new frmPrincipal();
-            Principal.Show();
-            this.Hide();
+            
         }
     
 

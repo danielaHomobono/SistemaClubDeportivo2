@@ -28,10 +28,9 @@ namespace SistemaClubDeportivo2.Datos
             ("IngresoLogin", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
                 // definimos los parametros que tiene el procedure
-                comando.Parameters.Add("Usu",
-                MySqlDbType.VarChar).Value = L_Usu;
-                comando.Parameters.Add("Pass", MySqlDbType.VarChar).Value =
-                P_Usu;
+                comando.Parameters.Add("Usu",  MySqlDbType.VarChar).Value = L_Usu;
+                comando.Parameters.Add("Pass", MySqlDbType.VarChar).Value = P_Usu;
+                
                 // abrimos la conexion
                 sqlCon.Open();
                 resultado = comando.ExecuteReader(); // almacenamos el resulatdo en la variable

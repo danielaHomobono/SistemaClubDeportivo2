@@ -18,6 +18,7 @@ namespace SistemaClubDeportivo2
         {
             InitializeComponent();
             
+
         }
 
         /* ___________ VARIABLES tipo INTERNAL
@@ -45,7 +46,7 @@ namespace SistemaClubDeportivo2
         private void btnInscribir_Click(object sender, EventArgs e)
         {
             //frmInscripcion inscripcion = new frmInscripcion();       
-            // inscripcion.Show();
+             //inscripcion.Show();
             this.Hide();
         }
 
