@@ -17,7 +17,7 @@ namespace SistemaClubDeportivo2
         public frmPrincipal()
         {
             InitializeComponent();
-            
+
 
         }
 
@@ -45,8 +45,8 @@ namespace SistemaClubDeportivo2
         }
         private void btnInscribir_Click(object sender, EventArgs e)
         {
-            //frmInscripcion inscripcion = new frmInscripcion();       
-             //inscripcion.Show();
+            FrmInscripcion inscripcion = new FrmInscripcion();
+            inscripcion.Show();
             this.Hide();
         }
 
@@ -95,7 +95,7 @@ namespace SistemaClubDeportivo2
             btnInscribir.TabIndex = 2;
             btnInscribir.Text = "Inscribir Cliente";
             btnInscribir.UseVisualStyleBackColor = false;
-            btnInscribir.Click += btnInscribir_Click_1;
+            btnInscribir.Click += btnInscribir_Click;
             // 
             // btnActividad
             // 
@@ -139,6 +139,7 @@ namespace SistemaClubDeportivo2
             Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             ForeColor = SystemColors.ButtonHighlight;
             Name = "frmPrincipal";
+            Load += frmPrincipal_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -156,6 +157,11 @@ namespace SistemaClubDeportivo2
         }
 
         private void lblIngreso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmPrincipal_Load_1(object sender, EventArgs e)
         {
 
         }

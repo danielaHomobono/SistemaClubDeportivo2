@@ -32,3 +32,4 @@ C:\Users\Usuario\source\repos\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\De
 C:\Users\Usuario\source\repos\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.pdb
 C:\Users\Usuario\source\repos\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.genruntimeconfig.cache
 C:\Users\Usuario\source\repos\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\ref\SistemaClubDeportivo2.dll
+C:\Users\Usuario\source\repos\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.FrmInscripcion.resources
