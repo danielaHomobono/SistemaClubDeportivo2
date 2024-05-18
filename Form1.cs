@@ -14,22 +14,22 @@ namespace SistemaClubDeportivo2
         {
             InitializeComponent();
         }
-       
+
 
         private void Form1_Load(object sender, EventArgs e)
 
         {
-           
+
             txtUsuario.Text = "Ingrese su Usuario";
             txtPass.Text = "Ingrese su Contraseña";
             txtUsuario.ForeColor = Color.Gray;
             txtPass.ForeColor = Color.Gray;
-            
+
         }
 
         private void txtUsuario_Enter(object sender, EventArgs e)
         {
-            
+
 
             if (txtUsuario.Text == "Ingrese su Usuario")
             {
@@ -40,7 +40,7 @@ namespace SistemaClubDeportivo2
 
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
-            
+
             if (txtUsuario.Text == "")
             //if (string.IsNullOrWhiteSpace(txtUsuario.Text))
             {
@@ -80,18 +80,35 @@ namespace SistemaClubDeportivo2
                 // quiere decir que el resultado tiene 1 fila por lo que el  usuario EXISTE
                 MessageBox.Show("Ingreso exitoso");
 
-                frmPrincipal Principal = new frmPrincipal();
-
-
-                Principal.Show();
-                this.Hide();
-
+               /* __________________________________________________________
+ ___________________
+/*una vez que tenemos la conexion establecida PASAMOS al
+formulario PRINCIPAL. Se debe "Instanciar" un objeto de la clase formulario principal
+___________________________________________________________________________
+_______ */
+            frmPrincipal Principal = new frmPrincipal();
+                /*
+                _________________________________________________________
+                ___________
+                * la siguiente linea permite tomar el dominio de la
+                primera columna
+                * de la primera fila del resultado de la ejecucion de la
+                query
+                *
+                ________________________________________________________
+                ____________ */
+                
+                Principal.rol = Convert.ToString(tablaLogin.Rows[0][0]);
+                Principal.usuario = Convert.ToString(txtUsuario.Text);
+                Principal.Show(); // se llama al formulario principal
+                this.Hide(); // se oculta el formulario del login
             }
+
             else
             {
                 MessageBox.Show("Usuario y/o password incorrecto");
             }
-
+            
         }
 
 
@@ -118,5 +135,7 @@ namespace SistemaClubDeportivo2
         {
 
         }
+
+        
     }
 }
