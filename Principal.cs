@@ -58,6 +58,7 @@ namespace SistemaClubDeportivo2
             btnActividad = new Button();
             btnPagar = new Button();
             btnCarnet = new Button();
+            lbl = new Label();
             SuspendLayout();
             // 
             // lblIngreso
@@ -66,12 +67,10 @@ namespace SistemaClubDeportivo2
             lblIngreso.BackColor = SystemColors.ActiveCaption;
             lblIngreso.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lblIngreso.ForeColor = SystemColors.ControlDarkDark;
-            lblIngreso.Location = new Point(1, 9);
+            lblIngreso.Location = new Point(12, 18);
             lblIngreso.Name = "lblIngreso";
-            lblIngreso.Size = new Size(61, 15);
+            lblIngreso.Size = new Size(25, 20);
             lblIngreso.TabIndex = 0;
-            lblIngreso.Text = "USUARIO";
-            lblIngreso.Click += lblIngreso_Click;
             // 
             // btnSalir
             // 
@@ -127,9 +126,17 @@ namespace SistemaClubDeportivo2
             btnCarnet.Text = "Generar Carnet";
             btnCarnet.UseVisualStyleBackColor = false;
             // 
+            // lbl
+            // 
+            lbl.Location = new Point(0, 0);
+            lbl.Name = "lbl";
+            lbl.Size = new Size(100, 23);
+            lbl.TabIndex = 0;
+            // 
             // frmPrincipal
             // 
             ClientSize = new Size(564, 375);
+            Controls.Add(lbl);
             Controls.Add(btnCarnet);
             Controls.Add(btnPagar);
             Controls.Add(btnActividad);
@@ -139,7 +146,7 @@ namespace SistemaClubDeportivo2
             Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             ForeColor = SystemColors.ButtonHighlight;
             Name = "frmPrincipal";
-            Load += frmPrincipal_Load_1;
+            Load += frmPrincipal_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -156,15 +163,8 @@ namespace SistemaClubDeportivo2
 
         }
 
-        private void lblIngreso_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void frmPrincipal_Load_1(object sender, EventArgs e)
-        {
-
-        }
+        private Label lbl;
     }
 }
 
