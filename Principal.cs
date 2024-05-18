@@ -52,18 +52,21 @@ namespace SistemaClubDeportivo2
 
         private void InitializeComponent()
         {
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(frmPrincipal));
             lblIngreso = new Label();
             btnSalir = new Button();
             btnInscribir = new Button();
             btnActividad = new Button();
             btnPagar = new Button();
             btnCarnet = new Button();
+            pictureBox1 = new PictureBox();
+            ((ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblIngreso
             // 
             lblIngreso.AutoSize = true;
-            lblIngreso.BackColor = SystemColors.ActiveCaption;
+            lblIngreso.BackColor = SystemColors.Control;
             lblIngreso.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lblIngreso.ForeColor = SystemColors.ControlDarkDark;
             lblIngreso.Location = new Point(1, 9);
@@ -88,8 +91,8 @@ namespace SistemaClubDeportivo2
             // 
             // btnInscribir
             // 
-            btnInscribir.BackColor = SystemColors.ControlDarkDark;
-            btnInscribir.Location = new Point(64, 121);
+            btnInscribir.BackColor = SystemColors.MenuHighlight;
+            btnInscribir.Location = new Point(64, 319);
             btnInscribir.Name = "btnInscribir";
             btnInscribir.Size = new Size(203, 69);
             btnInscribir.TabIndex = 2;
@@ -99,18 +102,19 @@ namespace SistemaClubDeportivo2
             // 
             // btnActividad
             // 
-            btnActividad.BackColor = SystemColors.ControlDarkDark;
-            btnActividad.Location = new Point(288, 121);
+            btnActividad.BackColor = SystemColors.MenuHighlight;
+            btnActividad.Location = new Point(288, 319);
             btnActividad.Name = "btnActividad";
             btnActividad.Size = new Size(203, 69);
             btnActividad.TabIndex = 3;
             btnActividad.Text = "Inscribir Actividad";
             btnActividad.UseVisualStyleBackColor = false;
+            btnActividad.Click += btnActividad_Click;
             // 
             // btnPagar
             // 
-            btnPagar.BackColor = SystemColors.ControlDarkDark;
-            btnPagar.Location = new Point(64, 212);
+            btnPagar.BackColor = SystemColors.MenuHighlight;
+            btnPagar.Location = new Point(64, 403);
             btnPagar.Name = "btnPagar";
             btnPagar.Size = new Size(203, 69);
             btnPagar.TabIndex = 4;
@@ -119,17 +123,29 @@ namespace SistemaClubDeportivo2
             // 
             // btnCarnet
             // 
-            btnCarnet.BackColor = SystemColors.ControlDarkDark;
-            btnCarnet.Location = new Point(288, 212);
+            btnCarnet.BackColor = SystemColors.MenuHighlight;
+            btnCarnet.Location = new Point(288, 403);
             btnCarnet.Name = "btnCarnet";
             btnCarnet.Size = new Size(203, 69);
             btnCarnet.TabIndex = 5;
             btnCarnet.Text = "Generar Carnet";
             btnCarnet.UseVisualStyleBackColor = false;
+            btnCarnet.Click += btnCarnet_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(121, 58);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(292, 242);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
             // 
             // frmPrincipal
             // 
-            ClientSize = new Size(564, 375);
+            ClientSize = new Size(557, 520);
+            Controls.Add(pictureBox1);
             Controls.Add(btnCarnet);
             Controls.Add(btnPagar);
             Controls.Add(btnActividad);
@@ -140,6 +156,7 @@ namespace SistemaClubDeportivo2
             ForeColor = SystemColors.ButtonHighlight;
             Name = "frmPrincipal";
             Load += frmPrincipal_Load_1;
+            ((ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -162,6 +179,18 @@ namespace SistemaClubDeportivo2
         }
 
         private void frmPrincipal_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCarnet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private PictureBox pictureBox1;
+
+        private void btnActividad_Click(object sender, EventArgs e)
         {
 
         }

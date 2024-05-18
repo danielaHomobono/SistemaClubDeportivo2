@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInscripcion));
             lblIngresar = new System.Windows.Forms.Label();
             lblNombre = new System.Windows.Forms.Label();
             txtNombre = new System.Windows.Forms.TextBox();
@@ -40,6 +41,12 @@
             btnIngresar = new System.Windows.Forms.Button();
             btnLimpiar = new System.Windows.Forms.Button();
             btnVolver = new System.Windows.Forms.Button();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            lblObligatorio = new System.Windows.Forms.Label();
+            lblObligatorio1 = new System.Windows.Forms.Label();
+            lblObligatorio2 = new System.Windows.Forms.Label();
+            lblObligatorio3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblIngresar
@@ -47,11 +54,11 @@
             lblIngresar.AutoSize = true;
             lblIngresar.BackColor = System.Drawing.SystemColors.MenuHighlight;
             lblIngresar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            lblIngresar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblIngresar.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblIngresar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             lblIngresar.Location = new System.Drawing.Point(226, 20);
             lblIngresar.Name = "lblIngresar";
-            lblIngresar.Size = new System.Drawing.Size(179, 23);
+            lblIngresar.Size = new System.Drawing.Size(236, 32);
             lblIngresar.TabIndex = 0;
             lblIngresar.Text = "REGISTRO DE CLIENTE";
             lblIngresar.Click += label1_Click;
@@ -170,11 +177,70 @@
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new System.Drawing.Point(12, 105);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(122, 127);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 13;
+            pictureBox1.TabStop = false;
+            // 
+            // lblObligatorio
+            // 
+            lblObligatorio.AutoSize = true;
+            lblObligatorio.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblObligatorio.ForeColor = System.Drawing.Color.Red;
+            lblObligatorio.Location = new System.Drawing.Point(556, 103);
+            lblObligatorio.Name = "lblObligatorio";
+            lblObligatorio.Size = new System.Drawing.Size(23, 30);
+            lblObligatorio.TabIndex = 14;
+            lblObligatorio.Text = "*";
+            // 
+            // lblObligatorio1
+            // 
+            lblObligatorio1.AutoSize = true;
+            lblObligatorio1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblObligatorio1.ForeColor = System.Drawing.Color.Red;
+            lblObligatorio1.Location = new System.Drawing.Point(556, 165);
+            lblObligatorio1.Name = "lblObligatorio1";
+            lblObligatorio1.Size = new System.Drawing.Size(23, 30);
+            lblObligatorio1.TabIndex = 15;
+            lblObligatorio1.Text = "*";
+            // 
+            // lblObligatorio2
+            // 
+            lblObligatorio2.AutoSize = true;
+            lblObligatorio2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblObligatorio2.ForeColor = System.Drawing.Color.Red;
+            lblObligatorio2.Location = new System.Drawing.Point(267, 237);
+            lblObligatorio2.Name = "lblObligatorio2";
+            lblObligatorio2.Size = new System.Drawing.Size(23, 30);
+            lblObligatorio2.TabIndex = 16;
+            lblObligatorio2.Text = "*";
+            // 
+            // lblObligatorio3
+            // 
+            lblObligatorio3.AutoSize = true;
+            lblObligatorio3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblObligatorio3.ForeColor = System.Drawing.Color.Red;
+            lblObligatorio3.Location = new System.Drawing.Point(632, 240);
+            lblObligatorio3.Name = "lblObligatorio3";
+            lblObligatorio3.Size = new System.Drawing.Size(23, 30);
+            lblObligatorio3.TabIndex = 17;
+            lblObligatorio3.Text = "*";
+            // 
             // FrmInscripcion
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(665, 450);
+            ClientSize = new System.Drawing.Size(665, 403);
+            Controls.Add(lblObligatorio3);
+            Controls.Add(lblObligatorio2);
+            Controls.Add(lblObligatorio1);
+            Controls.Add(lblObligatorio);
+            Controls.Add(pictureBox1);
             Controls.Add(btnVolver);
             Controls.Add(btnLimpiar);
             Controls.Add(btnIngresar);
@@ -191,6 +257,7 @@
             Name = "FrmInscripcion";
             Text = "FrmInscripcion";
             Load += FrmInscripcion_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -209,5 +276,10 @@
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblObligatorio;
+        private System.Windows.Forms.Label lblObligatorio1;
+        private System.Windows.Forms.Label lblObligatorio2;
+        private System.Windows.Forms.Label lblObligatorio3;
     }
 }

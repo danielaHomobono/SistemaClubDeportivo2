@@ -81,7 +81,7 @@ namespace SistemaClubDeportivo2
                 MessageBox.Show("Ingreso exitoso");
 
                 frmPrincipal Principal = new frmPrincipal();
-
+                Principal.rol = Convert.ToString(tablaLogin.Rows[0][0]);
 
                 Principal.Show();
                 this.Hide();
@@ -97,10 +97,7 @@ namespace SistemaClubDeportivo2
 
 
 
-        //private void txtUsuario_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
+        
 
         private void chekMostrar_CheckedChanged(object sender, EventArgs e)
         {
