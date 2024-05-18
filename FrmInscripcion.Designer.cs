@@ -155,6 +155,7 @@
             btnLimpiar.TabIndex = 11;
             btnLimpiar.Text = "LIMPIAR";
             btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnVolver
             // 
@@ -167,6 +168,7 @@
             btnVolver.TabIndex = 12;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
             // FrmInscripcion
             // 

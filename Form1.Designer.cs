@@ -34,7 +34,7 @@
             pictureBox1 = new System.Windows.Forms.PictureBox();
             txtUsuario = new System.Windows.Forms.TextBox();
             txtPass = new System.Windows.Forms.TextBox();
-            checkBox1mostar = new System.Windows.Forms.CheckBox();
+            chekMostar = new System.Windows.Forms.CheckBox();
             btnIngresar = new System.Windows.Forms.Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -65,9 +65,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new System.Drawing.Point(118, 67);
+            pictureBox1.Location = new System.Drawing.Point(97, 44);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(149, 123);
+            pictureBox1.Size = new System.Drawing.Size(195, 136);
             pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -82,6 +82,8 @@
             txtUsuario.Text = "Ingrese su Usuario";
             txtUsuario.TextChanged += txtUsuario_TextChanged;
             txtUsuario.Enter += txtUsuario_Enter;
+            txtUsuario.Leave += txtUsuario_Leave;
+            txtUsuario.MouseEnter += txtUsuario_Enter;
             // 
             // txtPass
             // 
@@ -92,16 +94,18 @@
             txtPass.TabIndex = 3;
             txtPass.Text = "Ingrese su Contraseña";
             txtPass.Enter += txtPass_Enter;
+            txtPass.Leave += txtPass_Leave;
             // 
-            // checkBox1mostar
+            // chekMostar
             // 
-            checkBox1mostar.AutoSize = true;
-            checkBox1mostar.Location = new System.Drawing.Point(239, 316);
-            checkBox1mostar.Name = "checkBox1mostar";
-            checkBox1mostar.Size = new System.Drawing.Size(67, 19);
-            checkBox1mostar.TabIndex = 4;
-            checkBox1mostar.Text = "Mostrar";
-            checkBox1mostar.UseVisualStyleBackColor = true;
+            chekMostar.AutoSize = true;
+            chekMostar.Location = new System.Drawing.Point(239, 316);
+            chekMostar.Name = "chekMostar";
+            chekMostar.Size = new System.Drawing.Size(67, 19);
+            chekMostar.TabIndex = 4;
+            chekMostar.Text = "Mostrar";
+            chekMostar.UseVisualStyleBackColor = true;
+            chekMostar.CheckedChanged += chekMostrar_CheckedChanged;
             // 
             // btnIngresar
             // 
@@ -127,7 +131,7 @@
             BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             ClientSize = new System.Drawing.Size(398, 477);
             Controls.Add(btnIngresar);
-            Controls.Add(checkBox1mostar);
+            Controls.Add(chekMostar);
             Controls.Add(txtPass);
             Controls.Add(txtUsuario);
             Controls.Add(pictureBox1);
@@ -149,7 +153,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtPass;
-        private System.Windows.Forms.CheckBox checkBox1mostar;
+        private System.Windows.Forms.CheckBox chekMostar;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Label lblTitulo;
     }

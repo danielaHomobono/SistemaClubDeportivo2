@@ -14,17 +14,23 @@ namespace SistemaClubDeportivo2
         {
             InitializeComponent();
         }
+       
 
         private void Form1_Load(object sender, EventArgs e)
+
         {
+           
             txtUsuario.Text = "Ingrese su Usuario";
             txtPass.Text = "Ingrese su Contraseña";
             txtUsuario.ForeColor = Color.Gray;
             txtPass.ForeColor = Color.Gray;
+            
         }
 
         private void txtUsuario_Enter(object sender, EventArgs e)
         {
+            
+
             if (txtUsuario.Text == "Ingrese su Usuario")
             {
                 txtUsuario.Text = "";
@@ -34,7 +40,9 @@ namespace SistemaClubDeportivo2
 
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+            
+            if (txtUsuario.Text == "")
+            //if (string.IsNullOrWhiteSpace(txtUsuario.Text))
             {
                 txtUsuario.Text = "Ingrese su Usuario";
                 txtUsuario.ForeColor = Color.Gray;
@@ -53,7 +61,8 @@ namespace SistemaClubDeportivo2
 
         private void txtPass_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPass.Text))
+            // if (string.IsNullOrWhiteSpace(txtPass.Text))
+            if (txtPass.Text == "")
             {
                 txtPass.UseSystemPasswordChar = false;
                 txtPass.Text = "Ingrese su Contraseña";
@@ -70,9 +79,9 @@ namespace SistemaClubDeportivo2
             {
                 // quiere decir que el resultado tiene 1 fila por lo que el  usuario EXISTE
                 MessageBox.Show("Ingreso exitoso");
-                
+
                 frmPrincipal Principal = new frmPrincipal();
-               
+
 
                 Principal.Show();
                 this.Hide();
@@ -82,19 +91,32 @@ namespace SistemaClubDeportivo2
             {
                 MessageBox.Show("Usuario y/o password incorrecto");
             }
-            
-        }
-    
 
-        
+        }
+
+
+
+
+        //private void txtUsuario_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        private void chekMostrar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chekMostar.Checked)
+            {
+                txtPass.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPass.UseSystemPasswordChar = true;
+            }
+        }
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
 
         }
-        
-
-
-
     }
 }
