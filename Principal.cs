@@ -1,4 +1,9 @@
-﻿using System;
+﻿
+
+
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +16,7 @@ using System.Windows.Forms;
 
 
 namespace SistemaClubDeportivo2
-    {
+{
     public partial class frmPrincipal : Form
     {
         public frmPrincipal()
@@ -49,6 +54,19 @@ namespace SistemaClubDeportivo2
             inscripcion.Show();
             this.Hide();
         }
+        private void btnActividad_Click(object sender, EventArgs e)
+        {
+
+            InscribirActividad inscribirActividad = new InscribirActividad();
+            inscribirActividad.Show();
+            this.Hide();
+        }
+        private void btnPagar_Click(object sender, EventArgs e)
+        {
+            FrmPagar frmPagar = new FrmPagar();
+            frmPagar.Show();
+            this.Hide();
+        }
 
         private void InitializeComponent()
         {
@@ -71,10 +89,8 @@ namespace SistemaClubDeportivo2
             lblIngreso.ForeColor = SystemColors.ControlDarkDark;
             lblIngreso.Location = new Point(1, 9);
             lblIngreso.Name = "lblIngreso";
-            lblIngreso.Size = new Size(61, 15);
+            lblIngreso.Size = new Size(0, 15);
             lblIngreso.TabIndex = 0;
-            lblIngreso.Text = "USUARIO";
-            lblIngreso.Click += lblIngreso_Click;
             // 
             // btnSalir
             // 
@@ -120,6 +136,7 @@ namespace SistemaClubDeportivo2
             btnPagar.TabIndex = 4;
             btnPagar.Text = "Pagar Cuota";
             btnPagar.UseVisualStyleBackColor = false;
+            btnPagar.Click += btnPagar_Click;
             // 
             // btnCarnet
             // 
@@ -155,7 +172,7 @@ namespace SistemaClubDeportivo2
             Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             ForeColor = SystemColors.ButtonHighlight;
             Name = "frmPrincipal";
-            Load += frmPrincipal_Load_1;
+            Load += frmPrincipal_Load;
             ((ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -178,11 +195,6 @@ namespace SistemaClubDeportivo2
 
         }
 
-        private void frmPrincipal_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCarnet_Click(object sender, EventArgs e)
         {
 
@@ -190,10 +202,14 @@ namespace SistemaClubDeportivo2
 
         private PictureBox pictureBox1;
 
-        private void btnActividad_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
+
+
+
+
+
+
+
 

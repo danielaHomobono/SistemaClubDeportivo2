@@ -14,22 +14,22 @@ namespace SistemaClubDeportivo2
         {
             InitializeComponent();
         }
-       
+
 
         private void Form1_Load(object sender, EventArgs e)
 
         {
-           
+
             txtUsuario.Text = "Ingrese su Usuario";
             txtPass.Text = "Ingrese su Contraseña";
             txtUsuario.ForeColor = Color.Gray;
             txtPass.ForeColor = Color.Gray;
-            
+
         }
 
         private void txtUsuario_Enter(object sender, EventArgs e)
         {
-            
+
 
             if (txtUsuario.Text == "Ingrese su Usuario")
             {
@@ -40,7 +40,7 @@ namespace SistemaClubDeportivo2
 
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
-            
+
             if (txtUsuario.Text == "")
             //if (string.IsNullOrWhiteSpace(txtUsuario.Text))
             {
@@ -82,7 +82,7 @@ namespace SistemaClubDeportivo2
 
                 frmPrincipal Principal = new frmPrincipal();
                 Principal.rol = Convert.ToString(tablaLogin.Rows[0][0]);
-
+                Principal.usuario = Convert.ToString(txtUsuario.Text);
                 Principal.Show();
                 this.Hide();
 
@@ -97,7 +97,7 @@ namespace SistemaClubDeportivo2
 
 
 
-        
+
 
         private void chekMostrar_CheckedChanged(object sender, EventArgs e)
         {
@@ -117,3 +117,10 @@ namespace SistemaClubDeportivo2
         }
     }
 }
+
+
+
+
+
+
+
