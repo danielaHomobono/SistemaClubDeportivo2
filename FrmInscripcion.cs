@@ -57,7 +57,7 @@ namespace SistemaClubDeportivo2
                 cliente.DocC = Convert.ToInt32(txtDocumento.Text);
 
                 // instanciamos para usar el metodo dentro de postulantes
-                //Datos.Clientes clientes = new Datos.Clientes();
+               // Datos.Clientes clientes = new Datos.Clientes();
                 SistemaClubDeportivo2.Entidades.Clientes clientes = new SistemaClubDeportivo2.Entidades.Clientes();
                 respuesta = clientes.Nuevo_Cliente(cliente);
                 bool esnumero = int.TryParse(respuesta, out int codigo);
