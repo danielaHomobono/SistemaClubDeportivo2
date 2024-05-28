@@ -53,5 +53,38 @@ namespace SistemaClubDeportivo2.Entidades
             }
             return salida;
         }
+        public string Nuevo_Socio(int NCliente)
+        {
+            string? salida;
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                sqlCon = Conexion.getInstancia().CrearConcexion();
+                MySqlCommand comando = new MySqlCommand("NuevoSocio", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("NCliente", MySqlDbType.Int32).Value = NCliente;
+                MySqlParameter ParCodigo = new MySqlParameter();
+                ParCodigo.ParameterName = "rta";
+                ParCodigo.MySqlDbType = MySqlDbType.Int32;
+                ParCodigo.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(ParCodigo);
+                sqlCon.Open();
+                comando.ExecuteNonQuery();
+                salida = Convert.ToString(ParCodigo.Value);
+            }
+            catch (Exception ex)
+            {
+                salida = ex.Message;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+            return salida;
+        }
+
     }
 }

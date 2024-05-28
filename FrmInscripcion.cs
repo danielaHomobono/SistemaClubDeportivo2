@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SistemaClubDeportivo2
 {
@@ -17,6 +18,7 @@ namespace SistemaClubDeportivo2
         public FrmInscripcion()
         {
             InitializeComponent();
+
         }
 
         private void FrmInscripcion_Load(object sender, EventArgs e)
@@ -57,7 +59,7 @@ namespace SistemaClubDeportivo2
                 cliente.DocC = Convert.ToInt32(txtDocumento.Text);
 
                 // instanciamos para usar el metodo dentro de postulantes
-               // Datos.Clientes clientes = new Datos.Clientes();
+                // Datos.Clientes clientes = new Datos.Clientes();
                 SistemaClubDeportivo2.Entidades.Clientes clientes = new SistemaClubDeportivo2.Entidades.Clientes();
                 respuesta = clientes.Nuevo_Cliente(cliente);
                 bool esnumero = int.TryParse(respuesta, out int codigo);
@@ -65,15 +67,46 @@ namespace SistemaClubDeportivo2
                 {
                     if (codigo == 1)
                     {
-                        MessageBox.Show("POSTULANTE YA EXISTE", "AVISO DEL                        SISTEMA",
+                        MessageBox.Show("POSTULANTE YA EXISTE", "AVISO DEL SISTEMA",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     }
                     else
                     {
-                        MessageBox.Show("se almaceno con exito con el                        codigo Nro " + respuesta, "AVISO DEL SISTEMA",
+                        MessageBox.Show("se almaceno con exito con el codigo Nro " + respuesta, "AVISO DEL SISTEMA",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Question);
+
+                        CheckBox chkSocio = this.Controls.Find("chkSocio", true).FirstOrDefault() as CheckBox;
+                        if (chkSocio != null && chkSocio.Checked)
+                        {
+                            string respuestaSocio = clientes.Nuevo_Socio(codigo);
+                            if (int.TryParse(respuestaSocio, out int codigoSocio) && codigoSocio != -1)
+                            {
+                                MessageBox.Show("Se registró como socio con éxito con el código Nro " + respuestaSocio, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
+                                
+                               // FrmImprimirCarnet imprimirCarnet = new FrmImprimirCarnet();
+                                
+
+                                
+                               // FrmImprimirCarnet frmImprimirCarnet = new FrmImprimirCarnet(cliente.NombreC, cliente.ApellidoC, cliente.DocC.ToString(), respuesta);
+                                
+                                    // cliente.NombreC = txtNombre.Text;
+                                    // cliente.ApellidoC = txtApellido.Text;
+                                    //cliente.TDocC = txtDocumento.Text;
+                                    //E_Socios. = respuestaSocio
+                                    //
+                                   ///imprimirCarnet.Show();
+                                    //this.Hide();
+                                
+                            }
+
+                            else
+                            {
+                                MessageBox.Show("Error al registrar como socio: " + respuestaSocio, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
                     }
                 }
             }
@@ -90,7 +123,10 @@ namespace SistemaClubDeportivo2
             txtNombre.Focus();
         }
 
-       
+        private void btnIngresarSocio_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
     
