@@ -19,7 +19,7 @@ namespace SistemaClubDeportivo2
 
         public FrmImprimirCarnet(string nombre, string apellido, string documento, string numeroSocio)
         {
-           // InitializeComponent();
+            InitializeComponent();
             this.nombre = nombre;
             this.apellido = apellido;
             this.documento = documento;
@@ -32,6 +32,7 @@ namespace SistemaClubDeportivo2
             txtApellido.Text = apellido;
             txtDocumento.Text = documento;
             txtNumeroSocio.Text = numeroSocio;
+             lblDfecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -39,6 +40,12 @@ namespace SistemaClubDeportivo2
             frmPrincipal principal = new frmPrincipal();
             principal.Show();
             this.Hide();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            
+            btnImprimir.Visible = false;
         }
         // public FrmImprimirCarnet()
         //{

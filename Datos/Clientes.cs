@@ -62,7 +62,7 @@ namespace SistemaClubDeportivo2.Entidades
                 sqlCon = Conexion.getInstancia().CrearConcexion();
                 MySqlCommand comando = new MySqlCommand("NuevoSocio", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("NCliente", MySqlDbType.Int32).Value = NCliente;
+                comando.Parameters.Add("pNCliente", MySqlDbType.Int32).Value = NCliente;
                 MySqlParameter ParCodigo = new MySqlParameter();
                 ParCodigo.ParameterName = "rta";
                 ParCodigo.MySqlDbType = MySqlDbType.Int32;

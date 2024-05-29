@@ -34,7 +34,7 @@ namespace SistemaClubDeportivo2
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInscripcion));
-            lblIngresar = new System.Windows.Forms.Label();
+            //lblIngresar = new System.Windows.Forms.Label();
             lblNombre = new System.Windows.Forms.Label();
             txtNombre = new System.Windows.Forms.TextBox();
             lblApellido = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@ namespace SistemaClubDeportivo2
             // 
             // lblIngresar
             // 
-            lblIngresar.AutoSize = true;
+           /* lblIngresar.AutoSize = true;
             lblIngresar.BackColor = SystemColors.MenuHighlight;
             lblIngresar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             lblIngresar.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -68,7 +68,7 @@ namespace SistemaClubDeportivo2
             lblIngresar.TabIndex = 0;
             lblIngresar.Text = "REGISTRO DE CLIENTE";
             lblIngresar.Click += label1_Click;
-            // 
+            // */
             // lblNombre
             // 
             lblNombre.AutoSize = true;
@@ -270,7 +270,7 @@ namespace SistemaClubDeportivo2
             Controls.Add(lblApellido);
             Controls.Add(txtNombre);
             Controls.Add(lblNombre);
-            Controls.Add(lblIngresar);
+           // Controls.Add(lblIngresar);
             ForeColor = SystemColors.ButtonHighlight;
             Name = "FrmInscripcion";
             Text = "FrmInscripcion";
@@ -282,7 +282,7 @@ namespace SistemaClubDeportivo2
 
         #endregion
 
-        private System.Windows.Forms.Label lblIngresar;
+        private System.Windows.Forms.Label lbIlngresar;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblApellido;

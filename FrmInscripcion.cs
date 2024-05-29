@@ -77,29 +77,22 @@ namespace SistemaClubDeportivo2
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Question);
 
+
+
                         CheckBox chkSocio = this.Controls.Find("chkSocio", true).FirstOrDefault() as CheckBox;
-                        if (chkSocio != null && chkSocio.Checked)
+                        if (chkSocio.Checked)//chkSocio != null &&// chkSocio.Checked)
                         {
                             string respuestaSocio = clientes.Nuevo_Socio(codigo);
                             if (int.TryParse(respuestaSocio, out int codigoSocio) && codigoSocio != -1)
                             {
                                 MessageBox.Show("Se registró como socio con éxito con el código Nro " + respuestaSocio, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
-                                
-                               // FrmImprimirCarnet imprimirCarnet = new FrmImprimirCarnet();
-                                
 
-                                
-                               // FrmImprimirCarnet frmImprimirCarnet = new FrmImprimirCarnet(cliente.NombreC, cliente.ApellidoC, cliente.DocC.ToString(), respuesta);
-                                
-                                    // cliente.NombreC = txtNombre.Text;
-                                    // cliente.ApellidoC = txtApellido.Text;
-                                    //cliente.TDocC = txtDocumento.Text;
-                                    //E_Socios. = respuestaSocio
-                                    //
-                                   ///imprimirCarnet.Show();
-                                    //this.Hide();
-                                
+                                FrmImprimirCarnet imprimirCarnet = new FrmImprimirCarnet(cliente.NombreC, cliente.ApellidoC, cliente.DocC.ToString(), respuesta);
+
+                                imprimirCarnet.Show();
+                                this.Hide();
+
                             }
 
                             else
@@ -107,27 +100,30 @@ namespace SistemaClubDeportivo2
                                 MessageBox.Show("Error al registrar como socio: " + respuestaSocio, "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
+
                     }
                 }
             }
         }
-        /* ===================================================
-        * Limpiamos los objetos para un nuevo ingreso
-        * ================================================ */
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            txtNombre.Text = "";
-            txtApellido.Text = "";
-            txtDocumento.Text = "";
-            cboTipo.Text = "";
-            txtNombre.Focus();
-        }
+            /* ===================================================
+            * Limpiamos los objetos para un nuevo ingreso
+            * ================================================ */
+            private void btnLimpiar_Click(object sender, EventArgs e)
+            {
+                txtNombre.Text = "";
+                txtApellido.Text = "";
+                txtDocumento.Text = "";
+                cboTipo.Text = "";
+                txtNombre.Focus();
+            }
 
-        private void btnIngresarSocio_Click(object sender, EventArgs e)
-        {
+            private void btnIngresarSocio_Click(object sender, EventArgs e)
+            {
 
+            }
         }
     }
-}
+
+
     
 
