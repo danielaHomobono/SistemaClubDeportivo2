@@ -201,5 +201,7 @@
         private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Timer transitionTimer = new System.Windows.Forms.Timer();
+
     }
 }

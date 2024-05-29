@@ -16,6 +16,7 @@ namespace SistemaClubDeportivo2
         private string apellido;
         private string documento;
         private string numeroSocio;
+        private EventHandler TransitionTimer_Tick;
 
         public FrmImprimirCarnet(string nombre, string apellido, string documento, string numeroSocio)
         {
@@ -24,6 +25,10 @@ namespace SistemaClubDeportivo2
             this.apellido = apellido;
             this.documento = documento;
             this.numeroSocio = numeroSocio;
+
+            transitionTimer.Interval = 6000; // 3 segundos
+            transitionTimer.Tick += TransitionTimer_Tick;
+            transitionTimer.Enabled = true;
         }
 
         private void FrmImprimirCarnet_Load(object sender, EventArgs e)
@@ -42,10 +47,17 @@ namespace SistemaClubDeportivo2
             this.Hide();
         }
 
-        private void btnImprimir_Click(object sender, EventArgs e)
+        private async void btnImprimir_Click(object sender, EventArgs e)
         {
             
             btnImprimir.Visible = false;
+            await Task.Delay(2000);
+            transitionTimer.Start();
+
+            frmPrincipal principal = new frmPrincipal();
+            principal.Show();
+            this.Hide();
+            transitionTimer.Stop();
         }
         // public FrmImprimirCarnet()
         //{
