@@ -1,9 +1,4 @@
-﻿
-
-
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-
 namespace SistemaClubDeportivo2
 {
     public partial class frmPrincipal : Form
@@ -22,50 +15,50 @@ namespace SistemaClubDeportivo2
         public frmPrincipal()
         {
             InitializeComponent();
-
-
         }
 
-        /* ___________ VARIABLES tipo INTERNAL
-        __________________________________
-        * Serán accesibles desde el ensamblado en el cual están declarados
-        * y tampoco se pueden utilizar en el interior de una función.
-        ____________________________________________________________________ */
         internal string? rol;
         internal string? usuario;
+
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             lblIngreso.Text = "USUARIO: " + usuario + " " + "(" + rol + ")";
         }
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            /* Notifica a todos los surtidores de mensajes que deben
-            terminar
-            * y, a continuación, cierra todas las ventanas de la
-            aplicación
-            *
-            ____________________________________________________________
-            __________ */
             Application.Exit();
         }
+
         private void btnInscribir_Click(object sender, EventArgs e)
         {
             FrmInscripcion inscripcion = new FrmInscripcion();
             inscripcion.Show();
             this.Hide();
         }
+
         private void btnActividad_Click(object sender, EventArgs e)
         {
-
-            InscribirActividad inscribirActividad = new InscribirActividad();
+            int clienteId = ObtenerClienteId(); // Método ficticio para obtener el clienteId
+            InscribirActividad inscribirActividad = new InscribirActividad(clienteId);
             inscribirActividad.Show();
             this.Hide();
         }
+
         private void btnPagar_Click(object sender, EventArgs e)
         {
             FrmPagar frmPagar = new FrmPagar();
             frmPagar.Show();
             this.Hide();
+        }
+
+        private int ObtenerClienteId()
+        {
+            // Aquí debes implementar la lógica para obtener el clienteId
+            // Esto puede ser a través de una consulta a la base de datos,
+            // desde un formulario previo, etc.
+            // Por ahora, usaremos un valor de ejemplo.
+            return 1; // Valor de ejemplo, deberías obtener el clienteId real aquí
         }
 
         private void InitializeComponent()
@@ -184,32 +177,18 @@ namespace SistemaClubDeportivo2
         private Button btnActividad;
         private Button btnPagar;
         private Button btnCarnet;
+        private PictureBox pictureBox1;
 
         private void btnInscribir_Click_1(object sender, EventArgs e)
         {
-
         }
 
         private void lblIngreso_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnCarnet_Click(object sender, EventArgs e)
         {
-
         }
-
-        private PictureBox pictureBox1;
-
-        
     }
 }
-
-
-
-
-
-
-
-

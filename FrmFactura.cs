@@ -65,18 +65,24 @@ MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void frmFactura_Load(object sender, EventArgs e)
         {
+            lblCliente.Text = alumno_f;
+            lblActividad.Text = curso_f;
+            lblDia.Text = fecha_f.ToShortDateString();
+            lblValor.Text = monto_f.ToString("C");
+            lblFPago.Text = forma_f;
+            lblDfecha.Text = DateTime.Now.ToShortDateString();
             /* ----------------------------------------
             * asignación de los valores a los datos
             * que muestra cada etiqueta del diseño
             * del comprobante de pago
-            * --------------------------------------------- */
+            * --------------------------------------------- 
             lblCliente.Text = alumno_f;
             lblActividad.Text = curso_f;
             lblDia.Text = Convert.ToString(fecha_f);
             lblValor.Text = Convert.ToString(monto_f);
             lblFPago.Text = forma_f;
             // se obtiene la fecha actual
-            lblDfecha.Text = DateTime.UtcNow.ToShortDateString();
+            lblDfecha.Text = DateTime.UtcNow.ToShortDateString();*/
         }
     }
 

@@ -8,9 +8,9 @@ namespace SistemaClubDeportivo2.Entidades
 {
     internal class E_Socios
     {
-         
+
         public int NSocio { get; set; }
         public int NCliente { get; set; }
-    
+
     }
 }
