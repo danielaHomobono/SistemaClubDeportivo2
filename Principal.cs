@@ -39,10 +39,13 @@ namespace SistemaClubDeportivo2
 
         private void btnActividad_Click(object sender, EventArgs e)
         {
-            int clienteId = ObtenerClienteId(); // Método ficticio para obtener el clienteId
-            InscribirActividad inscribirActividad = new InscribirActividad(clienteId);
+            InscribirActividad inscribirActividad = new InscribirActividad();
             inscribirActividad.Show();
             this.Hide();
+            /* int clienteId = ObtenerClienteId(); // Método ficticio para obtener el clienteId
+             InscribirActividad inscribirActividad = new InscribirActividad(clienteId);
+             inscribirActividad.Show();
+             this.Hide();*/
         }
 
         private void btnPagar_Click(object sender, EventArgs e)

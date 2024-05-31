@@ -2,6 +2,7 @@
 using SistemaClubDeportivo2.Datos;
 using SistemaClubDeportivo2.Entidades;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -11,17 +12,19 @@ namespace SistemaClubDeportivo2
     {
         private int NCliente;
 
-        public InscribirActividad(int clienteId)
+        public InscribirActividad()
         {
             InitializeComponent();
-            NCliente = clienteId;            
             Load += new EventHandler(frmAsignar_Load);
-           
         }
 
         private void frmAsignar_Load(object sender, EventArgs e)
         {
             CargaGrilla(); // Llamada al procedimiento
+
+            // Permitir selección múltiple
+            dtgvDatos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtgvDatos.MultiSelect = true;
         }
 
         public void CargaGrilla()
@@ -64,35 +67,106 @@ namespace SistemaClubDeportivo2
             }
         }
 
+        public string ObtenerNombreClientePorDni(string dni)
+        {
+            string nombreCliente = "";
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
+            {
+                try
+                {
+                    string query = "SELECT CONCAT(NombreC, ' ', ApellidoC) AS NombreCompleto, NCliente FROM cliente WHERE DocC = @DocC";
+                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                    comando.Parameters.AddWithValue("@DocC", dni);
+                    sqlCon.Open();
+
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            nombreCliente = reader.GetString(0);
+                            NCliente = reader.GetInt32(1);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cliente no encontrado.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al obtener el cliente: " + ex.Message);
+                }
+            }
+            return nombreCliente;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string dni = txtDNI.Text.Trim();
+            if (!string.IsNullOrEmpty(dni))
+            {
+                string nombreCliente = ObtenerNombreClientePorDni(dni);
+                if (!string.IsNullOrEmpty(nombreCliente))
+                {
+                    lblClienteNombre.Text = "Cliente: " + nombreCliente;
+                }
+                else
+                {
+                    lblClienteNombre.Text = "Cliente: ";
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un DNI válido.");
+            }
+        }
+
         private void btnInscribir_Click(object sender, EventArgs e)
         {
+            if (NCliente == 0)
+            {
+                MessageBox.Show("Debe buscar y seleccionar un cliente antes de inscribir.");
+                return;
+            }
             if (dtgvDatos.SelectedRows.Count > 0)
             {
-                int selectedRowIndex = dtgvDatos.SelectedRows[0].Index;
-                int idSesion = Convert.ToInt32(dtgvDatos.Rows[selectedRowIndex].Cells[4].Value);
-
                 using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
                 {
+                    sqlCon.Open();
+                    MySqlTransaction transaction = sqlCon.BeginTransaction();
                     try
                     {
-                        string query = "INSERT INTO inscripcion (NCliente, idSesion, fecha) VALUES (@NCliente, @idSesion, @fecha)";
-                        MySqlCommand comando = new MySqlCommand(query, sqlCon);
-                        comando.Parameters.AddWithValue("@NCliente", NCliente);
-                        comando.Parameters.AddWithValue("@idSesion", idSesion);
-                        comando.Parameters.AddWithValue("@fecha", DateTime.Now);
-                        sqlCon.Open();
-                        comando.ExecuteNonQuery();
-                        MessageBox.Show("Cliente inscrito correctamente");
+                        List<string> actividadesInscritas = new List<string>();
+
+                        foreach (DataGridViewRow row in dtgvDatos.SelectedRows)
+                        {
+                            int idSesion = Convert.ToInt32(row.Cells[4].Value);
+                            string nombreActividad = row.Cells[0].Value.ToString();
+
+                            string query = "INSERT INTO inscripcion (NCliente, idSesion, fecha) VALUES (@NCliente, @idSesion, @fecha)";
+                            MySqlCommand comando = new MySqlCommand(query, sqlCon, transaction);
+                            comando.Parameters.AddWithValue("@NCliente", NCliente);
+                            comando.Parameters.AddWithValue("@idSesion", idSesion);
+                            comando.Parameters.AddWithValue("@fecha", DateTime.Now);
+
+                            comando.ExecuteNonQuery();
+                            actividadesInscritas.Add(nombreActividad);
+                        }
+
+                        transaction.Commit();
+                        string actividades = string.Join(", ", actividadesInscritas);
+                        MessageBox.Show("Cliente inscrito correctamente en las siguientes actividades: " + actividades);
                     }
                     catch (Exception ex)
                     {
+                        transaction.Rollback();
                         MessageBox.Show("Error al inscribir al cliente: " + ex.Message);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Seleccione una actividad de la lista");
+                MessageBox.Show("Seleccione una o más actividades de la lista.");
             }
         }
 

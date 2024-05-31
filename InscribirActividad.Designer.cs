@@ -1,4 +1,7 @@
-﻿namespace SistemaClubDeportivo2
+﻿using System;
+using System.Windows.Forms;
+
+namespace SistemaClubDeportivo2
 {
     partial class InscribirActividad
     {
@@ -15,110 +18,166 @@
 
         private void InitializeComponent()
         {
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.dtgvDatos = new System.Windows.Forms.DataGridView();
-            this.btnInscribir = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.Nombre_Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre_Profesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idSesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDatos)).BeginInit();
-            this.SuspendLayout();
+            lblTitulo = new System.Windows.Forms.Label();
+            dtgvDatos = new System.Windows.Forms.DataGridView();
+            Nombre_Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Nombre_Profesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            idSesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            btnInscribir = new System.Windows.Forms.Button();
+            btnSalir = new System.Windows.Forms.Button();
+            txtDNI = new System.Windows.Forms.TextBox();
+            lblClienteNombre = new System.Windows.Forms.Label();
+            btnBuscar = new System.Windows.Forms.Button();
+            lblIngresoDNI = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)dtgvDatos).BeginInit();
+            SuspendLayout();
             // 
             // lblTitulo
             // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitulo.Location = new System.Drawing.Point(200, 20);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(300, 37);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Inscripción a Actividades";
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblTitulo.Location = new System.Drawing.Point(229, 27);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new System.Drawing.Size(416, 46);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Inscripción a Actividades";
             // 
             // dtgvDatos
             // 
-            this.dtgvDatos.AllowUserToAddRows = false;
-            this.dtgvDatos.AllowUserToDeleteRows = false;
-            this.dtgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nombre_Actividad,
-            this.Fecha,
-            this.Nombre_Profesor,
-            this.Precio,
-            this.idSesion});
-            this.dtgvDatos.Location = new System.Drawing.Point(30, 70);
-            this.dtgvDatos.Name = "dtgvDatos";
-            this.dtgvDatos.ReadOnly = true;
-            this.dtgvDatos.Size = new System.Drawing.Size(740, 250);
-            this.dtgvDatos.TabIndex = 1;
+            dtgvDatos.AllowUserToAddRows = false;
+            dtgvDatos.AllowUserToDeleteRows = false;
+            dtgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Nombre_Actividad, Fecha, Nombre_Profesor, Precio, idSesion });
+            dtgvDatos.Location = new System.Drawing.Point(42, 178);
+            dtgvDatos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            dtgvDatos.Name = "dtgvDatos";
+            dtgvDatos.ReadOnly = true;
+            dtgvDatos.RowHeadersWidth = 51;
+            dtgvDatos.Size = new System.Drawing.Size(846, 333);
+            dtgvDatos.TabIndex = 1;
+            dtgvDatos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtgvDatos.MultiSelect = true;
+
             // 
             // Nombre_Actividad
             // 
-            this.Nombre_Actividad.HeaderText = "Nombre Actividad";
-            this.Nombre_Actividad.Name = "Nombre_Actividad";
-            this.Nombre_Actividad.ReadOnly = true;
+            Nombre_Actividad.HeaderText = "Nombre Actividad";
+            Nombre_Actividad.MinimumWidth = 6;
+            Nombre_Actividad.Name = "Nombre_Actividad";
+            Nombre_Actividad.ReadOnly = true;
+            Nombre_Actividad.Width = 125;
             // 
             // Fecha
             // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
+            Fecha.HeaderText = "Fecha";
+            Fecha.MinimumWidth = 6;
+            Fecha.Name = "Fecha";
+            Fecha.ReadOnly = true;
+            Fecha.Width = 125;
             // 
             // Nombre_Profesor
             // 
-            this.Nombre_Profesor.HeaderText = "Nombre Profesor";
-            this.Nombre_Profesor.Name = "Nombre_Profesor";
-            this.Nombre_Profesor.ReadOnly = true;
+            Nombre_Profesor.HeaderText = "Nombre Profesor";
+            Nombre_Profesor.MinimumWidth = 6;
+            Nombre_Profesor.Name = "Nombre_Profesor";
+            Nombre_Profesor.ReadOnly = true;
+            Nombre_Profesor.Width = 125;
             // 
             // Precio
             // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 6;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Width = 125;
             // 
             // idSesion
             // 
-            this.idSesion.HeaderText = "ID Sesión";
-            this.idSesion.Name = "idSesion";
-            this.idSesion.ReadOnly = true;
-            this.idSesion.Visible = false; // Ocultamos la columna
+            idSesion.HeaderText = "ID Sesión";
+            idSesion.MinimumWidth = 6;
+            idSesion.Name = "idSesion";
+            idSesion.ReadOnly = true;
+            idSesion.Visible = false;
+            idSesion.Width = 125;
             // 
             // btnInscribir
             // 
-            this.btnInscribir.Location = new System.Drawing.Point(200, 340);
-            this.btnInscribir.Name = "btnInscribir";
-            this.btnInscribir.Size = new System.Drawing.Size(100, 30);
-            this.btnInscribir.TabIndex = 2;
-            this.btnInscribir.Text = "Inscribir";
-            this.btnInscribir.UseVisualStyleBackColor = true;
-            this.btnInscribir.Click += new System.EventHandler(this.btnInscribir_Click);
+            btnInscribir.Location = new System.Drawing.Point(261, 528);
+            btnInscribir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnInscribir.Name = "btnInscribir";
+            btnInscribir.Size = new System.Drawing.Size(114, 40);
+            btnInscribir.TabIndex = 2;
+            btnInscribir.Text = "Inscribir";
+            btnInscribir.UseVisualStyleBackColor = true;
+            btnInscribir.Click += btnInscribir_Click;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(400, 340);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(100, 30);
-            this.btnSalir.TabIndex = 3;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            btnSalir.Location = new System.Drawing.Point(593, 528);
+            btnSalir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new System.Drawing.Size(114, 40);
+            btnSalir.TabIndex = 3;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // txtDNI
+            // 
+            txtDNI.Location = new System.Drawing.Point(69, 89);
+            txtDNI.Name = "txtDNI";
+            txtDNI.Size = new System.Drawing.Size(125, 27);
+            txtDNI.TabIndex = 4;
+            // 
+            // lblClienteNombre
+            // 
+            lblClienteNombre.AutoSize = true;
+            lblClienteNombre.Location = new System.Drawing.Point(125, 119);
+            lblClienteNombre.Name = "lblClienteNombre";
+            lblClienteNombre.Size = new System.Drawing.Size(13, 20);
+            lblClienteNombre.TabIndex = 5;
+            lblClienteNombre.Text = "l";
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Location = new System.Drawing.Point(109, 142);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new System.Drawing.Size(94, 29);
+            btnBuscar.TabIndex = 6;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += new EventHandler(btnBuscar_Click);
+            // 
+            // lblIngresoDNI
+            // 
+            lblIngresoDNI.AutoSize = true;
+            lblIngresoDNI.Location = new System.Drawing.Point(125, 66);
+            lblIngresoDNI.Name = "lblIngresoDNI";
+            lblIngresoDNI.Size = new System.Drawing.Size(87, 20);
+            lblIngresoDNI.TabIndex = 7;
+            lblIngresoDNI.Text = "lngrese DNI";
             // 
             // InscribirActividad
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 400);
-            this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.btnInscribir);
-            this.Controls.Add(this.dtgvDatos);
-            this.Controls.Add(this.lblTitulo);
-            this.Name = "InscribirActividad";
-            this.Text = "Inscribir Actividad";
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDatos)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(914, 616);
+            Controls.Add(lblIngresoDNI);
+            Controls.Add(btnBuscar);
+            Controls.Add(lblClienteNombre);
+            Controls.Add(txtDNI);
+            Controls.Add(btnSalir);
+            Controls.Add(btnInscribir);
+            Controls.Add(dtgvDatos);
+            Controls.Add(lblTitulo);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "InscribirActividad";
+            Text = "Inscribir Actividad";
+            ((System.ComponentModel.ISupportInitialize)dtgvDatos).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private System.Windows.Forms.Label lblTitulo;
@@ -130,5 +189,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Profesor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn idSesion;
+        private System.Windows.Forms.TextBox txtDNI;
+        private System.Windows.Forms.Label lblClienteNombre;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Label lblIngresoDNI;
     }
 }
