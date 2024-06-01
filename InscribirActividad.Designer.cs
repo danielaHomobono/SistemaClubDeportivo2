@@ -18,19 +18,20 @@ namespace SistemaClubDeportivo2
 
         private void InitializeComponent()
         {
-            lblTitulo = new System.Windows.Forms.Label();
-            dtgvDatos = new System.Windows.Forms.DataGridView();
-            Nombre_Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Nombre_Profesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            idSesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            btnInscribir = new System.Windows.Forms.Button();
-            btnSalir = new System.Windows.Forms.Button();
-            txtDNI = new System.Windows.Forms.TextBox();
-            lblClienteNombre = new System.Windows.Forms.Label();
-            btnBuscar = new System.Windows.Forms.Button();
-            lblIngresoDNI = new System.Windows.Forms.Label();
+            lblTitulo = new Label();
+            dtgvDatos = new DataGridView();
+            Nombre_Actividad = new DataGridViewTextBoxColumn();
+            Fecha = new DataGridViewTextBoxColumn();
+            Nombre_Profesor = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            idSesion = new DataGridViewTextBoxColumn();
+            btnInscribir = new Button();
+            btnSalir = new Button();
+            txtDNI = new TextBox();
+            lblClienteNombre = new Label();
+            btnBuscar = new Button();
+            lblIngresoDNI = new Label();
+            btnVolver = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgvDatos).BeginInit();
             SuspendLayout();
             // 
@@ -46,27 +47,23 @@ namespace SistemaClubDeportivo2
             // 
             // dtgvDatos
             // 
-            dtgvDatos.AllowUserToAddRows = false;
             dtgvDatos.AllowUserToDeleteRows = false;
-            dtgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Nombre_Actividad, Fecha, Nombre_Profesor, Precio, idSesion });
+            dtgvDatos.AllowUserToOrderColumns = true;
+            dtgvDatos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvDatos.Columns.AddRange(new DataGridViewColumn[] { Nombre_Actividad, Fecha, Nombre_Profesor, Precio, idSesion });
             dtgvDatos.Location = new System.Drawing.Point(42, 178);
-            dtgvDatos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            dtgvDatos.Margin = new Padding(3, 4, 3, 4);
             dtgvDatos.Name = "dtgvDatos";
-            dtgvDatos.ReadOnly = true;
             dtgvDatos.RowHeadersWidth = 51;
+            dtgvDatos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvDatos.Size = new System.Drawing.Size(846, 333);
             dtgvDatos.TabIndex = 1;
-            dtgvDatos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvDatos.MultiSelect = true;
-
             // 
             // Nombre_Actividad
             // 
             Nombre_Actividad.HeaderText = "Nombre Actividad";
             Nombre_Actividad.MinimumWidth = 6;
             Nombre_Actividad.Name = "Nombre_Actividad";
-            Nombre_Actividad.ReadOnly = true;
             Nombre_Actividad.Width = 125;
             // 
             // Fecha
@@ -74,7 +71,6 @@ namespace SistemaClubDeportivo2
             Fecha.HeaderText = "Fecha";
             Fecha.MinimumWidth = 6;
             Fecha.Name = "Fecha";
-            Fecha.ReadOnly = true;
             Fecha.Width = 125;
             // 
             // Nombre_Profesor
@@ -82,7 +78,6 @@ namespace SistemaClubDeportivo2
             Nombre_Profesor.HeaderText = "Nombre Profesor";
             Nombre_Profesor.MinimumWidth = 6;
             Nombre_Profesor.Name = "Nombre_Profesor";
-            Nombre_Profesor.ReadOnly = true;
             Nombre_Profesor.Width = 125;
             // 
             // Precio
@@ -90,7 +85,6 @@ namespace SistemaClubDeportivo2
             Precio.HeaderText = "Precio";
             Precio.MinimumWidth = 6;
             Precio.Name = "Precio";
-            Precio.ReadOnly = true;
             Precio.Width = 125;
             // 
             // idSesion
@@ -98,14 +92,13 @@ namespace SistemaClubDeportivo2
             idSesion.HeaderText = "ID Sesión";
             idSesion.MinimumWidth = 6;
             idSesion.Name = "idSesion";
-            idSesion.ReadOnly = true;
             idSesion.Visible = false;
             idSesion.Width = 125;
             // 
             // btnInscribir
             // 
             btnInscribir.Location = new System.Drawing.Point(261, 528);
-            btnInscribir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnInscribir.Margin = new Padding(3, 4, 3, 4);
             btnInscribir.Name = "btnInscribir";
             btnInscribir.Size = new System.Drawing.Size(114, 40);
             btnInscribir.TabIndex = 2;
@@ -116,7 +109,7 @@ namespace SistemaClubDeportivo2
             // btnSalir
             // 
             btnSalir.Location = new System.Drawing.Point(593, 528);
-            btnSalir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new System.Drawing.Size(114, 40);
             btnSalir.TabIndex = 3;
@@ -148,7 +141,7 @@ namespace SistemaClubDeportivo2
             btnBuscar.TabIndex = 6;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += new EventHandler(btnBuscar_Click);
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // lblIngresoDNI
             // 
@@ -159,11 +152,22 @@ namespace SistemaClubDeportivo2
             lblIngresoDNI.TabIndex = 7;
             lblIngresoDNI.Text = "lngrese DNI";
             // 
+            // btnVolver
+            // 
+            btnVolver.Location = new System.Drawing.Point(443, 534);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new System.Drawing.Size(94, 29);
+            btnVolver.TabIndex = 8;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
+            // 
             // InscribirActividad
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(914, 616);
+            Controls.Add(btnVolver);
             Controls.Add(lblIngresoDNI);
             Controls.Add(btnBuscar);
             Controls.Add(lblClienteNombre);
@@ -172,7 +176,7 @@ namespace SistemaClubDeportivo2
             Controls.Add(btnInscribir);
             Controls.Add(dtgvDatos);
             Controls.Add(lblTitulo);
-            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "InscribirActividad";
             Text = "Inscribir Actividad";
             ((System.ComponentModel.ISupportInitialize)dtgvDatos).EndInit();
@@ -193,5 +197,6 @@ namespace SistemaClubDeportivo2
         private System.Windows.Forms.Label lblClienteNombre;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label lblIngresoDNI;
+        private Button btnVolver;
     }
 }

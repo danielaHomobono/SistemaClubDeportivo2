@@ -21,120 +21,132 @@ namespace SistemaClubDeportivo2
 
         private void InitializeComponent()
         {
-            this.txtDNI = new System.Windows.Forms.TextBox();
-            this.lblNCliente = new System.Windows.Forms.Label();
-            this.lblNcli = new System.Windows.Forms.Label();
-            this.grpFormaPago = new System.Windows.Forms.GroupBox();
-            this.rbTarjeta = new System.Windows.Forms.RadioButton();
-            this.optEfvo = new System.Windows.Forms.RadioButton();
-            this.btnPagar = new System.Windows.Forms.Button();
-            this.btnVolver = new System.Windows.Forms.Button();
-            this.btnComprobante = new System.Windows.Forms.Button();
-            this.grpFormaPago.SuspendLayout();
-            this.SuspendLayout();
+            txtDNI = new TextBox();
+            lblNCliente = new Label();
+            lblNcli = new Label();
+            grpFormaPago = new GroupBox();
+            rbTarjeta = new RadioButton();
+            optEfvo = new RadioButton();
+            btnPagar = new Button();
+            btnVolver = new Button();
+            btnComprobante = new Button();
+            grpFormaPago.SuspendLayout();
+            SuspendLayout();
             // 
             // txtDNI
             // 
-            this.txtDNI.Location = new System.Drawing.Point(97, 83);
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(141, 22);
-            this.txtDNI.TabIndex = 0;
+            txtDNI.Location = new System.Drawing.Point(97, 104);
+            txtDNI.Margin = new Padding(3, 4, 3, 4);
+            txtDNI.Name = "txtDNI";
+            txtDNI.Size = new System.Drawing.Size(141, 27);
+            txtDNI.TabIndex = 0;
             // 
             // lblNCliente
             // 
-            this.lblNCliente.AutoSize = true;
-            this.lblNCliente.Location = new System.Drawing.Point(130, 101);
-            this.lblNCliente.Name = "lblNCliente";
-            this.lblNCliente.Size = new System.Drawing.Size(0, 17);
-            this.lblNCliente.TabIndex = 1;
+            lblNCliente.AutoSize = true;
+            lblNCliente.Location = new System.Drawing.Point(130, 126);
+            lblNCliente.Name = "lblNCliente";
+            lblNCliente.Size = new System.Drawing.Size(0, 20);
+            lblNCliente.TabIndex = 1;
             // 
             // lblNcli
             // 
-            this.lblNcli.AutoSize = true;
-            this.lblNcli.Location = new System.Drawing.Point(70, 31);
-            this.lblNcli.Name = "lblNcli";
-            this.lblNcli.Size = new System.Drawing.Size(284, 17);
-            this.lblNcli.TabIndex = 2;
-            this.lblNcli.Text = "Ingrese Número Dni del Cliente";
+            lblNcli.AutoSize = true;
+            lblNcli.Location = new System.Drawing.Point(70, 39);
+            lblNcli.Name = "lblNcli";
+            lblNcli.Size = new System.Drawing.Size(217, 20);
+            lblNcli.TabIndex = 2;
+            lblNcli.Text = "Ingrese Número Dni del Cliente";
             // 
             // grpFormaPago
             // 
-            this.grpFormaPago.Controls.Add(this.rbTarjeta);
-            this.grpFormaPago.Controls.Add(this.optEfvo);
-            this.grpFormaPago.Location = new System.Drawing.Point(518, 31);
-            this.grpFormaPago.Name = "grpFormaPago";
-            this.grpFormaPago.Size = new System.Drawing.Size(202, 133);
-            this.grpFormaPago.TabIndex = 3;
-            this.grpFormaPago.TabStop = false;
-            this.grpFormaPago.Text = "Forma de Pago";
+            grpFormaPago.Controls.Add(rbTarjeta);
+            grpFormaPago.Controls.Add(optEfvo);
+            grpFormaPago.Location = new System.Drawing.Point(518, 39);
+            grpFormaPago.Margin = new Padding(3, 4, 3, 4);
+            grpFormaPago.Name = "grpFormaPago";
+            grpFormaPago.Padding = new Padding(3, 4, 3, 4);
+            grpFormaPago.Size = new System.Drawing.Size(202, 166);
+            grpFormaPago.TabIndex = 3;
+            grpFormaPago.TabStop = false;
+            grpFormaPago.Text = "Forma de Pago";
             // 
             // rbTarjeta
             // 
-            this.rbTarjeta.AutoSize = true;
-            this.rbTarjeta.Location = new System.Drawing.Point(6, 59);
-            this.rbTarjeta.Name = "rbTarjeta";
-            this.rbTarjeta.Size = new System.Drawing.Size(74, 21);
-            this.rbTarjeta.TabIndex = 1;
-            this.rbTarjeta.TabStop = true;
-            this.rbTarjeta.Text = "Tarjeta";
-            this.rbTarjeta.UseVisualStyleBackColor = true;
+            rbTarjeta.AutoSize = true;
+            rbTarjeta.Location = new System.Drawing.Point(6, 74);
+            rbTarjeta.Margin = new Padding(3, 4, 3, 4);
+            rbTarjeta.Name = "rbTarjeta";
+            rbTarjeta.Size = new System.Drawing.Size(74, 24);
+            rbTarjeta.TabIndex = 1;
+            rbTarjeta.TabStop = true;
+            rbTarjeta.Text = "Tarjeta";
+            rbTarjeta.UseVisualStyleBackColor = true;
             // 
             // optEfvo
             // 
-            this.optEfvo.AutoSize = true;
-            this.optEfvo.Location = new System.Drawing.Point(6, 25);
-            this.optEfvo.Name = "optEfvo";
-            this.optEfvo.Size = new System.Drawing.Size(83, 21);
-            this.optEfvo.TabIndex = 0;
-            this.optEfvo.TabStop = true;
-            this.optEfvo.Text = "Efectivo";
-            this.optEfvo.UseVisualStyleBackColor = true;
+            optEfvo.AutoSize = true;
+            optEfvo.Location = new System.Drawing.Point(6, 31);
+            optEfvo.Margin = new Padding(3, 4, 3, 4);
+            optEfvo.Name = "optEfvo";
+            optEfvo.Size = new System.Drawing.Size(83, 24);
+            optEfvo.TabIndex = 0;
+            optEfvo.TabStop = true;
+            optEfvo.Text = "Efectivo";
+            optEfvo.UseVisualStyleBackColor = true;
             // 
             // btnPagar
             // 
-            this.btnPagar.Location = new System.Drawing.Point(130, 172);
-            this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(86, 31);
-            this.btnPagar.TabIndex = 4;
-            this.btnPagar.Text = "Pagar";
-            this.btnPagar.UseVisualStyleBackColor = true;
+            btnPagar.Location = new System.Drawing.Point(130, 215);
+            btnPagar.Margin = new Padding(3, 4, 3, 4);
+            btnPagar.Name = "btnPagar";
+            btnPagar.Size = new System.Drawing.Size(86, 39);
+            btnPagar.TabIndex = 4;
+            btnPagar.Text = "Pagar";
+            btnPagar.UseVisualStyleBackColor = true;
+            btnPagar.Click += btnPagar_Click;
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(563, 284);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(86, 31);
-            this.btnVolver.TabIndex = 5;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Location = new System.Drawing.Point(563, 355);
+            btnVolver.Margin = new Padding(3, 4, 3, 4);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new System.Drawing.Size(86, 39);
+            btnVolver.TabIndex = 5;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // btnComprobante
             // 
-            this.btnComprobante.Location = new System.Drawing.Point(130, 327);
-            this.btnComprobante.Name = "btnComprobante";
-            this.btnComprobante.Size = new System.Drawing.Size(86, 31);
-            this.btnComprobante.TabIndex = 6;
-            this.btnComprobante.Text = "Comprobante";
-            this.btnComprobante.UseVisualStyleBackColor = true;
+            btnComprobante.Location = new System.Drawing.Point(130, 409);
+            btnComprobante.Margin = new Padding(3, 4, 3, 4);
+            btnComprobante.Name = "btnComprobante";
+            btnComprobante.Size = new System.Drawing.Size(86, 39);
+            btnComprobante.TabIndex = 6;
+            btnComprobante.Text = "Comprobante";
+            btnComprobante.UseVisualStyleBackColor = true;
+            btnComprobante.Click += btnComprobante_Click;
             // 
             // FrmPagar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 600);
-            this.Controls.Add(this.btnComprobante);
-            this.Controls.Add(this.btnVolver);
-            this.Controls.Add(this.btnPagar);
-            this.Controls.Add(this.grpFormaPago);
-            this.Controls.Add(this.lblNcli);
-            this.Controls.Add(this.lblNCliente);
-            this.Controls.Add(this.txtDNI);
-            this.Name = "FrmPagar";
-            this.Text = "FrmPagar";
-            this.grpFormaPago.ResumeLayout(false);
-            this.grpFormaPago.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(914, 750);
+            Controls.Add(btnComprobante);
+            Controls.Add(btnVolver);
+            Controls.Add(btnPagar);
+            Controls.Add(grpFormaPago);
+            Controls.Add(lblNcli);
+            Controls.Add(lblNCliente);
+            Controls.Add(txtDNI);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "FrmPagar";
+            Text = "FrmPagar";
+            grpFormaPago.ResumeLayout(false);
+            grpFormaPago.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }
