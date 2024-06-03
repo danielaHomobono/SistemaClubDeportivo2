@@ -156,11 +156,18 @@ namespace SistemaClubDeportivo2
 
                         transaction.Commit();
 
-                        pagoActual = new E_Pagar { ActividadesInscritas = actividadesInscritas };
+                        List<string> actividadesCliente = ObtenerActividadesCliente(NCliente);
+                        pagoActual = new E_Pagar { ActividadesInscritas = actividadesCliente };
+                        FrmPagar frmPagar = new FrmPagar(pagoActual);
+                        frmPagar.Show();
+                        string actividades = string.Join(", ", actividadesCliente);
+                        MessageBox.Show("Cliente inscrito correctamente en las siguientes actividades: " + actividades);
+
+                        /*pagoActual = new E_Pagar { ActividadesInscritas = actividadesInscritas };
                         FrmPagar frmPagar = new FrmPagar(pagoActual);
                         frmPagar.Show();
                         string actividades = string.Join(", ", actividadesInscritas);
-                        MessageBox.Show("Cliente inscrito correctamente en las siguientes actividades: " + actividades);
+                        MessageBox.Show("Cliente inscrito correctamente en las siguientes actividades: " + actividades);*/
                     }
 
 
@@ -176,6 +183,38 @@ namespace SistemaClubDeportivo2
                 MessageBox.Show("Seleccione una o más actividades de la lista.");
             }
         }
+        public List<string> ObtenerActividadesCliente(int nCliente)
+        {
+            List<string> actividadesCliente = new List<string>();
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
+            {
+                try
+                {
+                    string query = "SELECT DISTINCT c.Nombre AS Nombre_Actividad " +
+                                   "FROM actividad c " +
+                                   "INNER JOIN sesion s ON c.NActividad = s.NActividad " +
+                                   "INNER JOIN inscripcion i ON s.idSesion = i.idSesion " +
+                                   "WHERE i.NCliente = @NCliente AND s.fecha > CURDATE()";
+                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                    comando.Parameters.AddWithValue("@NCliente", nCliente);
+                    sqlCon.Open();
+
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            actividadesCliente.Add(reader.GetString(0));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al obtener las actividades del cliente: " + ex.Message);
+                }
+            }
+            return actividadesCliente;
+        }
+
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
