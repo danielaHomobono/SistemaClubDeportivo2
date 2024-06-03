@@ -3,61 +3,36 @@ using MySqlX.XDevAPI;
 using SistemaClubDeportivo2.Datos;
 using SistemaClubDeportivo2.Entidades;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SistemaClubDeportivo2
 {
     public partial class FrmPagar : Form
     {
-        /* public FrmPagar()
-         {
-             InitializeComponent();
-         }*/
-
-        /*private void btnPagar_Click(object sender, EventArgs e)
+        // public FrmPagar()
+        //{
+        // InitializeComponent();
+        // }
+        /*private E_Pagar pagoActual;
+        public FrmPagar(E_Pagar pago)        
         {
-            if (!int.TryParse(txtDNI.Text, out int dniCliente))
-            {
-                MessageBox.Show("Ingrese un DNI válido.");
-                return;
-            }
-            
-
-            // Obtener los datos del formulario
-            // int nSocio = int.Parse(txtDNI.Text);
-            string formaPago = optEfvo.Checked ? "Efectivo" : "Tarjeta";
-            int cuotas = rbTarjeta.Checked ? (rbTarjeta.Checked ? 3 : 6) : 1;
-            float tarifaMensual = 50.0f;
-            float monto = tarifaMensual * cuotas;
-
-            DateTime fechaPago = DateTime.Now;
-
-            // Crear instancia de la clase E_Pagar
-            E_Pagar pago = new E_Pagar
-            {
-                NSocio = nSocio,
-                FormaPago = formaPago,
-                Cuotas = cuotas,
-                Monto = monto,
-                FechaPago = fechaPago
-            };
-
-            // Registrar el pago
-            Pagar gestionPago = new Pagar();
-            int nSocio = gestionPago.ObtenerNSocioPorDNI(dniCliente);
-            if (nSocio == 0)
-            {
-                MessageBox.Show("Cliente no encontrado.");
-                return;
-            }
-
-            // Calcular el monto total que debe pagar el cliente
-            float montoTotal = gestionPago.CalcularMontoTotal(nSocio);
-            string resultado = gestionPago.RealizarPago(pago);
-
-            // Mostrar resultado
-            MessageBox.Show(resultado);
+            InitializeComponent();
+            pagoActual = pago;
         }*/
+        private E_Pagar pagoActual;
+
+        public FrmPagar(E_Pagar pago)
+        {
+            InitializeComponent();
+            pagoActual = pago;
+        }
+
+        
+
+
         private void btnPagar_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtDNI.Text, out int dniCliente))
@@ -76,10 +51,11 @@ namespace SistemaClubDeportivo2
                 MessageBox.Show("Cliente no encontrado.");
                 return;
             }
+            string nombreCliente = gestionPago.ObtenerNombreCliente(dniCliente);
 
             // Obtener la forma de pago y las cuotas
             string formaPago = optEfvo.Checked ? "Efectivo" : "Tarjeta";
-            int cuotas = rbTarjeta.Checked ? (rbTarjeta.Checked ? 3 : 6) : 1;
+            //int cuotas = rbTarjeta.Checked ? (rbTarjeta.Checked ? 3 : 6) : 1;
 
             // Calcular el monto total que debe pagar el cliente
             float montoTotal = gestionPago.CalcularMontoTotal(nSocio);
@@ -87,12 +63,17 @@ namespace SistemaClubDeportivo2
             // Crear instancia de la clase E_Pagar con los datos obtenidos
             E_Pagar pago = new E_Pagar
             {
-                NSocio = nSocio,
+                NCliente = nSocio,
                 FormaPago = formaPago,
-                Cuotas = cuotas,
+                //Cuotas = cuotas,
                 Monto = montoTotal, // Utilizamos el monto total calculado
-                FechaPago = DateTime.Now
+                FechaPago = DateTime.Now,
+                NombreCliente = nombreCliente, // Asegúrate de agregar este campo a la clase E_Pagar
+
+                
+                ActividadesInscritas = pagoActual != null ? pagoActual.ActividadesInscritas : new List<string>()
             };
+
             int ultimoID = gestionPago.ObtenerUltimoIDPago();
 
             // Generar un nuevo ID único
@@ -101,23 +82,68 @@ namespace SistemaClubDeportivo2
             // Asignar el nuevo ID al pago
             pago.IDPago = nuevoID;
 
-
             // Registrar el pago
             string resultado = gestionPago.RealizarPago(pago);
+            if (!string.IsNullOrEmpty(nombreCliente))
+            {
+                // Mostrar resultado con el nombre del cliente
+                MessageBox.Show($"Pago realizado por {nombreCliente}: {resultado}");
+            }
+            else
+            {
+                // Mostrar resultado sin el nombre del cliente
+                MessageBox.Show(resultado);
+            }
+            pago.NombreCliente = nombreCliente; // Asegúrate de agregar este campo a la clase E_Pagar
+            pagoActual = pago;
 
-            // Mostrar resultado
-            MessageBox.Show(resultado);
+            string actividadesLog = string.Join(", ", pago.ActividadesInscritas);
+            Console.WriteLine("Actividades Inscritas en btnPagar_Click: " + actividadesLog);
+            MessageBox.Show("Actividades Inscritas en btnPagar_Click: " + actividadesLog); // Log para depuración
+
         }
-       
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
+            frmPrincipal principal = new frmPrincipal();
+            principal.Show();
+            this.Hide();
         }
+
+
+        
 
         private void btnComprobante_Click(object sender, EventArgs e)
         {
-            // Mostrar comprobante de pago (opcional)
+            //E_Pagar pago = ObtenerDatosDelPago();
+
+            //if (pagoActual != null)
+            if (pagoActual != null && pagoActual.ActividadesInscritas != null)
+            {
+               
+                Console.WriteLine("Actividades Inscritas en btnComprobante_Click: " );
+                MessageBox.Show("Actividades Inscritas en btnComprobante_Click: " );
+                // List<string> actividades = pagoActual.ActividadesInscritas.Split(',').ToList();
+
+                FrmFactura frmFactura = new FrmFactura(
+                    DateTime.Now,
+                    pagoActual.NombreCliente,
+                     //pagoActual.ActividadesInscritas ?? new List<string>(),
+
+                    pagoActual.ActividadesInscritas,
+                    pagoActual.FechaPago.AddMonths(1),
+                 
+                    pagoActual.FormaPago,
+                    pagoActual.Monto
+                );
+
+                frmFactura.Show();
+            }
+            else
+            {
+                MessageBox.Show("No se pudo obtener los datos del pago.");
+            }
         }
     }
-}
+    }
+

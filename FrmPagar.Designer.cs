@@ -119,10 +119,10 @@ namespace SistemaClubDeportivo2
             // 
             // btnComprobante
             // 
-            btnComprobante.Location = new System.Drawing.Point(130, 409);
+            btnComprobante.Location = new System.Drawing.Point(139, 411);
             btnComprobante.Margin = new Padding(3, 4, 3, 4);
             btnComprobante.Name = "btnComprobante";
-            btnComprobante.Size = new System.Drawing.Size(86, 39);
+            btnComprobante.Size = new System.Drawing.Size(119, 39);
             btnComprobante.TabIndex = 6;
             btnComprobante.Text = "Comprobante";
             btnComprobante.UseVisualStyleBackColor = true;

@@ -11,6 +11,7 @@ namespace SistemaClubDeportivo2
     public partial class InscribirActividad : Form
     {
         private int NCliente;
+        private E_Pagar pagoActual;
 
         public InscribirActividad()
         {
@@ -34,11 +35,11 @@ namespace SistemaClubDeportivo2
                 try
                 {
                     string query = "SELECT c.Nombre AS Nombre_Actividad, s.fecha AS Fecha, CONCAT(p.NombreP, ' ', p.ApellidoP) AS Nombre_Profesor, c.precio AS Precio, s.idSesion " +
-                                   "FROM actividad c " +
-                                   "INNER JOIN sesion s ON c.NActividad = s.NActividad " +
-                                   "INNER JOIN profesor p ON c.NProfesor = p.NProfesor " +
-                                   "WHERE s.fecha > CURDATE() " +
-                                   "ORDER BY c.Nombre";
+                               "FROM actividad c " +
+                               "INNER JOIN sesion s ON c.NActividad = s.NActividad " +
+                               "INNER JOIN profesor p ON c.NProfesor = p.NProfesor " +
+                               "WHERE s.fecha > CURDATE() " +
+                               "ORDER BY c.Nombre";
                     MySqlCommand comando = new MySqlCommand(query, sqlCon);
                     comando.CommandType = CommandType.Text;
                     sqlCon.Open();
@@ -154,9 +155,15 @@ namespace SistemaClubDeportivo2
                         }
 
                         transaction.Commit();
+
+                        pagoActual = new E_Pagar { ActividadesInscritas = actividadesInscritas };
+                        FrmPagar frmPagar = new FrmPagar(pagoActual);
+                        frmPagar.Show();
                         string actividades = string.Join(", ", actividadesInscritas);
                         MessageBox.Show("Cliente inscrito correctamente en las siguientes actividades: " + actividades);
                     }
+
+
                     catch (Exception ex)
                     {
                         transaction.Rollback();
@@ -180,5 +187,10 @@ namespace SistemaClubDeportivo2
             principal.Show();
             this.Hide();
         }
+
+
     }
 }
+
+
+

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaClubDeportivo2.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,51 +7,72 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaClubDeportivo2
 {
+
     public partial class FrmFactura : Form
     {
-        public FrmFactura()
+        public FrmFactura(
+            DateTime fechaActual,
+            string nombreCliente,
+             List<string> actividadesRealizadas,
+            //string actividadesRealizadas,
+            DateTime fechaVencimientoCuota,
+            string formaPago,
+            float monto
+        )
         {
             InitializeComponent();
+
+            lblFechaActual.Text = fechaActual.ToShortDateString();
+            lblNombreCliente.Text = nombreCliente;
+            if (actividadesRealizadas != null && actividadesRealizadas.Count > 0)
+            //if (actividadesRealizadas != null)
+            {
+                string actividades = string.Join(", ", actividadesRealizadas);
+                lblActividadesRealizadas.Text = actividades;
+                Console.WriteLine("Actividades en FrmFactura Constructor: " + actividades); // Log para depuración
+                MessageBox.Show("Actividades en FrmFactura Constructor: " + actividades);
+            }
+            else
+            {
+                lblActividadesRealizadas.Text = "No se han realizado actividades.";
+            }
+
+            //string actividades = string.Join(", ", actividadesRealizadas);
+            // lblActividadesRealizadas.Text = actividades;
+
+
+            //string actividades = actividadesRealizadas != null ? string.Join(", ", actividadesRealizadas) : string.Empty;
+            //lblActividadesRealizadas.Text = actividades;
+            //string actividades = string.Join(", ", actividadesRealizadas);
+            //lblActividadesRealizadas.Text = actividades;
+            //lblActividadesRealizadas.Text = string.Join(", ", actividadesRealizadas);
+            //lblActividadesRealizadas.Text = actividadesRealizadas;
+            lblFechaVencimiento.Text = fechaVencimientoCuota.ToShortDateString();
+            lblFormaPago.Text = formaPago;
+            lblMonto.Text = monto.ToString("C");
         }
-        public string? alumno_f;
-        public string? curso_f;
-        public string? pago_f;
-        public float monto_f;
-        public int numero_f;
-        public DateTime fecha_f;
-        public string? forma_f;
+
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            /* -----------------------------------------------------
-            * Ocultamos los botones que no pertenecen al diseño
-            * pero si para la funcionalidad
-            * Usamos la propiedad VISIBLE y los posibles
-            * valores son True o False
-            * ---------------------------------------------------- */
             btnImprimir.Visible = false;
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
             pd.Print();
-            btnImprimir.Visible = true; // visualizamos nuevamente el            objeto
-/* _________________________________
-* regreso al formulario principal
-* después del dar aviso
-* ---------------------------------- */
-MessageBox.Show("Operaación existosa", "AVISO DEL SISTEMA",
-MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnImprimir.Visible = true;
+
+            MessageBox.Show("Operación exitosa", "AVISO DEL SISTEMA",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
             frmPrincipal principal = new frmPrincipal();
             principal.Show();
             this.Close();
         }
-        /* -------------------------------------------------------
-        * Conjunto de sentencias necesarias para
-        * el objeto Print
-        * ------------------------------------------------------- */
+
         private void ImprimirForm1(object o, PrintPageEventArgs e)
         {
             int x = SystemInformation.WorkingArea.X;
@@ -63,35 +85,7 @@ MessageBoxButtons.OK, MessageBoxIcon.Information);
             Point p = new Point(100, 100);
             e.Graphics.DrawImage(img, p);
         }
-        private void frmFactura_Load(object sender, EventArgs e)
-        {
-            lblCliente.Text = alumno_f;
-            lblActividad.Text = curso_f;
-            lblDia.Text = fecha_f.ToShortDateString();
-            lblValor.Text = monto_f.ToString("C");
-            lblFPago.Text = forma_f;
-            lblDfecha.Text = DateTime.Now.ToShortDateString();
-            /* ----------------------------------------
-            * asignación de los valores a los datos
-            * que muestra cada etiqueta del diseño
-            * del comprobante de pago
-            * --------------------------------------------- 
-            lblCliente.Text = alumno_f;
-            lblActividad.Text = curso_f;
-            lblDia.Text = Convert.ToString(fecha_f);
-            lblValor.Text = Convert.ToString(monto_f);
-            lblFPago.Text = forma_f;
-            // se obtiene la fecha actual
-            lblDfecha.Text = DateTime.UtcNow.ToShortDateString();*/
-        }
+
+        // Otros métodos y eventos según sea necesario
     }
-
-
-
-//private void FrmFactura_Load(object sender, EventArgs e)
-       // {
-
-      //  }
 }
-
-

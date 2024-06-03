@@ -37,21 +37,6 @@ C:\Users\Usuario\source\repos\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\De
 C:\Users\Usuario\source\repos\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.genruntimeconfig.cache
 C:\Users\Usuario\source\repos\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\ref\SistemaClubDeportivo2.dll
 C:\Users\Usuario\source\repos\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.FrmImprimirCarnet.resources
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.csproj.AssemblyReference.cache
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.Form1.resources
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.FrmFactura.resources
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.FrmImprimirCarnet.resources
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.FrmInscripcion.resources
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.InscribirActividad.resources
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.frmPrincipal.resources
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.Properties.Resources.resources
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.csproj.GenerateResource.cache
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.AssemblyInfoInputs.cache
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.AssemblyInfo.cs
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.csproj.CoreCompileInputs.cache
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.sourcelink.json
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.FrmPagar.resources
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\bin\Debug\net7.0-windows7.0\SistemaClubDeportivo2.exe
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\bin\Debug\net7.0-windows7.0\SistemaClubDeportivo2.deps.json
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\bin\Debug\net7.0-windows7.0\SistemaClubDeportivo2.runtimeconfig.json
@@ -70,6 +55,21 @@ C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\Sistema
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\bin\Debug\net7.0-windows7.0\runtimes\win-x64\native\k5sprt64.dll
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\bin\Debug\net7.0-windows7.0\runtimes\win-x64\native\krb5_64.dll
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\bin\Debug\net7.0-windows7.0\runtimes\win-x64\native\krbcc64.dll
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.csproj.AssemblyReference.cache
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.Form1.resources
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.FrmFactura.resources
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.FrmImprimirCarnet.resources
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.FrmInscripcion.resources
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.FrmPagar.resources
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.InscribirActividad.resources
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.frmPrincipal.resources
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.Properties.Resources.resources
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.csproj.GenerateResource.cache
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.AssemblyInfoInputs.cache
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.AssemblyInfo.cs
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.csproj.CoreCompileInputs.cache
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.sourcelink.json
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaC.724BA0F8.Up2Date
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.dll
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\refint\SistemaClubDeportivo2.dll
