@@ -13,5 +13,12 @@ namespace SistemaClubDeportivo2.Entidades
         public float Monto { get; set; }
         public DateTime FechaPago { get; set; }        
         public List<string> ActividadesInscritas { get; set; }
+        public int IdInscri { get; set; }
+
+        public E_Pagar()
+        {
+            ActividadesInscritas = new List<string>();
+        }
+
     }
 }

@@ -15,6 +15,7 @@ namespace SistemaClubDeportivo2
         public frmPrincipal()
         {
             InitializeComponent();
+           
         }
 
         internal string? rol;
@@ -53,7 +54,13 @@ namespace SistemaClubDeportivo2
             FrmPagar frmPagar = new FrmPagar();
             frmPagar.Show();
             this.Hide();
+
+
         }
+        // FrmPagar frmPagar = new FrmPagar();
+        //frmPagar.Show();
+        //this.Hide();
+
 
         private int ObtenerClienteId()
         {

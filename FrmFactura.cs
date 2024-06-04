@@ -43,16 +43,6 @@ namespace SistemaClubDeportivo2
                 lblActividadesRealizadas.Text = "No se han realizado actividades.";
             }
 
-            //string actividades = string.Join(", ", actividadesRealizadas);
-            // lblActividadesRealizadas.Text = actividades;
-
-
-            //string actividades = actividadesRealizadas != null ? string.Join(", ", actividadesRealizadas) : string.Empty;
-            //lblActividadesRealizadas.Text = actividades;
-            //string actividades = string.Join(", ", actividadesRealizadas);
-            //lblActividadesRealizadas.Text = actividades;
-            //lblActividadesRealizadas.Text = string.Join(", ", actividadesRealizadas);
-            //lblActividadesRealizadas.Text = actividadesRealizadas;
             lblFechaVencimiento.Text = fechaVencimientoCuota.ToShortDateString();
             lblFormaPago.Text = formaPago;
             lblMonto.Text = monto.ToString("C");

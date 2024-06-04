@@ -138,12 +138,13 @@ namespace SistemaClubDeportivo2
                     try
                     {
                         List<string> actividadesInscritas = new List<string>();
+                        float montoTotal = 0;
 
                         foreach (DataGridViewRow row in dtgvDatos.SelectedRows)
                         {
                             int idSesion = Convert.ToInt32(row.Cells[4].Value);
                             string nombreActividad = row.Cells[0].Value.ToString();
-
+                            float precioActividad = Convert.ToSingle(row.Cells[3].Value);
                             string query = "INSERT INTO inscripcion (NCliente, idSesion, fecha) VALUES (@NCliente, @idSesion, @fecha)";
                             MySqlCommand comando = new MySqlCommand(query, sqlCon, transaction);
                             comando.Parameters.AddWithValue("@NCliente", NCliente);
@@ -152,22 +153,17 @@ namespace SistemaClubDeportivo2
 
                             comando.ExecuteNonQuery();
                             actividadesInscritas.Add(nombreActividad);
+                            montoTotal += precioActividad;
                         }
 
                         transaction.Commit();
 
                         List<string> actividadesCliente = ObtenerActividadesCliente(NCliente);
+
                         pagoActual = new E_Pagar { ActividadesInscritas = actividadesCliente };
-                        FrmPagar frmPagar = new FrmPagar(pagoActual);
-                        frmPagar.Show();
+
                         string actividades = string.Join(", ", actividadesCliente);
                         MessageBox.Show("Cliente inscrito correctamente en las siguientes actividades: " + actividades);
-
-                        /*pagoActual = new E_Pagar { ActividadesInscritas = actividadesInscritas };
-                        FrmPagar frmPagar = new FrmPagar(pagoActual);
-                        frmPagar.Show();
-                        string actividades = string.Join(", ", actividadesInscritas);
-                        MessageBox.Show("Cliente inscrito correctamente en las siguientes actividades: " + actividades);*/
                     }
 
 
@@ -214,6 +210,7 @@ namespace SistemaClubDeportivo2
             }
             return actividadesCliente;
         }
+        
 
 
         private void btnSalir_Click(object sender, EventArgs e)
