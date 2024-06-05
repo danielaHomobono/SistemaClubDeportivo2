@@ -65,23 +65,44 @@ namespace SistemaClubDeportivo2
             return nombreCliente;
         }
 
-        public float CalcularMontoTotal(int nSocio)
+
+        public float CalcularMontoTotal(int nSocio, bool esSocio, bool esPagoCuota, int cuotas = 1)
         {
             float montoTotal = 0;
             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
             {
                 try
                 {
-                    string query = "SELECT SUM(c.precio) " +
-                                   "FROM actividad c " +
-                                   "INNER JOIN sesion s ON c.NActividad = s.NActividad " +
-                                   "INNER JOIN inscripcion i ON s.idSesion = i.idSesion " +
-                                   "WHERE i.NCliente = @NCliente AND s.fecha > CURDATE()";
-                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
-                    comando.Parameters.AddWithValue("@NCliente", nSocio);
                     sqlCon.Open();
+                    MySqlCommand comando;
 
-                    montoTotal = Convert.ToSingle(comando.ExecuteScalar());
+                    if (esSocio)
+                    {
+                        montoTotal = 2000;
+                        
+                    }
+                    else
+                    {
+
+                        string queryActividades = "SELECT SUM(c.precio) " +
+                                                  "FROM actividad c " +
+                                                  "INNER JOIN sesion s ON c.NActividad = s.NActividad " +
+                                                  "INNER JOIN inscripcion i ON s.idSesion = i.idSesion " +
+                                                  "WHERE i.NCliente = @NCliente AND s.fecha > CURDATE()";
+                        comando = new MySqlCommand(queryActividades, sqlCon);
+                        comando.Parameters.AddWithValue("@NCliente", nSocio);
+
+                        //montoTotal = Convert.ToSingle(comando.ExecuteScalar());
+                        object result = comando.ExecuteScalar();
+                        if (result != DBNull.Value)
+                        {
+                            montoTotal = Convert.ToSingle(result);
+                        }
+                    }
+                    if (cuotas > 1)
+                    {
+                        montoTotal = montoTotal / cuotas;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -90,6 +111,37 @@ namespace SistemaClubDeportivo2
             }
             return montoTotal;
         }
+
+
+
+
+
+
+        /* public float CalcularMontoTotal(int nSocio)
+         {
+             float montoTotal = 0;
+             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
+             {
+                 try
+                 {
+                     string query = "SELECT SUM(c.precio) " +
+                                    "FROM actividad c " +
+                                    "INNER JOIN sesion s ON c.NActividad = s.NActividad " +
+                                    "INNER JOIN inscripcion i ON s.idSesion = i.idSesion " +
+                                    "WHERE i.NCliente = @NCliente AND s.fecha > CURDATE()";
+                     MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                     comando.Parameters.AddWithValue("@NCliente", nSocio);
+                     sqlCon.Open();
+
+                     montoTotal = Convert.ToSingle(comando.ExecuteScalar());
+                 }
+                 catch (Exception ex)
+                 {
+                     MessageBox.Show("Error al calcular el monto total: " + ex.Message);
+                 }
+             }
+             return montoTotal;
+         }*/
 
         public int ObtenerUltimoIDPago()
         {
@@ -140,6 +192,72 @@ namespace SistemaClubDeportivo2
             }
             return idInscri;
         }
+
+
+        /*public bool EsSocio(int dniCliente)
+        {
+            bool esSocio = false;
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
+            {
+                try
+                {
+                    string query = "SELECT COUNT(*) FROM socio WHERE NCliente = @DocC";
+
+                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                    comando.Parameters.AddWithValue("@DocC", dniCliente);
+                    sqlCon.Open();
+
+                    Console.WriteLine("Consulta SQL en EsSocio: " + query);
+
+                    int count = Convert.ToInt32(comando.ExecuteScalar());
+                    esSocio = count > 0;
+
+                    Console.WriteLine("Valor de esSocio en EsSocio: " + esSocio);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al verificar si el cliente es socio: " + ex.Message);
+                    Console.WriteLine("Error al verificar si el cliente es socio: " + ex.Message);
+                }
+            }
+            return esSocio;
+        }*/
+        public bool EsSocio(int dniCliente)
+        {
+            bool esSocio = false;
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
+            {
+                try
+                {
+                    string query = @"
+                SELECT COUNT(*)
+                FROM socio s
+                JOIN cliente c ON s.NCliente = c.NCliente
+                WHERE c.DocC = @DocC";
+
+                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                    comando.Parameters.AddWithValue("@DocC", dniCliente);
+                    sqlCon.Open();
+
+                    Console.WriteLine("Consulta SQL en EsSocio: " + query);
+
+                    int count = Convert.ToInt32(comando.ExecuteScalar());
+                    esSocio = count > 0;
+
+                    Console.WriteLine("Valor de esSocio en EsSocio: " + esSocio);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al verificar si el cliente es socio: " + ex.Message);
+                    Console.WriteLine("Error al verificar si el cliente es socio: " + ex.Message);
+                }
+            }
+            return esSocio;
+        }
+
+
+
 
 
         public string RealizarPago(E_Pagar pago)

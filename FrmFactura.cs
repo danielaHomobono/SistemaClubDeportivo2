@@ -13,8 +13,89 @@ using System.Windows.Forms;
 
 namespace SistemaClubDeportivo2
 {
-
     public partial class FrmFactura : Form
+    {
+        public FrmFactura(
+            DateTime fechaActual,
+            string nombreCliente,
+            List<string> actividadesRealizadas,
+            DateTime fechaVencimientoCuota,
+            string formaPago,
+            float monto,
+            int cuotas,
+            bool esPagoCuota
+        )
+        {
+            InitializeComponent();
+
+            lblFechaActual.Text = fechaActual.ToShortDateString();
+            lblNombreCliente.Text = nombreCliente;
+            lblActividadesRealizadas.Text = esPagoCuota ? "Cuota Mensual" : string.Join(", ", actividadesRealizadas);
+            lblFechaVencimiento.Text = fechaVencimientoCuota.ToShortDateString();
+            lblFormaPago.Text = formaPago;
+            lblMonto.Text = monto.ToString("C");
+
+            if (formaPago == "Tarjeta" && cuotas > 1)
+            {
+                lblCuotas.Text = $"{cuotas} cuotas de ${monto / cuotas:0.00}";
+            }
+            else
+            {
+                lblCuotas.Text = "Pago en una sola cuota";
+            }
+        }
+        /* public FrmFactura(DateTime fecha, string nombreCliente, List<string> actividadesInscritas, DateTime fechaProximoPago, string formaPago, float montoTotal, int cuotas, bool esPagoCuota)
+         {
+             InitializeComponent();
+
+             lblFecha.Text = fecha.ToString("dd/MM/yyyy");
+             lblNombreCliente.Text = nombreCliente;
+             lblActividades.Text = esPagoCuota ? "Cuota Mensual" : string.Join(", ", actividadesInscritas);
+             lblFechaProximoPago.Text = fechaProximoPago.ToString("dd/MM/yyyy");
+             lblFormaPago.Text = formaPago;
+             lblMontoTotal.Text = $"${montoTotal:0.00}";
+
+             if (formaPago == "Tarjeta" && cuotas > 1)
+             {
+                 lblCuotas.Text = $"{cuotas} cuotas de ${montoTotal / cuotas:0.00}";
+             }
+             else
+             {
+                 lblCuotas.Text = "Pago en una sola cuota";
+             }
+         }*/
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            btnImprimir.Visible = false;
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(ImprimirForm1);
+            pd.Print();
+            btnImprimir.Visible = true;
+
+            MessageBox.Show("Operación exitosa", "AVISO DEL SISTEMA",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmPrincipal principal = new frmPrincipal();
+            principal.Show();
+            this.Close();
+        }
+
+        private void ImprimirForm1(object o, PrintPageEventArgs e)
+        {
+            int x = SystemInformation.WorkingArea.X;
+            int y = SystemInformation.WorkingArea.Y;
+            int ancho = this.Width;
+            int alto = this.Height;
+            Rectangle bounds = new Rectangle(x, y, ancho, alto);
+            Bitmap img = new Bitmap(ancho, alto);
+            this.DrawToBitmap(img, bounds);
+            Point p = new Point(100, 100);
+            e.Graphics.DrawImage(img, p);
+        }
+    }
+
+
+    /*public partial class FrmFactura : Form
     {
         public FrmFactura(
             DateTime fechaActual,
@@ -77,5 +158,5 @@ namespace SistemaClubDeportivo2
         }
 
         // Otros métodos y eventos según sea necesario
-    }
+    }*/
 }

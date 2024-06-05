@@ -44,6 +44,68 @@ namespace SistemaClubDeportivo2
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             if (txtNombre.Text == "" || txtApellido.Text == "" ||
+                txtDocumento.Text == "" || cboTipo.Text == "")
+            {
+                MessageBox.Show("Debe completar datos requeridos (*) ",
+                    "AVISO DEL SISTEMA", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            else
+            {
+                string respuesta;
+
+                E_Clientes cliente = new E_Clientes();
+                cliente.NombreC = txtNombre.Text;
+                cliente.ApellidoC = txtApellido.Text;
+                cliente.TDocC = cboTipo.Text;
+                cliente.DocC = Convert.ToInt32(txtDocumento.Text);
+
+                Datos.Clientes clientes = new Datos.Clientes();
+                respuesta = clientes.Nuevo_Cliente(cliente);
+
+                bool esnumero = int.TryParse(respuesta, out int codigo);
+
+                //if (int.TryParse(respuesta, out int codigo))
+                {
+                    if (codigo == 1)
+                    {
+                        MessageBox.Show("POSTULANTE YA EXISTE", "AVISO DEL SISTEMA",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Se almacenó con éxito con el código Nro {respuesta}",
+                            "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
+                        // Verificar si se debe registrar como socio
+                        CheckBox chkSocio = this.Controls.Find("chkSocio", true).FirstOrDefault() as CheckBox;
+                        if (chkSocio.Checked)
+                        {
+                            string respuestaSocio = clientes.Nuevo_Socio(codigo);
+                            if (int.TryParse(respuestaSocio, out int codigoSocio) && codigoSocio != -1)
+                            {
+                                MessageBox.Show("Se registró como socio con éxito con el código Nro " + respuestaSocio,
+                                    "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
+                                // Mostrar formulario de impresión de carnet
+                                FrmImprimirCarnet imprimirCarnet = new FrmImprimirCarnet(cliente.NombreC, cliente.ApellidoC, cliente.DocC.ToString(), respuesta);
+                                imprimirCarnet.Show();
+                                this.Hide();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al registrar como socio: " + respuestaSocio,
+                                    "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /*private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            if (txtNombre.Text == "" || txtApellido.Text == "" ||
             txtDocumento.Text == "" || cboTipo.Text == "")
             {
                 MessageBox.Show("Debe completar datos requeridos (*) ",
@@ -65,7 +127,7 @@ namespace SistemaClubDeportivo2
                 bool esnumero = int.TryParse(respuesta, out int codigo);
                 if (esnumero)
                 {
-                    if (codigo == 1)
+                    if (codigo == -1)
                     {
                         MessageBox.Show("POSTULANTE YA EXISTE", "AVISO DEL SISTEMA",
                         MessageBoxButtons.OK,
@@ -76,7 +138,7 @@ namespace SistemaClubDeportivo2
                         MessageBox.Show("se almaceno con exito con el codigo Nro " + respuesta, "AVISO DEL SISTEMA",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Question);
-
+  
 
 
                         CheckBox chkSocio = this.Controls.Find("chkSocio", true).FirstOrDefault() as CheckBox;
@@ -104,11 +166,11 @@ namespace SistemaClubDeportivo2
                     }
                 }
             }
-        }
-            /* ===================================================
-            * Limpiamos los objetos para un nuevo ingreso
-            * ================================================ */
-            private void btnLimpiar_Click(object sender, EventArgs e)
+        }*/
+        /* ===================================================
+        * Limpiamos los objetos para un nuevo ingreso
+        * ================================================ */
+        private void btnLimpiar_Click(object sender, EventArgs e)
             {
                 txtNombre.Text = "";
                 txtApellido.Text = "";

@@ -26,6 +26,157 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        private void InitializeComponent()
+        {
+            this.lblFechaActual = new System.Windows.Forms.Label();
+            this.lblNombreCliente = new System.Windows.Forms.Label();
+            this.lblActividadesRealizadas = new System.Windows.Forms.Label();
+            this.lblFechaVencimiento = new System.Windows.Forms.Label();
+            this.lblFormaPago = new System.Windows.Forms.Label();
+            this.lblMonto = new System.Windows.Forms.Label();
+            this.lblCuotas = new System.Windows.Forms.Label();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // lblFechaActual
+            // 
+            this.lblFechaActual.AutoSize = true;
+            this.lblFechaActual.Location = new System.Drawing.Point(20, 20);
+            this.lblFechaActual.Name = "lblFechaActual";
+            this.lblFechaActual.Size = new System.Drawing.Size(103, 20);
+            this.lblFechaActual.TabIndex = 0;
+            this.lblFechaActual.Text = "Fecha Actual:";
+            // 
+            // lblNombreCliente
+            // 
+            this.lblNombreCliente.AutoSize = true;
+            this.lblNombreCliente.Location = new System.Drawing.Point(20, 50);
+            this.lblNombreCliente.Name = "lblNombreCliente";
+            this.lblNombreCliente.Size = new System.Drawing.Size(116, 20);
+            this.lblNombreCliente.TabIndex = 1;
+            this.lblNombreCliente.Text = "Nombre Cliente:";
+            // 
+            // lblActividadesRealizadas
+            // 
+            this.lblActividadesRealizadas.AutoSize = true;
+            this.lblActividadesRealizadas.Location = new System.Drawing.Point(20, 80);
+            this.lblActividadesRealizadas.Name = "lblActividadesRealizadas";
+            this.lblActividadesRealizadas.Size = new System.Drawing.Size(162, 20);
+            this.lblActividadesRealizadas.TabIndex = 2;
+            this.lblActividadesRealizadas.Text = "Actividades Realizadas:";
+            // 
+            // lblFechaVencimiento
+            // 
+            this.lblFechaVencimiento.AutoSize = true;
+            this.lblFechaVencimiento.Location = new System.Drawing.Point(20, 110);
+            this.lblFechaVencimiento.Name = "lblFechaVencimiento";
+            this.lblFechaVencimiento.Size = new System.Drawing.Size(151, 20);
+            this.lblFechaVencimiento.TabIndex = 3;
+            this.lblFechaVencimiento.Text = "Fecha de Vencimiento:";
+            // 
+            // lblFormaPago
+            // 
+            this.lblFormaPago.AutoSize = true;
+            this.lblFormaPago.Location = new System.Drawing.Point(20, 140);
+            this.lblFormaPago.Name = "lblFormaPago";
+            this.lblFormaPago.Size = new System.Drawing.Size(96, 20);
+            this.lblFormaPago.TabIndex = 4;
+            this.lblFormaPago.Text = "Forma Pago:";
+            // 
+            // lblMonto
+            // 
+            this.lblMonto.AutoSize = true;
+            this.lblMonto.Location = new System.Drawing.Point(20, 170);
+            this.lblMonto.Name = "lblMonto";
+            this.lblMonto.Size = new System.Drawing.Size(58, 20);
+            this.lblMonto.TabIndex = 5;
+            this.lblMonto.Text = "Monto:";
+            // 
+            // lblCuotas
+            // 
+            this.lblCuotas.AutoSize = true;
+            this.lblCuotas.Location = new System.Drawing.Point(20, 200);
+            this.lblCuotas.Name = "lblCuotas";
+            this.lblCuotas.Size = new System.Drawing.Size(62, 20);
+            this.lblCuotas.TabIndex = 6;
+            this.lblCuotas.Text = "Cuotas:";
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(342, 541);
+            this.btnImprimir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(86, 31);
+            this.btnImprimir.TabIndex = 7;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // FrmFactura
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(400, 250);
+            this.Controls.Add(this.btnImprimir);
+            this.Controls.Add(this.lblCuotas);
+            this.Controls.Add(this.lblMonto);
+            this.Controls.Add(this.lblFormaPago);
+            this.Controls.Add(this.lblFechaVencimiento);
+            this.Controls.Add(this.lblActividadesRealizadas);
+            this.Controls.Add(this.lblNombreCliente);
+            this.Controls.Add(this.lblFechaActual);
+            this.Name = "FrmFactura";
+            this.Text = "Factura";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label lblFechaActual;
+        private System.Windows.Forms.Label lblNombreCliente;
+        private System.Windows.Forms.Label lblActividadesRealizadas;
+        private System.Windows.Forms.Label lblFechaVencimiento;
+        private System.Windows.Forms.Label lblFormaPago;
+        private System.Windows.Forms.Label lblMonto;
+        private System.Windows.Forms.Label lblCuotas;
+        private System.Windows.Forms.Button btnImprimir;
+    }
+}
+
+
+
+
+
+
+/*namespace SistemaClubDeportivo2
+{
+    partial class FrmFactura
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         /// 
         private System.Windows.Forms.Label lblFechaActual;
         private System.Windows.Forms.Label lblNombreCliente;
@@ -127,7 +278,7 @@
             this.PerformLayout();
         }
     }
-}
+}*/
 /*private void InitializeComponent()
 {
     pnlComprobante = new System.Windows.Forms.Panel();
@@ -273,7 +424,7 @@
     ResumeLayout(false);
 }*/
 
-#endregion
+//#endregion
 
 /*private System.Windows.Forms.Label lblClubD;
 private System.Windows.Forms.Panel panel1;

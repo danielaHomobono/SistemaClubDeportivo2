@@ -1,5 +1,6 @@
-﻿using MySql.Data.MySqlClient;
-using SistemaClubDeportivo2.Datos;
+﻿using SistemaClubDeportivo2.Entidades;
+using MySql.Data.MySqlClient;
+//using SistemaClubDeportivo2.Datos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,13 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace SistemaClubDeportivo2.Entidades
+//namespace SistemaClubDeportivo2.Entidades
+namespace SistemaClubDeportivo2.Datos
 {
     internal class Clientes
     {
         public string Nuevo_Cliente(E_Clientes cliente)
         {
             string? salida;
+
             MySqlConnection sqlCon = new MySqlConnection();
             try
             {
@@ -37,6 +40,7 @@ namespace SistemaClubDeportivo2.Entidades
                 comando.Parameters.Add(ParCodigo);
                 sqlCon.Open();
                 comando.ExecuteNonQuery();
+               
                 salida = Convert.ToString(ParCodigo.Value);
             }
             catch (Exception ex)
@@ -53,6 +57,7 @@ namespace SistemaClubDeportivo2.Entidades
             }
             return salida;
         }
+        
         public string Nuevo_Socio(int NCliente)
         {
             string? salida;

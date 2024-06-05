@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaClubDeportivo2.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,6 +37,14 @@ namespace SistemaClubDeportivo2
             FrmInscripcion inscripcion = new FrmInscripcion();
             inscripcion.Show();
             this.Hide();
+            // Crear una instancia de E_Clientes con los datos necesarios
+           
+
+            // Crear una instancia de la clase Clientes
+           
+
+            // Mostrar el resultado al usuario
+            
         }
 
         private void btnActividad_Click(object sender, EventArgs e)
@@ -51,7 +60,9 @@ namespace SistemaClubDeportivo2
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            FrmPagar frmPagar = new FrmPagar();
+            E_Pagar pago = new E_Pagar();
+
+            FrmPagar frmPagar = new FrmPagar(pago);
             frmPagar.Show();
             this.Hide();
 
