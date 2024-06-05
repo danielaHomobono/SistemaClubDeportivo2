@@ -40,7 +40,7 @@ namespace SistemaClubDeportivo2
         private Button btnInscribir;
         private Button btnActividad;
         private Button btnPagar;
-        private Button btnCarnet;
+        private Button btnReportes;
 
       
     }

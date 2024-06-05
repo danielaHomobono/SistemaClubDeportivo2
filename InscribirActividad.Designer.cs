@@ -56,7 +56,7 @@ namespace SistemaClubDeportivo2
             dtgvDatos.Name = "dtgvDatos";
             dtgvDatos.RowHeadersWidth = 51;
             dtgvDatos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvDatos.Size = new System.Drawing.Size(846, 333);
+            dtgvDatos.Size = new System.Drawing.Size(549, 328);
             dtgvDatos.TabIndex = 1;
             // 
             // Nombre_Actividad

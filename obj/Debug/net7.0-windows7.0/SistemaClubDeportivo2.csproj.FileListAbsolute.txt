@@ -61,6 +61,7 @@ C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\Sistema
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.InscribirActividad.resources
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.frmPrincipal.resources
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.Properties.Resources.resources
+C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.Reportes.resources
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.csproj.GenerateResource.cache
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.AssemblyInfoInputs.cache

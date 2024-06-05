@@ -285,6 +285,111 @@ namespace SistemaClubDeportivo2
             }
             return actividades;
         }
+        /*public List<string> ObtenerSociosCuotaVenceHoy()
+        {
+            List<string> sociosCuotaVenceHoy = new List<string>();
 
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
+            {
+                try
+                {
+                    string query = @"
+                SELECT c.NombreC, c.ApellidoC
+                FROM cliente c
+                WHERE c.NCliente NOT IN (
+                    SELECT DISTINCT i.NCliente
+                    FROM inscripcion i
+                    INNER JOIN pago p ON i.idInscri = p.idInscri
+                    WHERE YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) = MONTH(CURDATE())
+                ) OR c.NCliente IN (
+                    SELECT DISTINCT i.NCliente
+                    FROM inscripcion i
+                    INNER JOIN pago p ON i.idInscri = p.idInscri
+                    WHERE YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) < MONTH(CURDATE())
+                )";
+
+
+                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
+
+                    sqlCon.Open();
+
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        { 
+                        while (reader.Read())
+                        {
+                                string nombreCompleto = reader.GetString("NombreC") + " " + reader.GetString("ApellidoC");
+                                sociosCuotaVenceHoy.Add(nombreCompleto);
+                                //foreach (string nombreCompleto in sociosCuotaVenceHoy)
+                                //{
+                                int renglon = dtgvDatos.Rows.Add();
+                                string[] nombreApellido = nombreCompleto.Split(' ');
+                                dtgvDatos.Rows[renglon].Cells[0].Value = nombreApellido[0]; // NombreC
+                                dtgvDatos.Rows[renglon].Cells[1].Value = nombreApellido[1]; // ApellidoC
+
+                                }//
+
+
+
+
+                                
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al obtener los socios cuya cuota vence hoy: " + ex.Message);
+                }
+            }
+
+            return sociosCuotaVenceHoy;
+        }*/
+         public List<string> ObtenerSociosCuotaVenceHoy()
+         {
+             List<string> sociosCuotaVenceHoy = new List<string>();
+
+             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
+             {
+                 try
+                 {
+                     string query = @"
+                 SELECT c.NombreC, c.ApellidoC
+                 FROM cliente c
+                 WHERE c.NCliente NOT IN (
+                     SELECT DISTINCT i.NCliente
+                     FROM inscripcion i
+                     INNER JOIN pago p ON i.idInscri = p.idInscri
+                     WHERE YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) = MONTH(CURDATE())
+                 ) OR c.NCliente IN (
+                     SELECT DISTINCT i.NCliente
+                     FROM inscripcion i
+                     INNER JOIN pago p ON i.idInscri = p.idInscri
+                     WHERE YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) < MONTH(CURDATE())
+                 )";
+
+
+                     MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                     sqlCon.Open();
+
+                     using (MySqlDataReader reader = comando.ExecuteReader())
+                     {
+                         while (reader.Read())
+                         {
+                             string nombreCompleto = reader.GetString("NombreC") + " " + reader.GetString("ApellidoC");
+                             sociosCuotaVenceHoy.Add(nombreCompleto);
+                         }
+                     }
+                 }
+                 catch (Exception ex)
+                 {
+                     MessageBox.Show("Error al obtener los socios cuya cuota vence hoy: " + ex.Message);
+                 }
+             }
+
+             return sociosCuotaVenceHoy;
+         }
     }
+
 }
+

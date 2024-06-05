@@ -81,6 +81,14 @@ namespace SistemaClubDeportivo2
             // Por ahora, usaremos un valor de ejemplo.
             return 1; // Valor de ejemplo, deberías obtener el clienteId real aquí
         }
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario de reportes
+            Reportes formReportes = new Reportes();
+
+            // Mostrar el formulario de reportes
+            formReportes.Show();
+        }
 
         private void InitializeComponent()
         {
@@ -90,7 +98,7 @@ namespace SistemaClubDeportivo2
             btnInscribir = new Button();
             btnActividad = new Button();
             btnPagar = new Button();
-            btnCarnet = new Button();
+            btnReportes = new Button();
             pictureBox1 = new PictureBox();
             ((ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -103,7 +111,7 @@ namespace SistemaClubDeportivo2
             lblIngreso.ForeColor = SystemColors.ControlDarkDark;
             lblIngreso.Location = new Point(1, 9);
             lblIngreso.Name = "lblIngreso";
-            lblIngreso.Size = new Size(0, 15);
+            lblIngreso.Size = new Size(0, 20);
             lblIngreso.TabIndex = 0;
             // 
             // btnSalir
@@ -152,16 +160,16 @@ namespace SistemaClubDeportivo2
             btnPagar.UseVisualStyleBackColor = false;
             btnPagar.Click += btnPagar_Click;
             // 
-            // btnCarnet
+            // btnReportes
             // 
-            btnCarnet.BackColor = SystemColors.MenuHighlight;
-            btnCarnet.Location = new Point(288, 403);
-            btnCarnet.Name = "btnCarnet";
-            btnCarnet.Size = new Size(203, 69);
-            btnCarnet.TabIndex = 5;
-            btnCarnet.Text = "Generar Carnet";
-            btnCarnet.UseVisualStyleBackColor = false;
-            btnCarnet.Click += btnCarnet_Click;
+            btnReportes.BackColor = SystemColors.MenuHighlight;
+            btnReportes.Location = new Point(288, 403);
+            btnReportes.Name = "btnReportes";
+            btnReportes.Size = new Size(203, 69);
+            btnReportes.TabIndex = 5;
+            btnReportes.Text = "Reportes";
+            btnReportes.UseVisualStyleBackColor = false;
+            btnReportes.Click += btnReportes_Click;
             // 
             // pictureBox1
             // 
@@ -177,7 +185,7 @@ namespace SistemaClubDeportivo2
             // 
             ClientSize = new Size(557, 520);
             Controls.Add(pictureBox1);
-            Controls.Add(btnCarnet);
+            Controls.Add(btnReportes);
             Controls.Add(btnPagar);
             Controls.Add(btnActividad);
             Controls.Add(btnInscribir);
@@ -197,19 +205,9 @@ namespace SistemaClubDeportivo2
         private Button btnInscribir;
         private Button btnActividad;
         private Button btnPagar;
-        private Button btnCarnet;
+        private Button btnReportes;
         private PictureBox pictureBox1;
 
-        private void btnInscribir_Click_1(object sender, EventArgs e)
-        {
-        }
-
-        private void lblIngreso_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnCarnet_Click(object sender, EventArgs e)
-        {
-        }
+        
     }
 }
