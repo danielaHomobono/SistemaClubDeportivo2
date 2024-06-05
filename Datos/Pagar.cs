@@ -112,37 +112,7 @@ namespace SistemaClubDeportivo2
             return montoTotal;
         }
 
-
-
-
-
-
-        /* public float CalcularMontoTotal(int nSocio)
-         {
-             float montoTotal = 0;
-             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
-             {
-                 try
-                 {
-                     string query = "SELECT SUM(c.precio) " +
-                                    "FROM actividad c " +
-                                    "INNER JOIN sesion s ON c.NActividad = s.NActividad " +
-                                    "INNER JOIN inscripcion i ON s.idSesion = i.idSesion " +
-                                    "WHERE i.NCliente = @NCliente AND s.fecha > CURDATE()";
-                     MySqlCommand comando = new MySqlCommand(query, sqlCon);
-                     comando.Parameters.AddWithValue("@NCliente", nSocio);
-                     sqlCon.Open();
-
-                     montoTotal = Convert.ToSingle(comando.ExecuteScalar());
-                 }
-                 catch (Exception ex)
-                 {
-                     MessageBox.Show("Error al calcular el monto total: " + ex.Message);
-                 }
-             }
-             return montoTotal;
-         }*/
-
+        
         public int ObtenerUltimoIDPago()
         {
             int ultimoID = 0;

@@ -37,6 +37,9 @@ namespace SistemaClubDeportivo2
             btnPagar = new Button();
             btnVolver = new Button();
             btnComprobante = new Button();
+            lblNombreCliente = new Label();
+            lblMontoTotal = new Label();
+            btnBuscar = new Button();
             grpFormaPago.SuspendLayout();
             grpCuotas.SuspendLayout();
             grpTipoPago.SuspendLayout();
@@ -44,7 +47,7 @@ namespace SistemaClubDeportivo2
             // 
             // txtDNI
             // 
-            txtDNI.Location = new System.Drawing.Point(97, 104);
+            txtDNI.Location = new System.Drawing.Point(293, 39);
             txtDNI.Margin = new Padding(3, 4, 3, 4);
             txtDNI.Name = "txtDNI";
             txtDNI.Size = new System.Drawing.Size(141, 27);
@@ -71,7 +74,7 @@ namespace SistemaClubDeportivo2
             // 
             grpFormaPago.Controls.Add(optEfvo);
             grpFormaPago.Controls.Add(optTarjeta);
-            grpFormaPago.Location = new System.Drawing.Point(20, 150);
+            grpFormaPago.Location = new System.Drawing.Point(20, 283);
             grpFormaPago.Name = "grpFormaPago";
             grpFormaPago.Size = new System.Drawing.Size(200, 100);
             grpFormaPago.TabIndex = 3;
@@ -104,7 +107,7 @@ namespace SistemaClubDeportivo2
             // 
             grpCuotas.Controls.Add(opt3Cuotas);
             grpCuotas.Controls.Add(opt6Cuotas);
-            grpCuotas.Location = new System.Drawing.Point(230, 150);
+            grpCuotas.Location = new System.Drawing.Point(247, 293);
             grpCuotas.Name = "grpCuotas";
             grpCuotas.Size = new System.Drawing.Size(200, 100);
             grpCuotas.TabIndex = 4;
@@ -137,7 +140,7 @@ namespace SistemaClubDeportivo2
             // 
             grpTipoPago.Controls.Add(optCuota);
             grpTipoPago.Controls.Add(optActividad);
-            grpTipoPago.Location = new System.Drawing.Point(450, 150);
+            grpTipoPago.Location = new System.Drawing.Point(483, 303);
             grpTipoPago.Name = "grpTipoPago";
             grpTipoPago.Size = new System.Drawing.Size(200, 100);
             grpTipoPago.TabIndex = 5;
@@ -168,7 +171,7 @@ namespace SistemaClubDeportivo2
             // 
             // btnPagar
             // 
-            btnPagar.Location = new System.Drawing.Point(163, 322);
+            btnPagar.Location = new System.Drawing.Point(20, 411);
             btnPagar.Margin = new Padding(3, 4, 3, 4);
             btnPagar.Name = "btnPagar";
             btnPagar.Size = new System.Drawing.Size(86, 39);
@@ -179,7 +182,7 @@ namespace SistemaClubDeportivo2
             // 
             // btnVolver
             // 
-            btnVolver.Location = new System.Drawing.Point(563, 355);
+            btnVolver.Location = new System.Drawing.Point(329, 411);
             btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new System.Drawing.Size(86, 39);
@@ -199,9 +202,41 @@ namespace SistemaClubDeportivo2
             btnComprobante.UseVisualStyleBackColor = true;
             btnComprobante.Click += btnComprobante_Click;
             // 
+            // lblNombreCliente
+            // 
+            lblNombreCliente.AutoSize = true;
+            lblNombreCliente.Location = new System.Drawing.Point(80, 89);
+            lblNombreCliente.Name = "lblNombreCliente";
+            lblNombreCliente.Size = new System.Drawing.Size(146, 20);
+            lblNombreCliente.TabIndex = 9;
+            lblNombreCliente.Text = "Nombre del Cliente: ";
+            // 
+            // lblMontoTotal
+            // 
+            lblMontoTotal.AutoSize = true;
+            lblMontoTotal.Location = new System.Drawing.Point(80, 155);
+            lblMontoTotal.Name = "lblMontoTotal";
+            lblMontoTotal.Size = new System.Drawing.Size(156, 20);
+            lblMontoTotal.TabIndex = 10;
+            lblMontoTotal.Text = "Monto Total  a pagar: ";
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.BackColor = System.Drawing.Color.DarkSalmon;
+            btnBuscar.Location = new System.Drawing.Point(468, 39);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new System.Drawing.Size(94, 29);
+            btnBuscar.TabIndex = 11;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
             // FrmPagar
             // 
             ClientSize = new System.Drawing.Size(875, 543);
+            Controls.Add(btnBuscar);
+            Controls.Add(lblMontoTotal);
+            Controls.Add(lblNombreCliente);
             Controls.Add(txtDNI);
             Controls.Add(lblNCliente);
             Controls.Add(lblNcli);
@@ -222,6 +257,10 @@ namespace SistemaClubDeportivo2
             ResumeLayout(false);
             PerformLayout();
         }
+
+        private Label lblNombreCliente;
+        private Label lblMontoTotal;
+        private Button btnBuscar;
     }
 }
 
