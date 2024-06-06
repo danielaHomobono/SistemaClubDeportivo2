@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Bcpg.OpenPgp;
 using SistemaClubDeportivo2.Datos;
 using SistemaClubDeportivo2.Entidades;
 using System;
@@ -78,8 +79,8 @@ namespace SistemaClubDeportivo2
 
                     if (esSocio)
                     {
-                        montoTotal = esCuotaMensual ? 2000 : 100;
-                        
+                        //montoTotal = esCuotaMensual ? 2000 : 100;
+                        montoTotal = 2000;
                     }
                     else
                     {
@@ -144,24 +145,49 @@ namespace SistemaClubDeportivo2
             {
                 try
                 {
-                    string query = "SELECT idInscri FROM inscripcion WHERE NCliente = @NCliente";
+                    string query = "SELECT idInscri FROM inscripcion WHERE NCliente = @NCliente OR NSocio = @NSocio";
                     MySqlCommand comando = new MySqlCommand(query, sqlCon);
                     comando.Parameters.AddWithValue("@NCliente", nSocio);
+                    comando.Parameters.AddWithValue("@NSocio", nSocio);
                     sqlCon.Open();
 
+
+
                     object result = comando.ExecuteScalar();
-                    if (result != DBNull.Value)
+                    if (result != null && result != DBNull.Value)
                     {
                         idInscri = Convert.ToInt32(result);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No se encontró idInscri para NCliente/NSocio: " + nSocio); // Línea de depuración
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al obtener el idInscri: " + ex.Message);
+                    Console.WriteLine("Error al obtener el idInscri: " + ex.Message); // Línea de depuración
                 }
             }
             return idInscri;
         }
+        /* string query = "SELECT idInscri FROM inscripcion WHERE NCliente = @NCliente";
+         MySqlCommand comando = new MySqlCommand(query, sqlCon);
+         comando.Parameters.AddWithValue("@NCliente", nSocio);
+         sqlCon.Open();
+
+        object result = comando.ExecuteScalar();
+        if (result != DBNull.Value)
+        {
+            idInscri = Convert.ToInt32(result);
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Error al obtener el idInscri: " + ex.Message);
+    }
+}
+return idInscri;
+}*/
 
 
         public bool EsSocio(int dniCliente)
@@ -261,6 +287,28 @@ namespace SistemaClubDeportivo2
 
 
 
+        public void ProcesarPago(int nSocio, E_Pagar pago)
+        {
+            // Obtener el ID de inscripción
+            int idInscri = ObtenerIdInscripcion(nSocio);
+            Console.WriteLine("ID de Inscripción: " + idInscri); // Línea de depuración
+
+            // Asignar el ID de inscripción al objeto de pago
+            pago.IdInscri = idInscri;
+
+            // Realizar el pago
+            string resultado = RealizarPago(pago);
+            Console.WriteLine("Resultado del pago: " + resultado); // Línea de depuración
+
+            // Mostrar el resultado del pago al usuario o realizar otras acciones necesarias
+            MessageBox.Show(resultado);
+        }
+
+
+
+
+
+
 
 
         public string RealizarPago(E_Pagar pago)
@@ -269,7 +317,30 @@ namespace SistemaClubDeportivo2
             {
                 try
                 {
+                    
                     sqlCon.Open();
+                    string query = "INSERT INTO pago (idPago, idInscri, monto, fecha, esCuotaMensual) " +
+               "VALUES (" + pago.IDPago + ", " + (pago.IdInscri == 0 ? "NULL" : pago.IdInscri.ToString()) + ", " +
+               pago.Monto + ", '" + pago.FechaPago.ToString("yyyy-MM-dd") + "', " + (pago.EsCuotaMensual ? "1" : "0") + ")";
+
+
+
+                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
+
+
+
+                        comando.Parameters.AddWithValue("@IDPago", pago.IDPago);                     
+                        comando.Parameters.AddWithValue("@FormaPago", pago.FormaPago);
+                        comando.Parameters.AddWithValue("@esCuotaMensual", pago.EsCuotaMensual);
+                        comando.Parameters.AddWithValue("@Monto", pago.Monto);
+                        comando.Parameters.AddWithValue("@FechaPago", pago.FechaPago);
+                        comando.Parameters.AddWithValue("@IdInscri", pago.IdInscri == 0 ? DBNull.Value : (object)pago.IdInscri); // Manejo de idInscri
+                        
+                        
+
+                        comando.ExecuteNonQuery();
+                    
+                    /*sqlCon.Open();
                     string query = "INSERT INTO pago (idInscri, monto, fecha, esCuotaMensual) VALUES (@idInscri, @monto, @fecha, @esCuotaMensual)";
                     MySqlCommand comando = new MySqlCommand(query, sqlCon);
                     comando.Parameters.AddWithValue("@idInscri", pago.IdInscri);
@@ -277,14 +348,14 @@ namespace SistemaClubDeportivo2
                     comando.Parameters.AddWithValue("@fecha", pago.FechaPago);
                     comando.Parameters.AddWithValue("@esCuotaMensual", pago.EsCuotaMensual);
 
-                    /*string query = "INSERT INTO pago (idInscri, monto, fecha) VALUES (@idInscri, @monto, @fecha)";
+                    string query = "INSERT INTO pago (idInscri, monto, fecha) VALUES (@idInscri, @monto, @fecha)";
                     MySqlCommand comando = new MySqlCommand(query, sqlCon);
                     comando.Parameters.AddWithValue("@idInscri", pago.IdInscri);
                     comando.Parameters.AddWithValue("@monto", pago.Monto);
                     comando.Parameters.AddWithValue("@fecha", pago.FechaPago);
                     sqlCon.Open();*/
 
-                    comando.ExecuteNonQuery();
+                    //comando.ExecuteNonQuery();
                     return "Pago realizado con éxito.";
                 }
                 catch (Exception ex)

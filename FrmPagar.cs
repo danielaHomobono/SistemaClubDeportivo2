@@ -53,6 +53,18 @@ namespace SistemaClubDeportivo2
 
 
 
+            if (!esSocio && idInscri == 0)
+            {
+                MessageBox.Show("Error: No se encontró la inscripción para el cliente no socio.");
+                return;
+            }
+
+
+
+
+
+
+
             string formaPago = optEfvo.Checked ? "Efectivo" : "Tarjeta";
             bool tipoPago = optCuota.Checked;
             bool esCuotaMensual = optCuotaMensual.Checked;
@@ -97,19 +109,28 @@ namespace SistemaClubDeportivo2
             pago.IDPago = nuevoID;
 
 
-            float montoTotalReal = esCuotaMensual ? 2000 : 100; // Ajustar el monto total real
-            pago.Monto = montoTotalReal;
+           // float montoTotalReal = esCuotaMensual ? 2000 : 100; // Ajustar el monto total real
+            //pago.Monto = montoTotalReal;
 
 
 
             string resultado = gestionPago.RealizarPago(pago);
-            if (!string.IsNullOrEmpty(nombreCliente))
+            /*if (!string.IsNullOrEmpty(nombreCliente))
+            
             {
                 MessageBox.Show($"Pago realizado por {nombreCliente}: {resultado}");
             }
             else
             {
                 MessageBox.Show(resultado);
+            }*/
+            if (resultado.StartsWith("Error"))
+            {
+                MessageBox.Show($"Error al realizar el pago: {resultado}");
+            }
+            else
+            {
+                MessageBox.Show($"Pago realizado por {nombreCliente}: {resultado}");
             }
             pago.NombreCliente = nombreCliente;
             pagoActual = pago;
