@@ -43,42 +43,34 @@ namespace SistemaClubDeportivo2
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text == "" || txtApellido.Text == "" ||
-                txtDocumento.Text == "" || cboTipo.Text == "")
+            if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtApellido.Text) &&
+                !string.IsNullOrEmpty(txtDocumento.Text) && !string.IsNullOrEmpty(cboTipo.Text))
             {
-                MessageBox.Show("Debe completar datos requeridos (*) ",
-                    "AVISO DEL SISTEMA", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-            else
-            {
-                string respuesta;
-
-                E_Clientes cliente = new E_Clientes();
-                cliente.NombreC = txtNombre.Text;
-                cliente.ApellidoC = txtApellido.Text;
-                cliente.TDocC = cboTipo.Text;
-                cliente.DocC = Convert.ToInt32(txtDocumento.Text);
+                E_Clientes cliente = new E_Clientes
+                {
+                    NombreC = txtNombre.Text,
+                    ApellidoC = txtApellido.Text,
+                    TDocC = cboTipo.Text,
+                    DocC = Convert.ToInt32(txtDocumento.Text)
+                };
 
                 Datos.Clientes clientes = new Datos.Clientes();
-                respuesta = clientes.Nuevo_Cliente(cliente);
+                string respuesta = clientes.Nuevo_Cliente(cliente);
 
-                bool esnumero = int.TryParse(respuesta, out int codigo);
-
-                //if (int.TryParse(respuesta, out int codigo))
+                if (respuesta == "1")
                 {
-                    if (codigo == 1)
-                    {
-                        MessageBox.Show("POSTULANTE YA EXISTE", "AVISO DEL SISTEMA",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
+                    MessageBox.Show("POSTULANTE YA EXISTE", "AVISO DEL SISTEMA",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    bool esnumero = int.TryParse(respuesta, out int codigo);
+                    if (esnumero)
                     {
                         MessageBox.Show($"Se almacenó con éxito con el código Nro {respuesta}",
                             "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
                         // Verificar si se debe registrar como socio
-                        CheckBox chkSocio = this.Controls.Find("chkSocio", true).FirstOrDefault() as CheckBox;
                         if (chkSocio.Checked)
                         {
                             string respuestaSocio = clientes.Nuevo_Socio(codigo);
@@ -98,10 +90,93 @@ namespace SistemaClubDeportivo2
                                     "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
+                        if (!chkPresentoFicha.Checked)
+                        {
+                            MessageBox.Show("El cliente tiene pendiente presentar ficha y apto físico.",
+                                "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                
+                    else
+                    {
+                        MessageBox.Show($"Error al almacenar: {respuesta}", "AVISO DEL SISTEMA",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Debe completar datos requeridos (*) ", "AVISO DEL SISTEMA",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+        /* private void btnIngresar_Click(object sender, EventArgs e)
+         {
+             if (txtNombre.Text == "" || txtApellido.Text == "" ||
+                 txtDocumento.Text == "" || cboTipo.Text == "")
+             {
+                 MessageBox.Show("Debe completar datos requeridos (*) ",
+                     "AVISO DEL SISTEMA", MessageBoxButtons.OK,
+                     MessageBoxIcon.Error);
+             }
+             else
+             {
+                 string respuesta;
+
+                 E_Clientes cliente = new E_Clientes();
+                 cliente.NombreC = txtNombre.Text;
+                 cliente.ApellidoC = txtApellido.Text;
+                 cliente.TDocC = cboTipo.Text;
+                 cliente.DocC = Convert.ToInt32(txtDocumento.Text);
+
+                 Datos.Clientes clientes = new Datos.Clientes();
+                 respuesta = clientes.Nuevo_Cliente(cliente);
+
+                 bool esnumero = int.TryParse(respuesta, out int codigo);
+
+
+
+                     if (codigo == 1)
+                     {
+                         MessageBox.Show("POSTULANTE YA EXISTE", "AVISO DEL SISTEMA",
+                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     }
+                     else
+                     {
+                         MessageBox.Show($"Se almacenó con éxito con el código Nro {respuesta}",
+                             "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
+                         // Verificar si se debe registrar como socio
+                         CheckBox chkSocio = this.Controls.Find("chkSocio", true).FirstOrDefault() as CheckBox;
+                         if (chkSocio.Checked)
+                         {
+                             string respuestaSocio = clientes.Nuevo_Socio(codigo);
+                             if (int.TryParse(respuestaSocio, out int codigoSocio) && codigoSocio != -1)
+                             {
+                                 MessageBox.Show("Se registró como socio con éxito con el código Nro " + respuestaSocio,
+                                     "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
+                                 // Mostrar formulario de impresión de carnet
+                                 FrmImprimirCarnet imprimirCarnet = new FrmImprimirCarnet(cliente.NombreC, cliente.ApellidoC, cliente.DocC.ToString(), respuesta);
+                                 imprimirCarnet.Show();
+                                 this.Hide();
+                             }
+                             else
+                             {
+                                 MessageBox.Show("Error al registrar como socio: " + respuestaSocio,
+                                     "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                             }
+                         }
+                     }
+
+                 else
+                 {
+                     MessageBox.Show("Debe presentar la ficha y el apto físico antes de inscribirse.",
+                         "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                 }
+             }
+         }*/
 
         /*private void btnIngresar_Click(object sender, EventArgs e)
         {

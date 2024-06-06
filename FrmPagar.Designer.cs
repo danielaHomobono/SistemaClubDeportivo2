@@ -40,6 +40,11 @@ namespace SistemaClubDeportivo2
             lblNombreCliente = new Label();
             lblMontoTotal = new Label();
             btnBuscar = new Button();
+            lblFechaVencimiento = new Label();
+            lblTipoPago = new Label();
+            optCuotaMensual = new RadioButton();
+            optCuotaDiaria = new RadioButton();
+            lblMontoDiario = new Label();
             grpFormaPago.SuspendLayout();
             grpCuotas.SuspendLayout();
             grpTipoPago.SuspendLayout();
@@ -74,7 +79,7 @@ namespace SistemaClubDeportivo2
             // 
             grpFormaPago.Controls.Add(optEfvo);
             grpFormaPago.Controls.Add(optTarjeta);
-            grpFormaPago.Location = new System.Drawing.Point(20, 283);
+            grpFormaPago.Location = new System.Drawing.Point(12, 373);
             grpFormaPago.Name = "grpFormaPago";
             grpFormaPago.Size = new System.Drawing.Size(200, 100);
             grpFormaPago.TabIndex = 3;
@@ -107,7 +112,7 @@ namespace SistemaClubDeportivo2
             // 
             grpCuotas.Controls.Add(opt3Cuotas);
             grpCuotas.Controls.Add(opt6Cuotas);
-            grpCuotas.Location = new System.Drawing.Point(247, 293);
+            grpCuotas.Location = new System.Drawing.Point(256, 373);
             grpCuotas.Name = "grpCuotas";
             grpCuotas.Size = new System.Drawing.Size(200, 100);
             grpCuotas.TabIndex = 4;
@@ -140,7 +145,7 @@ namespace SistemaClubDeportivo2
             // 
             grpTipoPago.Controls.Add(optCuota);
             grpTipoPago.Controls.Add(optActividad);
-            grpTipoPago.Location = new System.Drawing.Point(483, 303);
+            grpTipoPago.Location = new System.Drawing.Point(512, 373);
             grpTipoPago.Name = "grpTipoPago";
             grpTipoPago.Size = new System.Drawing.Size(200, 100);
             grpTipoPago.TabIndex = 5;
@@ -171,7 +176,7 @@ namespace SistemaClubDeportivo2
             // 
             // btnPagar
             // 
-            btnPagar.Location = new System.Drawing.Point(20, 411);
+            btnPagar.Location = new System.Drawing.Point(70, 530);
             btnPagar.Margin = new Padding(3, 4, 3, 4);
             btnPagar.Name = "btnPagar";
             btnPagar.Size = new System.Drawing.Size(86, 39);
@@ -182,7 +187,7 @@ namespace SistemaClubDeportivo2
             // 
             // btnVolver
             // 
-            btnVolver.Location = new System.Drawing.Point(329, 411);
+            btnVolver.Location = new System.Drawing.Point(406, 530);
             btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new System.Drawing.Size(86, 39);
@@ -193,7 +198,7 @@ namespace SistemaClubDeportivo2
             // 
             // btnComprobante
             // 
-            btnComprobante.Location = new System.Drawing.Point(139, 411);
+            btnComprobante.Location = new System.Drawing.Point(225, 530);
             btnComprobante.Margin = new Padding(3, 4, 3, 4);
             btnComprobante.Name = "btnComprobante";
             btnComprobante.Size = new System.Drawing.Size(119, 39);
@@ -214,7 +219,7 @@ namespace SistemaClubDeportivo2
             // lblMontoTotal
             // 
             lblMontoTotal.AutoSize = true;
-            lblMontoTotal.Location = new System.Drawing.Point(80, 155);
+            lblMontoTotal.Location = new System.Drawing.Point(80, 126);
             lblMontoTotal.Name = "lblMontoTotal";
             lblMontoTotal.Size = new System.Drawing.Size(156, 20);
             lblMontoTotal.TabIndex = 10;
@@ -231,9 +236,65 @@ namespace SistemaClubDeportivo2
             btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
+            // lblFechaVencimiento
+            // 
+            lblFechaVencimiento.AutoSize = true;
+            lblFechaVencimiento.Location = new System.Drawing.Point(107, 197);
+            lblFechaVencimiento.Name = "lblFechaVencimiento";
+            lblFechaVencimiento.Size = new System.Drawing.Size(178, 20);
+            lblFechaVencimiento.TabIndex = 12;
+            lblFechaVencimiento.Text = "lblFecha de Vencimiento: ";
+            // 
+            // lblTipoPago
+            // 
+            lblTipoPago.AutoSize = true;
+            lblTipoPago.Location = new System.Drawing.Point(107, 242);
+            lblTipoPago.Name = "lblTipoPago";
+            lblTipoPago.Size = new System.Drawing.Size(104, 20);
+            lblTipoPago.TabIndex = 13;
+            lblTipoPago.Text = "Tipo de Pago: ";
+            // 
+            // optCuotaMensual
+            // 
+            optCuotaMensual.AutoSize = true;
+            optCuotaMensual.BackColor = System.Drawing.Color.IndianRed;
+            optCuotaMensual.Location = new System.Drawing.Point(107, 274);
+            optCuotaMensual.Name = "optCuotaMensual";
+            optCuotaMensual.Size = new System.Drawing.Size(128, 24);
+            optCuotaMensual.TabIndex = 14;
+            optCuotaMensual.TabStop = true;
+            optCuotaMensual.Text = "Cuota Mensual";
+            optCuotaMensual.UseVisualStyleBackColor = false;
+            // 
+            // optCuotaDiaria
+            // 
+            optCuotaDiaria.AutoSize = true;
+            optCuotaDiaria.BackColor = System.Drawing.Color.IndianRed;
+            optCuotaDiaria.Location = new System.Drawing.Point(293, 274);
+            optCuotaDiaria.Name = "optCuotaDiaria";
+            optCuotaDiaria.Size = new System.Drawing.Size(113, 24);
+            optCuotaDiaria.TabIndex = 15;
+            optCuotaDiaria.TabStop = true;
+            optCuotaDiaria.Text = "Cuota Diaria";
+            optCuotaDiaria.UseVisualStyleBackColor = false;
+            // 
+            // lblMontoDiario
+            // 
+            lblMontoDiario.AutoSize = true;
+            lblMontoDiario.Location = new System.Drawing.Point(80, 164);
+            lblMontoDiario.Name = "lblMontoDiario";
+            lblMontoDiario.Size = new System.Drawing.Size(105, 20);
+            lblMontoDiario.TabIndex = 16;
+            lblMontoDiario.Text = "Monto Diario: ";
+            // 
             // FrmPagar
             // 
-            ClientSize = new System.Drawing.Size(875, 543);
+            ClientSize = new System.Drawing.Size(875, 616);
+            Controls.Add(lblMontoDiario);
+            Controls.Add(optCuotaDiaria);
+            Controls.Add(optCuotaMensual);
+            Controls.Add(lblTipoPago);
+            Controls.Add(lblFechaVencimiento);
             Controls.Add(btnBuscar);
             Controls.Add(lblMontoTotal);
             Controls.Add(lblNombreCliente);
@@ -261,6 +322,11 @@ namespace SistemaClubDeportivo2
         private Label lblNombreCliente;
         private Label lblMontoTotal;
         private Button btnBuscar;
+        private Label lblFechaVencimiento;
+        private Label lblTipoPago;
+        private RadioButton optCuotaMensual;
+        private RadioButton optCuotaDiaria;
+        private Label lblMontoDiario;
     }
 }
 

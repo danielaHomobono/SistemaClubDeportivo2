@@ -66,7 +66,7 @@ namespace SistemaClubDeportivo2
         }
 
 
-        public float CalcularMontoTotal(int nSocio, bool esSocio, bool esPagoCuota, int cuotas = 1)
+        public float CalcularMontoTotal(int nSocio, bool esSocio, bool esPagoCuota, bool esCuotaMensual, int cuotas = 1)
         {
             float montoTotal = 0;
             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
@@ -78,7 +78,7 @@ namespace SistemaClubDeportivo2
 
                     if (esSocio)
                     {
-                        montoTotal = 2000;
+                        montoTotal = esCuotaMensual ? 2000 : 100;
                         
                     }
                     else
@@ -164,35 +164,6 @@ namespace SistemaClubDeportivo2
         }
 
 
-        /*public bool EsSocio(int dniCliente)
-        {
-            bool esSocio = false;
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
-            {
-                try
-                {
-                    string query = "SELECT COUNT(*) FROM socio WHERE NCliente = @DocC";
-
-                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
-                    comando.Parameters.AddWithValue("@DocC", dniCliente);
-                    sqlCon.Open();
-
-                    Console.WriteLine("Consulta SQL en EsSocio: " + query);
-
-                    int count = Convert.ToInt32(comando.ExecuteScalar());
-                    esSocio = count > 0;
-
-                    Console.WriteLine("Valor de esSocio en EsSocio: " + esSocio);
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al verificar si el cliente es socio: " + ex.Message);
-                    Console.WriteLine("Error al verificar si el cliente es socio: " + ex.Message);
-                }
-            }
-            return esSocio;
-        }*/
         public bool EsSocio(int dniCliente)
         {
             bool esSocio = false;
@@ -225,6 +196,68 @@ namespace SistemaClubDeportivo2
             }
             return esSocio;
         }
+        public DateTime ObtenerFechaVencimiento(int nSocio)
+        {
+            DateTime fechaVencimiento = DateTime.MinValue;
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
+            {
+                try
+                {
+                    string query = @"
+                SELECT MAX(p.fecha)
+                FROM pago p
+                INNER JOIN inscripcion i ON p.idInscri = i.idInscri
+                WHERE i.NCliente = @NCliente";
+
+                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                    comando.Parameters.AddWithValue("@NCliente", nSocio);
+                    sqlCon.Open();
+
+                    object result = comando.ExecuteScalar();
+                    if (result != DBNull.Value)
+                    {
+                        fechaVencimiento = Convert.ToDateTime(result).AddMonths(1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al obtener la fecha de vencimiento: " + ex.Message);
+                }
+            }
+            return fechaVencimiento;
+        }
+        public string ObtenerTipoPago(int nSocio)
+        {
+            string tipoPago = "Actividad";
+            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
+            {
+                try
+                {
+                    string query = @"
+                SELECT COUNT(*)
+                FROM socio s
+                JOIN cliente c ON s.NCliente = c.NCliente
+                WHERE c.NCliente = @NCliente";
+
+                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                    comando.Parameters.AddWithValue("@NCliente", nSocio);
+                    sqlCon.Open();
+
+                    int count = Convert.ToInt32(comando.ExecuteScalar());
+                    if (count > 0)
+                    {
+                        tipoPago = "Cuota de Socio";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al obtener el tipo de pago: " + ex.Message);
+                }
+            }
+            return tipoPago;
+        }
+
+
 
 
 
@@ -236,12 +269,20 @@ namespace SistemaClubDeportivo2
             {
                 try
                 {
-                    string query = "INSERT INTO pago (idInscri, monto, fecha) VALUES (@idInscri, @monto, @fecha)";
+                    sqlCon.Open();
+                    string query = "INSERT INTO pago (idInscri, monto, fecha, esCuotaMensual) VALUES (@idInscri, @monto, @fecha, @esCuotaMensual)";
                     MySqlCommand comando = new MySqlCommand(query, sqlCon);
                     comando.Parameters.AddWithValue("@idInscri", pago.IdInscri);
                     comando.Parameters.AddWithValue("@monto", pago.Monto);
                     comando.Parameters.AddWithValue("@fecha", pago.FechaPago);
-                    sqlCon.Open();
+                    comando.Parameters.AddWithValue("@esCuotaMensual", pago.EsCuotaMensual);
+
+                    /*string query = "INSERT INTO pago (idInscri, monto, fecha) VALUES (@idInscri, @monto, @fecha)";
+                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                    comando.Parameters.AddWithValue("@idInscri", pago.IdInscri);
+                    comando.Parameters.AddWithValue("@monto", pago.Monto);
+                    comando.Parameters.AddWithValue("@fecha", pago.FechaPago);
+                    sqlCon.Open();*/
 
                     comando.ExecuteNonQuery();
                     return "Pago realizado con éxito.";
@@ -285,66 +326,7 @@ namespace SistemaClubDeportivo2
             }
             return actividades;
         }
-        /*public List<string> ObtenerSociosCuotaVenceHoy()
-        {
-            List<string> sociosCuotaVenceHoy = new List<string>();
-
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
-            {
-                try
-                {
-                    string query = @"
-                SELECT c.NombreC, c.ApellidoC
-                FROM cliente c
-                WHERE c.NCliente NOT IN (
-                    SELECT DISTINCT i.NCliente
-                    FROM inscripcion i
-                    INNER JOIN pago p ON i.idInscri = p.idInscri
-                    WHERE YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) = MONTH(CURDATE())
-                ) OR c.NCliente IN (
-                    SELECT DISTINCT i.NCliente
-                    FROM inscripcion i
-                    INNER JOIN pago p ON i.idInscri = p.idInscri
-                    WHERE YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) < MONTH(CURDATE())
-                )";
-
-
-                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
-
-                    sqlCon.Open();
-
-                    using (MySqlDataReader reader = comando.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        { 
-                        while (reader.Read())
-                        {
-                                string nombreCompleto = reader.GetString("NombreC") + " " + reader.GetString("ApellidoC");
-                                sociosCuotaVenceHoy.Add(nombreCompleto);
-                                //foreach (string nombreCompleto in sociosCuotaVenceHoy)
-                                //{
-                                int renglon = dtgvDatos.Rows.Add();
-                                string[] nombreApellido = nombreCompleto.Split(' ');
-                                dtgvDatos.Rows[renglon].Cells[0].Value = nombreApellido[0]; // NombreC
-                                dtgvDatos.Rows[renglon].Cells[1].Value = nombreApellido[1]; // ApellidoC
-
-                                }//
-
-
-
-
-                                
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al obtener los socios cuya cuota vence hoy: " + ex.Message);
-                }
-            }
-
-            return sociosCuotaVenceHoy;
-        }*/
+       
          public List<string> ObtenerSociosCuotaVenceHoy()
          {
              List<string> sociosCuotaVenceHoy = new List<string>();

@@ -16,6 +16,8 @@ namespace SistemaClubDeportivo2.Entidades
         public int IdInscri { get; set; }
         public bool EsSocio { get; set; }  // Nuevo campo para diferenciar socios de no socios
         public string TipoPago { get; set; }
+        public DateTime FechaVencimiento { get; set; }
+        public bool EsCuotaMensual { get; set; }// Nueva propiedad
 
         public E_Pagar()
         {
