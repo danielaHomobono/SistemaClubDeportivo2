@@ -49,9 +49,12 @@ namespace SistemaClubDeportivo2
             lblObligatorio = new System.Windows.Forms.Label();
             lblObligatorio1 = new System.Windows.Forms.Label();
             lblObligatorio2 = new System.Windows.Forms.Label();
-            lblObligatorio3 = new System.Windows.Forms.Label();
+            lblObligatorio4 = new System.Windows.Forms.Label();
             chkSocio = new System.Windows.Forms.CheckBox();
             chkPresentoFicha = new System.Windows.Forms.CheckBox();
+            lblEmail = new System.Windows.Forms.Label();
+            txtEmail = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -98,7 +101,7 @@ namespace SistemaClubDeportivo2
             lblTipo.AutoSize = true;
             lblTipo.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblTipo.ForeColor = SystemColors.ControlDarkDark;
-            lblTipo.Location = new Point(107, 329);
+            lblTipo.Location = new Point(78, 352);
             lblTipo.Name = "lblTipo";
             lblTipo.Size = new Size(52, 25);
             lblTipo.TabIndex = 5;
@@ -109,7 +112,7 @@ namespace SistemaClubDeportivo2
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblDni.ForeColor = SystemColors.ControlDarkDark;
-            lblDni.Location = new Point(346, 329);
+            lblDni.Location = new Point(347, 355);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(43, 25);
             lblDni.TabIndex = 6;
@@ -117,7 +120,7 @@ namespace SistemaClubDeportivo2
             // 
             // txtDocumento
             // 
-            txtDocumento.Location = new Point(430, 329);
+            txtDocumento.Location = new Point(431, 350);
             txtDocumento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             txtDocumento.Name = "txtDocumento";
             txtDocumento.Size = new Size(285, 27);
@@ -128,7 +131,7 @@ namespace SistemaClubDeportivo2
             // 
             cboTipo.FormattingEnabled = true;
             cboTipo.Items.AddRange(new object[] { "DNI", "LC", "LE" });
-            cboTipo.Location = new Point(160, 329);
+            cboTipo.Location = new Point(161, 352);
             cboTipo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             cboTipo.Name = "cboTipo";
             cboTipo.Size = new Size(138, 28);
@@ -139,7 +142,7 @@ namespace SistemaClubDeportivo2
             btnIngresar.BackColor = SystemColors.Highlight;
             btnIngresar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.ButtonHighlight;
-            btnIngresar.Location = new Point(31, 412);
+            btnIngresar.Location = new Point(37, 465);
             btnIngresar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(122, 43);
@@ -153,7 +156,7 @@ namespace SistemaClubDeportivo2
             btnLimpiar.BackColor = SystemColors.Highlight;
             btnLimpiar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnLimpiar.ForeColor = SystemColors.ButtonHighlight;
-            btnLimpiar.Location = new Point(191, 412);
+            btnLimpiar.Location = new Point(212, 465);
             btnLimpiar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(122, 43);
@@ -167,7 +170,7 @@ namespace SistemaClubDeportivo2
             btnVolver.BackColor = SystemColors.Highlight;
             btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnVolver.ForeColor = SystemColors.ButtonHighlight;
-            btnVolver.Location = new Point(346, 412);
+            btnVolver.Location = new Point(389, 465);
             btnVolver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(122, 43);
@@ -214,54 +217,91 @@ namespace SistemaClubDeportivo2
             lblObligatorio2.AutoSize = true;
             lblObligatorio2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblObligatorio2.ForeColor = Color.Red;
-            lblObligatorio2.Location = new Point(305, 316);
+            lblObligatorio2.Location = new Point(305, 346);
             lblObligatorio2.Name = "lblObligatorio2";
             lblObligatorio2.Size = new Size(29, 37);
             lblObligatorio2.TabIndex = 16;
             lblObligatorio2.Text = "*";
+            lblObligatorio2.Click += lblObligatorio2_Click;
             // 
-            // lblObligatorio3
+            // lblObligatorio4
             // 
-            lblObligatorio3.AutoSize = true;
-            lblObligatorio3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblObligatorio3.ForeColor = Color.Red;
-            lblObligatorio3.Location = new Point(722, 320);
-            lblObligatorio3.Name = "lblObligatorio3";
-            lblObligatorio3.Size = new Size(29, 37);
-            lblObligatorio3.TabIndex = 17;
-            lblObligatorio3.Text = "*";
+            lblObligatorio4.AutoSize = true;
+            lblObligatorio4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblObligatorio4.ForeColor = Color.Red;
+            lblObligatorio4.Location = new Point(722, 340);
+            lblObligatorio4.Name = "lblObligatorio4";
+            lblObligatorio4.Size = new Size(29, 37);
+            lblObligatorio4.TabIndex = 17;
+            lblObligatorio4.Text = "*";
             // 
             // chkSocio
             // 
             chkSocio.AutoSize = true;
+            chkSocio.BackColor = SystemColors.Highlight;
+            chkSocio.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             chkSocio.ForeColor = SystemColors.ActiveCaptionText;
-            chkSocio.Location = new Point(535, 412);
+            chkSocio.Location = new Point(575, 420);
             chkSocio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             chkSocio.Name = "chkSocio";
-            chkSocio.Size = new Size(141, 24);
+            chkSocio.Size = new Size(161, 27);
             chkSocio.TabIndex = 19;
             chkSocio.Text = "Desea ser socio?";
-            chkSocio.UseVisualStyleBackColor = true;
+            chkSocio.UseVisualStyleBackColor = false;
             // 
             // chkPresentoFicha
             // 
             chkPresentoFicha.AutoSize = true;
+            chkPresentoFicha.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             chkPresentoFicha.ForeColor = SystemColors.ActiveCaptionText;
-            chkPresentoFicha.Location = new Point(535, 381);
+            chkPresentoFicha.Location = new Point(575, 465);
             chkPresentoFicha.Name = "chkPresentoFicha";
-            chkPresentoFicha.Size = new Size(220, 24);
+            chkPresentoFicha.Size = new Size(259, 27);
             chkPresentoFicha.TabIndex = 20;
             chkPresentoFicha.Text = "Presentó ficha y Apto Físico?";
             chkPresentoFicha.UseVisualStyleBackColor = true;
+            // 
+            // lblEmail
+            // 
+            lblEmail.AutoSize = true;
+            lblEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblEmail.ForeColor = SystemColors.ControlDarkDark;
+            lblEmail.Location = new Point(191, 284);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(59, 25);
+            lblEmail.TabIndex = 21;
+            lblEmail.Text = "Email";
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(290, 285);
+            txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(338, 27);
+            txtEmail.TabIndex = 22;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Red;
+            label1.Location = new Point(634, 285);
+            label1.Name = "label1";
+            label1.Size = new Size(29, 37);
+            label1.TabIndex = 23;
+            label1.Text = "*";
             // 
             // FrmInscripcion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new Size(819, 537);
+            ClientSize = new Size(870, 616);
+            Controls.Add(label1);
+            Controls.Add(txtEmail);
+            Controls.Add(lblEmail);
             Controls.Add(chkPresentoFicha);
             Controls.Add(chkSocio);
-            Controls.Add(lblObligatorio3);
+            Controls.Add(lblObligatorio4);
             Controls.Add(lblObligatorio2);
             Controls.Add(lblObligatorio1);
             Controls.Add(lblObligatorio);
@@ -305,8 +345,11 @@ namespace SistemaClubDeportivo2
         private System.Windows.Forms.Label lblObligatorio;
         private System.Windows.Forms.Label lblObligatorio1;
         private System.Windows.Forms.Label lblObligatorio2;
-        private System.Windows.Forms.Label lblObligatorio3;
+        private System.Windows.Forms.Label lblObligatorio4;
         private System.Windows.Forms.CheckBox chkSocio;
         private System.Windows.Forms.CheckBox chkPresentoFicha;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label1;
     }
 }

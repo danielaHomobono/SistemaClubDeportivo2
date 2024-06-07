@@ -33,6 +33,7 @@ namespace SistemaClubDeportivo2.Datos
                 cliente.TDocC;
                 comando.Parameters.Add("Doc", MySqlDbType.Int32).Value =
                 cliente.DocC;
+                comando.Parameters.Add("Email", MySqlDbType.VarChar).Value = cliente.Email;
                 MySqlParameter ParCodigo = new MySqlParameter();
                 ParCodigo.ParameterName = "rta";
                 ParCodigo.MySqlDbType = MySqlDbType.Int32;

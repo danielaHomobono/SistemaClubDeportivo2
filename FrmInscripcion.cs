@@ -44,14 +44,16 @@ namespace SistemaClubDeportivo2
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(txtApellido.Text) &&
-                !string.IsNullOrEmpty(txtDocumento.Text) && !string.IsNullOrEmpty(cboTipo.Text))
+                !string.IsNullOrEmpty(txtDocumento.Text) && !string.IsNullOrEmpty(cboTipo.Text) &&
+                !string.IsNullOrEmpty(txtEmail.Text))
             {
                 E_Clientes cliente = new E_Clientes
                 {
                     NombreC = txtNombre.Text,
                     ApellidoC = txtApellido.Text,
                     TDocC = cboTipo.Text,
-                    DocC = Convert.ToInt32(txtDocumento.Text)
+                    DocC = Convert.ToInt32(txtDocumento.Text),
+                    Email = txtEmail.Text
                 };
 
                 Datos.Clientes clientes = new Datos.Clientes();
@@ -96,7 +98,7 @@ namespace SistemaClubDeportivo2
                                 "AVISO DEL SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                
+
                     else
                     {
                         MessageBox.Show($"Error al almacenar: {respuesta}", "AVISO DEL SISTEMA",
@@ -246,20 +248,26 @@ namespace SistemaClubDeportivo2
         * Limpiamos los objetos para un nuevo ingreso
         * ================================================ */
         private void btnLimpiar_Click(object sender, EventArgs e)
-            {
-                txtNombre.Text = "";
-                txtApellido.Text = "";
-                txtDocumento.Text = "";
-                cboTipo.Text = "";
-                txtNombre.Focus();
-            }
+        {
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtDocumento.Text = "";
+            cboTipo.Text = "";
+            txtEmail.Text = "";
+            txtNombre.Focus();
+        }
 
-            private void btnIngresarSocio_Click(object sender, EventArgs e)
-            {
+        private void btnIngresarSocio_Click(object sender, EventArgs e)
+        {
 
-            }
+        }
+
+        private void lblObligatorio2_Click(object sender, EventArgs e)
+        {
+
         }
     }
+}
 
 
     

@@ -28,107 +28,150 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblFechaActual = new System.Windows.Forms.Label();
-            this.lblNombreCliente = new System.Windows.Forms.Label();
-            this.lblActividadesRealizadas = new System.Windows.Forms.Label();
-            this.lblFechaVencimiento = new System.Windows.Forms.Label();
-            this.lblFormaPago = new System.Windows.Forms.Label();
-            this.lblMonto = new System.Windows.Forms.Label();
-            this.lblCuotas = new System.Windows.Forms.Label();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblFechaActual = new System.Windows.Forms.Label();
+            lblNombreCliente = new System.Windows.Forms.Label();
+            lblActividadesRealizadas = new System.Windows.Forms.Label();
+            lblFechaVencimiento = new System.Windows.Forms.Label();
+            lblFormaPago = new System.Windows.Forms.Label();
+            lblMonto = new System.Windows.Forms.Label();
+            lblCuotas = new System.Windows.Forms.Label();
+            btnImprimir = new System.Windows.Forms.Button();
+            lblClub = new System.Windows.Forms.Label();
+            btnVolver = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // lblFechaActual
             // 
-            this.lblFechaActual.AutoSize = true;
-            this.lblFechaActual.Location = new System.Drawing.Point(20, 20);
-            this.lblFechaActual.Name = "lblFechaActual";
-            this.lblFechaActual.Size = new System.Drawing.Size(103, 20);
-            this.lblFechaActual.TabIndex = 0;
-            this.lblFechaActual.Text = "Fecha Actual:";
+            lblFechaActual.AutoSize = true;
+            lblFechaActual.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblFechaActual.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblFechaActual.Location = new System.Drawing.Point(20, 102);
+            lblFechaActual.Name = "lblFechaActual";
+            lblFechaActual.Size = new System.Drawing.Size(138, 28);
+            lblFechaActual.TabIndex = 0;
+            lblFechaActual.Text = "Fecha Actual:";
             // 
             // lblNombreCliente
             // 
-            this.lblNombreCliente.AutoSize = true;
-            this.lblNombreCliente.Location = new System.Drawing.Point(20, 50);
-            this.lblNombreCliente.Name = "lblNombreCliente";
-            this.lblNombreCliente.Size = new System.Drawing.Size(116, 20);
-            this.lblNombreCliente.TabIndex = 1;
-            this.lblNombreCliente.Text = "Nombre Cliente:";
+            lblNombreCliente.AutoSize = true;
+            lblNombreCliente.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblNombreCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblNombreCliente.Location = new System.Drawing.Point(20, 151);
+            lblNombreCliente.Name = "lblNombreCliente";
+            lblNombreCliente.Size = new System.Drawing.Size(166, 28);
+            lblNombreCliente.TabIndex = 1;
+            lblNombreCliente.Text = "Nombre Cliente:";
             // 
             // lblActividadesRealizadas
             // 
-            this.lblActividadesRealizadas.AutoSize = true;
-            this.lblActividadesRealizadas.Location = new System.Drawing.Point(20, 80);
-            this.lblActividadesRealizadas.Name = "lblActividadesRealizadas";
-            this.lblActividadesRealizadas.Size = new System.Drawing.Size(162, 20);
-            this.lblActividadesRealizadas.TabIndex = 2;
-            this.lblActividadesRealizadas.Text = "Actividades Realizadas:";
+            lblActividadesRealizadas.AutoSize = true;
+            lblActividadesRealizadas.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblActividadesRealizadas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblActividadesRealizadas.Location = new System.Drawing.Point(20, 198);
+            lblActividadesRealizadas.Name = "lblActividadesRealizadas";
+            lblActividadesRealizadas.Size = new System.Drawing.Size(233, 28);
+            lblActividadesRealizadas.TabIndex = 2;
+            lblActividadesRealizadas.Text = "Actividades Realizadas:";
             // 
             // lblFechaVencimiento
             // 
-            this.lblFechaVencimiento.AutoSize = true;
-            this.lblFechaVencimiento.Location = new System.Drawing.Point(20, 110);
-            this.lblFechaVencimiento.Name = "lblFechaVencimiento";
-            this.lblFechaVencimiento.Size = new System.Drawing.Size(151, 20);
-            this.lblFechaVencimiento.TabIndex = 3;
-            this.lblFechaVencimiento.Text = "Fecha de Vencimiento:";
+            lblFechaVencimiento.AutoSize = true;
+            lblFechaVencimiento.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblFechaVencimiento.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblFechaVencimiento.Location = new System.Drawing.Point(20, 250);
+            lblFechaVencimiento.Name = "lblFechaVencimiento";
+            lblFechaVencimiento.Size = new System.Drawing.Size(224, 28);
+            lblFechaVencimiento.TabIndex = 3;
+            lblFechaVencimiento.Text = "Fecha de Vencimiento:";
             // 
             // lblFormaPago
             // 
-            this.lblFormaPago.AutoSize = true;
-            this.lblFormaPago.Location = new System.Drawing.Point(20, 140);
-            this.lblFormaPago.Name = "lblFormaPago";
-            this.lblFormaPago.Size = new System.Drawing.Size(96, 20);
-            this.lblFormaPago.TabIndex = 4;
-            this.lblFormaPago.Text = "Forma Pago:";
+            lblFormaPago.AutoSize = true;
+            lblFormaPago.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblFormaPago.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblFormaPago.Location = new System.Drawing.Point(20, 304);
+            lblFormaPago.Name = "lblFormaPago";
+            lblFormaPago.Size = new System.Drawing.Size(129, 28);
+            lblFormaPago.TabIndex = 4;
+            lblFormaPago.Text = "Forma Pago:";
             // 
             // lblMonto
             // 
-            this.lblMonto.AutoSize = true;
-            this.lblMonto.Location = new System.Drawing.Point(20, 170);
-            this.lblMonto.Name = "lblMonto";
-            this.lblMonto.Size = new System.Drawing.Size(58, 20);
-            this.lblMonto.TabIndex = 5;
-            this.lblMonto.Text = "Monto:";
+            lblMonto.AutoSize = true;
+            lblMonto.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblMonto.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblMonto.Location = new System.Drawing.Point(20, 360);
+            lblMonto.Name = "lblMonto";
+            lblMonto.Size = new System.Drawing.Size(93, 31);
+            lblMonto.TabIndex = 5;
+            lblMonto.Text = "Monto:";
             // 
             // lblCuotas
             // 
-            this.lblCuotas.AutoSize = true;
-            this.lblCuotas.Location = new System.Drawing.Point(20, 200);
-            this.lblCuotas.Name = "lblCuotas";
-            this.lblCuotas.Size = new System.Drawing.Size(62, 20);
-            this.lblCuotas.TabIndex = 6;
-            this.lblCuotas.Text = "Cuotas:";
+            lblCuotas.AutoSize = true;
+            lblCuotas.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblCuotas.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblCuotas.Location = new System.Drawing.Point(442, 360);
+            lblCuotas.Name = "lblCuotas";
+            lblCuotas.Size = new System.Drawing.Size(93, 31);
+            lblCuotas.TabIndex = 6;
+            lblCuotas.Text = "Cuotas:";
             // 
             // btnImprimir
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(342, 541);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(86, 31);
-            this.btnImprimir.TabIndex = 7;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            btnImprimir.BackColor = System.Drawing.Color.FromArgb(255, 192, 128);
+            btnImprimir.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnImprimir.Location = new System.Drawing.Point(325, 473);
+            btnImprimir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            btnImprimir.Name = "btnImprimir";
+            btnImprimir.Size = new System.Drawing.Size(109, 47);
+            btnImprimir.TabIndex = 7;
+            btnImprimir.Text = "Imprimir";
+            btnImprimir.UseVisualStyleBackColor = false;
+            btnImprimir.Click += btnImprimir_Click;
+            // 
+            // lblClub
+            // 
+            lblClub.AutoSize = true;
+            lblClub.BackColor = System.Drawing.Color.LightCoral;
+            lblClub.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblClub.Location = new System.Drawing.Point(275, 20);
+            lblClub.Name = "lblClub";
+            lblClub.Size = new System.Drawing.Size(249, 38);
+            lblClub.TabIndex = 8;
+            lblClub.Text = "CLUB DEPORTIVO";
+            // 
+            // btnVolver
+            // 
+            btnVolver.BackColor = System.Drawing.Color.FromArgb(255, 192, 128);
+            btnVolver.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnVolver.Location = new System.Drawing.Point(117, 473);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new System.Drawing.Size(110, 47);
+            btnVolver.TabIndex = 9;
+            btnVolver.Text = "Volver";
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
             // FrmFactura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 250);
-            this.Controls.Add(this.btnImprimir);
-            this.Controls.Add(this.lblCuotas);
-            this.Controls.Add(this.lblMonto);
-            this.Controls.Add(this.lblFormaPago);
-            this.Controls.Add(this.lblFechaVencimiento);
-            this.Controls.Add(this.lblActividadesRealizadas);
-            this.Controls.Add(this.lblNombreCliente);
-            this.Controls.Add(this.lblFechaActual);
-            this.Name = "FrmFactura";
-            this.Text = "Factura";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(823, 560);
+            Controls.Add(btnVolver);
+            Controls.Add(lblClub);
+            Controls.Add(btnImprimir);
+            Controls.Add(lblCuotas);
+            Controls.Add(lblMonto);
+            Controls.Add(lblFormaPago);
+            Controls.Add(lblFechaVencimiento);
+            Controls.Add(lblActividadesRealizadas);
+            Controls.Add(lblNombreCliente);
+            Controls.Add(lblFechaActual);
+            Name = "FrmFactura";
+            Text = "Factura";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -141,6 +184,8 @@
         private System.Windows.Forms.Label lblMonto;
         private System.Windows.Forms.Label lblCuotas;
         private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.Label lblClub;
+        private System.Windows.Forms.Button btnVolver;
     }
 }
 

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.TimeZoneInfo;
 
 namespace SistemaClubDeportivo2
 {
@@ -44,7 +45,7 @@ namespace SistemaClubDeportivo2
                 lblCuotas.Text = "Pago en una sola cuota";
             }
         }
-       
+
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             btnImprimir.Visible = false;
@@ -58,6 +59,9 @@ namespace SistemaClubDeportivo2
             frmPrincipal principal = new frmPrincipal();
             principal.Show();
             this.Close();
+
+
+            
         }
 
         private void ImprimirForm1(object o, PrintPageEventArgs e)
@@ -72,42 +76,59 @@ namespace SistemaClubDeportivo2
             Point p = new Point(100, 100);
             e.Graphics.DrawImage(img, p);
         }
-    }
 
-
-    public partial class FrmFactura : Form
-    {
-        public FrmFactura(
-            DateTime fechaActual,
-            string nombreCliente,
-             List<string> actividadesRealizadas,
-            //string actividadesRealizadas,
-            DateTime fechaVencimientoCuota,
-            string formaPago,
-            float monto
-        )
+        private void btnVolver_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
-
-            lblFechaActual.Text = fechaActual.ToShortDateString();
-            lblNombreCliente.Text = nombreCliente;
-            if (actividadesRealizadas != null && actividadesRealizadas.Count > 0)
-            //if (actividadesRealizadas != null)
-            {
-                string actividades = string.Join(", ", actividadesRealizadas);
-                lblActividadesRealizadas.Text = actividades;
-                Console.WriteLine("Actividades en FrmFactura Constructor: " + actividades); // Log para depuración
-                MessageBox.Show("Actividades en FrmFactura Constructor: " + actividades);
-            }
-            else
-            {
-                lblActividadesRealizadas.Text = "No se han realizado actividades.";
-            }
-
-            lblFechaVencimiento.Text = fechaVencimientoCuota.ToShortDateString();
-            lblFormaPago.Text = formaPago;
-            lblMonto.Text = monto.ToString("C");
+            frmPrincipal principal = new frmPrincipal();
+            principal.Show();
+            this.Hide();
         }
+
+        /*private void lblCuotas_Click(object sender, EventArgs e)
+        {
+
+        }*/
+
+        /* private void lblCuotas_Click(object sender, EventArgs e)
+         {
+
+         }
+     }*/
+
+
+        /*public partial class FrmFactura : Form
+        {
+            public FrmFactura(
+                DateTime fechaActual,
+                string nombreCliente,
+                 List<string> actividadesRealizadas,
+                //string actividadesRealizadas,
+                DateTime fechaVencimientoCuota,
+                string formaPago,
+                float monto
+            )
+            {
+                InitializeComponent();
+
+                lblFechaActual.Text = fechaActual.ToShortDateString();
+                lblNombreCliente.Text = nombreCliente;
+                if (actividadesRealizadas != null && actividadesRealizadas.Count > 0)
+                //if (actividadesRealizadas != null)
+                {
+                    string actividades = string.Join(", ", actividadesRealizadas);
+                    lblActividadesRealizadas.Text = actividades;
+                    Console.WriteLine("Actividades en FrmFactura Constructor: " + actividades); // Log para depuración
+                    MessageBox.Show("Actividades en FrmFactura Constructor: " + actividades);
+                }
+                else
+                {
+                    lblActividadesRealizadas.Text = "No se han realizado actividades.";
+                }
+
+                lblFechaVencimiento.Text = fechaVencimientoCuota.ToShortDateString();
+                lblFormaPago.Text = formaPago;
+                lblMonto.Text = monto.ToString("C");
+            }*/
     }
 }
 

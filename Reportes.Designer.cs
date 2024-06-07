@@ -31,10 +31,12 @@
             dtgvDatos = new System.Windows.Forms.DataGridView();
             Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            lblListado = new System.Windows.Forms.Label();
             Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            lblListado = new System.Windows.Forms.Label();
+            VOLVER = new System.Windows.Forms.Button();
+            btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)dtgvDatos).BeginInit();
             SuspendLayout();
             // 
@@ -63,15 +65,6 @@
             Column2.Name = "Column2";
             Column2.Width = 125;
             // 
-            // lblListado
-            // 
-            lblListado.AutoSize = true;
-            lblListado.Location = new System.Drawing.Point(110, 56);
-            lblListado.Name = "lblListado";
-            lblListado.Size = new System.Drawing.Size(275, 20);
-            lblListado.TabIndex = 1;
-            lblListado.Text = "Listado de clientes con cuota por vencer";
-            // 
             // Column3
             // 
             Column3.HeaderText = "Email";
@@ -93,11 +86,42 @@
             Column5.Name = "Column5";
             Column5.Width = 125;
             // 
+            // lblListado
+            // 
+            lblListado.AutoSize = true;
+            lblListado.Location = new System.Drawing.Point(110, 56);
+            lblListado.Name = "lblListado";
+            lblListado.Size = new System.Drawing.Size(275, 20);
+            lblListado.TabIndex = 1;
+            lblListado.Text = "Listado de clientes con cuota por vencer";
+            // 
+            // VOLVER
+            // 
+            VOLVER.Location = new System.Drawing.Point(143, 499);
+            VOLVER.Name = "VOLVER";
+            VOLVER.Size = new System.Drawing.Size(94, 29);
+            VOLVER.TabIndex = 2;
+            VOLVER.Text = "Volver";
+            VOLVER.UseVisualStyleBackColor = true;
+            VOLVER.Click += VOLVER_Click;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Location = new System.Drawing.Point(410, 499);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new System.Drawing.Size(94, 29);
+            btnSalir.TabIndex = 3;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
             // Reportes
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            ClientSize = new System.Drawing.Size(800, 593);
+            Controls.Add(btnSalir);
+            Controls.Add(VOLVER);
             Controls.Add(lblListado);
             Controls.Add(dtgvDatos);
             Name = "Reportes";
@@ -116,5 +140,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Button VOLVER;
+        private System.Windows.Forms.Button btnSalir;
+        // private System.Windows.Forms.Button btnVolver;
     }
 }
