@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaClubDeportivo2.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -9,24 +10,61 @@ namespace SistemaClubDeportivo2
         public Reportes()
         {
             InitializeComponent();
-            CargarSociosCuotaVenceHoy();
+            CargarClientesCuotaVenceHoy();
         }
 
-        private void CargarSociosCuotaVenceHoy()
+        private void CargarClientesCuotaVenceHoy()
         {
             Pagar gestionPago = new Pagar();
-            List<string> sociosCuotaVenceHoy = gestionPago.ObtenerSociosCuotaVenceHoy();
+            var sociosCuotaVenceHoy = gestionPago.ObtenerSociosCuotaVenceHoy();
             dtgvDatos.Rows.Clear();
 
-            foreach (string nombreCompleto in sociosCuotaVenceHoy)
+            foreach (var socio in sociosCuotaVenceHoy)
             {
                 int renglon = dtgvDatos.Rows.Add();
-                string[] nombreApellido = nombreCompleto.Split(' ');
+                dtgvDatos.Rows[renglon].Cells[0].Value = socio.nombreCompleto;
+                dtgvDatos.Rows[renglon].Cells[1].Value = socio.nombreCompleto.Length > 1 ? socio.nombreCompleto[1] : "";
+                // Verificar si fechaUltimoPago no es el valor predeterminado
+                if (socio.fechaUltimoPago != default(DateTime))
+                {
+                    dtgvDatos.Rows[renglon].Cells[3].Value = socio.fechaUltimoPago.ToShortDateString();
+                }
+                else
+                {
+                    dtgvDatos.Rows[renglon].Cells[3].Value = "Sin Pago";
+                }
 
-                // Asignar el nombre completo a la primera celda y dejar la segunda celda en blanco
-                dtgvDatos.Rows[renglon].Cells[0].Value = nombreApellido[0]; // NombreC
-                dtgvDatos.Rows[renglon].Cells[1].Value = nombreApellido.Length > 1 ? nombreApellido[1] : ""; // ApellidoC
+                dtgvDatos.Rows[renglon].Cells[2].Value = socio.email; // Email
+                dtgvDatos.Rows[renglon].Cells[4].Value = socio.montoCuota; // Monto de la cuota
             }
         }
     }
-}
+
+        /*public partial class Reportes : Form
+        {
+            public Reportes()
+            {
+                InitializeComponent();
+                CargarClientesCuotaVenceHoy();
+            }
+            private void CargarClientesCuotaVenceHoy()
+            {
+                Pagar gestionPago = new Pagar();
+                var sociosCuotaVenceHoy = gestionPago.ObtenerSociosCuotaVenceHoy();
+                dtgvDatos.Rows.Clear();
+
+                foreach (var socio in sociosCuotaVenceHoy)
+                {
+                    int renglon = dtgvDatos.Rows.Add();
+                    dtgvDatos.Rows[renglon].Cells[0].Value = socio.nombreCompleto;
+                    dtgvDatos.Rows[renglon].Cells[1].Value = socio.nombreCompleto.Length > 1 ? socio.nombreCompleto[1] : ""; // ApellidoC
+                    dtgvDatos.Rows[renglon].Cells[2].Value = socio.email; // Email
+                    dtgvDatos.Rows[renglon].Cells[3].Value = socio.fechaUltimoPago.ToShortDateString(); // Fecha del último pago
+                   
+                    dtgvDatos.Rows[renglon].Cells[4].Value = socio.montoCuota; // Monto de la cuota
+                }
+            }
+
+            
+        }*/
+    }

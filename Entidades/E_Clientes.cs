@@ -20,5 +20,9 @@ namespace SistemaClubDeportivo2.Entidades
             public string? ApellidoC { get; set; }
             public string? TDocC { get; set; }
             public int DocC { get; set; }
-        }
+            public string Email { get; set; }
+            public DateTime UltimoPago { get; set; }
+            public float MontoCuota { get; set; }
     }
+}
+    
