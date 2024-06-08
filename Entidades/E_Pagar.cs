@@ -18,6 +18,7 @@ namespace SistemaClubDeportivo2.Entidades
         public string TipoPago { get; set; }
         public DateTime FechaVencimiento { get; set; }
         public bool EsCuotaMensual { get; set; }// Nueva propiedad
+        
 
         public E_Pagar()
         {

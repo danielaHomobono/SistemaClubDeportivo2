@@ -306,42 +306,32 @@ namespace SistemaClubDeportivo2
 
                     sqlCon.Open();
                     string query = "INSERT INTO pago (idPago, idInscri, monto, fecha, esCuotaMensual) " +
+                           "VALUES (@IDPago, @IdInscri, @Monto, @FechaPago, @EsCuotaMensual)";/*"INSERT INTO pago (idPago, idInscri, monto, fecha, esCuotaMensual) " +
                "VALUES (" + pago.IDPago + ", " + (pago.IdInscri == 0 ? "NULL" : pago.IdInscri.ToString()) + ", " +
-               pago.Monto + ", '" + pago.FechaPago.ToString("yyyy-MM-dd") + "', " + (pago.EsCuotaMensual ? "1" : "0") + ")";
+               pago.Monto + ", '" + pago.FechaPago.ToString("yyyy-MM-dd") + "', " + (pago.EsCuotaMensual ? "1" : "0") + ")";*/
 
 
 
                     MySqlCommand comando = new MySqlCommand(query, sqlCon);
 
-
-
                     comando.Parameters.AddWithValue("@IDPago", pago.IDPago);
+                    comando.Parameters.AddWithValue("@IdInscri", pago.IdInscri == 0 ? DBNull.Value : (object)pago.IdInscri); // Manejo de idInscri
+                    comando.Parameters.AddWithValue("@Monto", pago.Monto);
+                    comando.Parameters.AddWithValue("@FechaPago", pago.FechaPago);
+                    comando.Parameters.AddWithValue("@EsCuotaMensual", pago.EsCuotaMensual ? 1 : 0);
+
+                    /*comando.Parameters.AddWithValue("@IDPago", pago.IDPago);
                     comando.Parameters.AddWithValue("@FormaPago", pago.FormaPago);
                     comando.Parameters.AddWithValue("@esCuotaMensual", pago.EsCuotaMensual);
                     comando.Parameters.AddWithValue("@Monto", pago.Monto);
                     comando.Parameters.AddWithValue("@FechaPago", pago.FechaPago);
-                    comando.Parameters.AddWithValue("@IdInscri", pago.IdInscri == 0 ? DBNull.Value : (object)pago.IdInscri); // Manejo de idInscri
+                    comando.Parameters.AddWithValue("@IdInscri", pago.IdInscri == 0 ? DBNull.Value : (object)pago.IdInscri); // Manejo de idInscri*/
 
 
 
                     comando.ExecuteNonQuery();
 
-                    /*sqlCon.Open();
-                    string query = "INSERT INTO pago (idInscri, monto, fecha, esCuotaMensual) VALUES (@idInscri, @monto, @fecha, @esCuotaMensual)";
-                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
-                    comando.Parameters.AddWithValue("@idInscri", pago.IdInscri);
-                    comando.Parameters.AddWithValue("@monto", pago.Monto);
-                    comando.Parameters.AddWithValue("@fecha", pago.FechaPago);
-                    comando.Parameters.AddWithValue("@esCuotaMensual", pago.EsCuotaMensual);
-
-                    string query = "INSERT INTO pago (idInscri, monto, fecha) VALUES (@idInscri, @monto, @fecha)";
-                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
-                    comando.Parameters.AddWithValue("@idInscri", pago.IdInscri);
-                    comando.Parameters.AddWithValue("@monto", pago.Monto);
-                    comando.Parameters.AddWithValue("@fecha", pago.FechaPago);
-                    sqlCon.Open();*/
-
-                    //comando.ExecuteNonQuery();
+                    
                     return "Pago realizado con éxito.";
                 }
                 catch (Exception ex)
@@ -383,47 +373,9 @@ namespace SistemaClubDeportivo2
             }
             return actividades;
         }
-        /*public List<(string nombreCompleto, DateTime fechaUltimoPago, string email, decimal?)> ObtenerSociosCuotaVenceHoy()
-        {
-            List<(string, DateTime, string, decimal?)> sociosCuotaVenceHoy = new List<(string, DateTime, string, decimal?)>();
 
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
-            {
-                try
-                {
-                    string query = @"
-            SELECT c.NombreC, c.ApellidoC, p.fecha AS FechaUltimoPago, c.Email, c.MontoCuota
-            FROM cliente c
-            LEFT JOIN inscripcion i ON c.NCliente = i.NCliente
-            LEFT JOIN pago p ON i.idInscri = p.idInscri
-            WHERE (YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) = MONTH(CURDATE())) OR
-                  (YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) < MONTH(CURDATE())) OR
-                  p.fecha IS NULL";
 
-                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
-                    sqlCon.Open();
-
-                    using (MySqlDataReader reader = comando.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            string nombreCompleto = reader.GetString("NombreC") + " " + reader.GetString("ApellidoC");
-                            DateTime fechaUltimoPago = reader.IsDBNull(reader.GetOrdinal("FechaUltimoPago")) ? DateTime.MinValue : reader.GetDateTime("FechaUltimoPago");
-                            string email = reader.IsDBNull(reader.GetOrdinal("Email")) ? string.Empty : reader.GetString("Email");
-                            decimal? montoCuota = reader.IsDBNull(reader.GetOrdinal("MontoCuota")) ? (decimal?)null : reader.GetDecimal("MontoCuota");
-
-                            sociosCuotaVenceHoy.Add((nombreCompleto, fechaUltimoPago, email, montoCuota));
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al obtener los socios cuya cuota vence hoy: " + ex.Message);
-                }
-            }
-
-            return sociosCuotaVenceHoy;
-        }*/
+        
         public List<(string nombreCompleto, DateTime fechaUltimoPago, string email, float montoCuota)> ObtenerSociosCuotaVenceHoy()
         {
             List<(string, DateTime, string, float)> sociosCuotaVenceHoy = new List<(string, DateTime, string, float)>();

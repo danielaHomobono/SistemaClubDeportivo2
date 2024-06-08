@@ -115,15 +115,7 @@ namespace SistemaClubDeportivo2
 
 
             string resultado = gestionPago.RealizarPago(pago);
-            /*if (!string.IsNullOrEmpty(nombreCliente))
             
-            {
-                MessageBox.Show($"Pago realizado por {nombreCliente}: {resultado}");
-            }
-            else
-            {
-                MessageBox.Show(resultado);
-            }*/
             if (resultado.StartsWith("Error"))
             {
                 MessageBox.Show($"Error al realizar el pago: {resultado}");
