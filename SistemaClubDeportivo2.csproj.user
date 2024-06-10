@@ -16,6 +16,9 @@
     <Compile Update="FrmPagar.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmProfesores.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="InscribirActividad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -23,6 +26,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Reportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SeleccionarClienteForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

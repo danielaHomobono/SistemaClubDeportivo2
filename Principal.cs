@@ -16,7 +16,7 @@ namespace SistemaClubDeportivo2
         public frmPrincipal()
         {
             InitializeComponent();
-           
+
         }
 
         internal string? rol;
@@ -38,13 +38,13 @@ namespace SistemaClubDeportivo2
             inscripcion.Show();
             this.Hide();
             // Crear una instancia de E_Clientes con los datos necesarios
-           
+
 
             // Crear una instancia de la clase Clientes
-           
+
 
             // Mostrar el resultado al usuario
-            
+
         }
 
         private void btnActividad_Click(object sender, EventArgs e)
@@ -100,6 +100,7 @@ namespace SistemaClubDeportivo2
             btnPagar = new Button();
             btnReportes = new Button();
             pictureBox1 = new PictureBox();
+            btnProfesores = new Button();
             ((ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -119,7 +120,7 @@ namespace SistemaClubDeportivo2
             btnSalir.BackColor = SystemColors.MenuHighlight;
             btnSalir.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = SystemColors.ControlDarkDark;
-            btnSalir.Location = new Point(461, 9);
+            btnSalir.Location = new Point(766, 12);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(75, 38);
             btnSalir.TabIndex = 1;
@@ -143,7 +144,7 @@ namespace SistemaClubDeportivo2
             btnActividad.BackColor = SystemColors.MenuHighlight;
             btnActividad.Location = new Point(288, 319);
             btnActividad.Name = "btnActividad";
-            btnActividad.Size = new Size(203, 69);
+            btnActividad.Size = new Size(253, 69);
             btnActividad.TabIndex = 3;
             btnActividad.Text = "Inscribir Actividad";
             btnActividad.UseVisualStyleBackColor = false;
@@ -163,7 +164,7 @@ namespace SistemaClubDeportivo2
             // btnReportes
             // 
             btnReportes.BackColor = SystemColors.MenuHighlight;
-            btnReportes.Location = new Point(288, 403);
+            btnReportes.Location = new Point(319, 403);
             btnReportes.Name = "btnReportes";
             btnReportes.Size = new Size(203, 69);
             btnReportes.TabIndex = 5;
@@ -174,16 +175,28 @@ namespace SistemaClubDeportivo2
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(121, 58);
+            pictureBox1.Location = new Point(306, 53);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(292, 242);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
             // 
+            // btnProfesores
+            // 
+            btnProfesores.BackColor = SystemColors.ActiveCaption;
+            btnProfesores.Location = new Point(638, 359);
+            btnProfesores.Name = "btnProfesores";
+            btnProfesores.Size = new Size(203, 69);
+            btnProfesores.TabIndex = 7;
+            btnProfesores.Text = "Profesores";
+            btnProfesores.UseVisualStyleBackColor = false;
+            btnProfesores.Click += btnProfesores_Click;
+            // 
             // frmPrincipal
             // 
-            ClientSize = new Size(557, 520);
+            ClientSize = new Size(870, 568);
+            Controls.Add(btnProfesores);
             Controls.Add(pictureBox1);
             Controls.Add(btnReportes);
             Controls.Add(btnPagar);
@@ -207,7 +220,19 @@ namespace SistemaClubDeportivo2
         private Button btnPagar;
         private Button btnReportes;
         private PictureBox pictureBox1;
+        private Button btnProfesores;
 
         
+        
+            private void btnProfesores_Click(object sender, EventArgs e)
+            {
+                // Crear una instancia del formulario de profesores
+                FrmProfesores frmProfesores = new FrmProfesores();
+
+                // Mostrar el formulario de profesores
+                frmProfesores.Show();
+                this.Hide();
+            }
+        }
     }
-}
+

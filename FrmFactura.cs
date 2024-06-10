@@ -28,23 +28,39 @@ namespace SistemaClubDeportivo2
         )
         {
             InitializeComponent();
-
-            lblFechaActual.Text = fechaActual.ToShortDateString();
-            lblNombreCliente.Text = nombreCliente;
-            lblActividadesRealizadas.Text = esPagoCuota ? "Cuota Mensual" : string.Join(", ", actividadesRealizadas);
-            lblFechaVencimiento.Text = fechaVencimientoCuota.ToShortDateString();
-            lblFormaPago.Text = formaPago;
-            lblMonto.Text = monto.ToString("C");
+            txtFechaActual.Text = fechaActual.ToShortDateString();
+            txtNombreCliente.Text = nombreCliente;
+            txtActividadesRealizadas.Text = esPagoCuota ? "Cuota Mensual" : string.Join(", ", actividadesRealizadas);
+            txtFechaVencimiento.Text = fechaVencimientoCuota.ToShortDateString();
+            txtFormaPago.Text = formaPago;
+            txtMonto.Text = monto.ToString("C");
 
             if (formaPago == "Tarjeta" && cuotas > 1)
             {
-                lblCuotas.Text = $"{cuotas} cuotas de ${monto / cuotas:0.00}";
+                txtCuotas.Text = $"{cuotas} cuotas de ${monto / cuotas:0.00}";
             }
             else
             {
-                lblCuotas.Text = "Pago en una sola cuota";
+                txtCuotas.Text = "Pago en una sola cuota";
             }
         }
+
+        /* lblFechaActual.Text = fechaActual.ToShortDateString();
+         lblNombreCliente.Text = nombreCliente;
+         lblActividadesRealizadas.Text = esPagoCuota ? "Cuota Mensual" : string.Join(", ", actividadesRealizadas);
+         lblFechaVencimiento.Text = fechaVencimientoCuota.ToShortDateString();
+         lblFormaPago.Text = formaPago;
+         lblMonto.Text = monto.ToString("C");
+
+         if (formaPago == "Tarjeta" && cuotas > 1)
+         {
+             lblCuotas.Text = $"{cuotas} cuotas de ${monto / cuotas:0.00}";
+         }
+         else
+         {
+             lblCuotas.Text = "Pago en una sola cuota";
+         }
+     }*/
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {

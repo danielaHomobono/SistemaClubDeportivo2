@@ -38,12 +38,19 @@
             btnImprimir = new System.Windows.Forms.Button();
             lblClub = new System.Windows.Forms.Label();
             btnVolver = new System.Windows.Forms.Button();
+            txtFechaActual = new System.Windows.Forms.TextBox();
+            txtNombreCliente = new System.Windows.Forms.TextBox();
+            txtActividadesRealizadas = new System.Windows.Forms.TextBox();
+            txtFechaVencimiento = new System.Windows.Forms.TextBox();
+            txtFormaPago = new System.Windows.Forms.TextBox();
+            txtMonto = new System.Windows.Forms.TextBox();
+            txtCuotas = new System.Windows.Forms.TextBox();
             SuspendLayout();
             // 
             // lblFechaActual
             // 
             lblFechaActual.AutoSize = true;
-            lblFechaActual.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblFechaActual.BackColor = System.Drawing.SystemColors.ControlLight;
             lblFechaActual.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblFechaActual.Location = new System.Drawing.Point(20, 102);
             lblFechaActual.Name = "lblFechaActual";
@@ -54,7 +61,7 @@
             // lblNombreCliente
             // 
             lblNombreCliente.AutoSize = true;
-            lblNombreCliente.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblNombreCliente.BackColor = System.Drawing.SystemColors.ControlLight;
             lblNombreCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblNombreCliente.Location = new System.Drawing.Point(20, 151);
             lblNombreCliente.Name = "lblNombreCliente";
@@ -65,7 +72,7 @@
             // lblActividadesRealizadas
             // 
             lblActividadesRealizadas.AutoSize = true;
-            lblActividadesRealizadas.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblActividadesRealizadas.BackColor = System.Drawing.SystemColors.ControlLight;
             lblActividadesRealizadas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblActividadesRealizadas.Location = new System.Drawing.Point(20, 198);
             lblActividadesRealizadas.Name = "lblActividadesRealizadas";
@@ -76,7 +83,7 @@
             // lblFechaVencimiento
             // 
             lblFechaVencimiento.AutoSize = true;
-            lblFechaVencimiento.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblFechaVencimiento.BackColor = System.Drawing.SystemColors.ControlLight;
             lblFechaVencimiento.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblFechaVencimiento.Location = new System.Drawing.Point(20, 250);
             lblFechaVencimiento.Name = "lblFechaVencimiento";
@@ -87,7 +94,7 @@
             // lblFormaPago
             // 
             lblFormaPago.AutoSize = true;
-            lblFormaPago.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblFormaPago.BackColor = System.Drawing.SystemColors.ControlLight;
             lblFormaPago.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblFormaPago.Location = new System.Drawing.Point(20, 304);
             lblFormaPago.Name = "lblFormaPago";
@@ -98,7 +105,7 @@
             // lblMonto
             // 
             lblMonto.AutoSize = true;
-            lblMonto.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblMonto.BackColor = System.Drawing.SystemColors.ControlLight;
             lblMonto.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblMonto.Location = new System.Drawing.Point(20, 360);
             lblMonto.Name = "lblMonto";
@@ -109,7 +116,7 @@
             // lblCuotas
             // 
             lblCuotas.AutoSize = true;
-            lblCuotas.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            lblCuotas.BackColor = System.Drawing.SystemColors.ControlLight;
             lblCuotas.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblCuotas.Location = new System.Drawing.Point(442, 360);
             lblCuotas.Name = "lblCuotas";
@@ -119,9 +126,9 @@
             // 
             // btnImprimir
             // 
-            btnImprimir.BackColor = System.Drawing.Color.FromArgb(255, 192, 128);
+            btnImprimir.BackColor = System.Drawing.SystemColors.HotTrack;
             btnImprimir.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnImprimir.Location = new System.Drawing.Point(325, 473);
+            btnImprimir.Location = new System.Drawing.Point(586, 541);
             btnImprimir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new System.Drawing.Size(109, 47);
@@ -133,7 +140,7 @@
             // lblClub
             // 
             lblClub.AutoSize = true;
-            lblClub.BackColor = System.Drawing.Color.LightCoral;
+            lblClub.BackColor = System.Drawing.SystemColors.ActiveCaption;
             lblClub.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblClub.Location = new System.Drawing.Point(275, 20);
             lblClub.Name = "lblClub";
@@ -143,9 +150,9 @@
             // 
             // btnVolver
             // 
-            btnVolver.BackColor = System.Drawing.Color.FromArgb(255, 192, 128);
+            btnVolver.BackColor = System.Drawing.SystemColors.HotTrack;
             btnVolver.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnVolver.Location = new System.Drawing.Point(117, 473);
+            btnVolver.Location = new System.Drawing.Point(220, 541);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new System.Drawing.Size(110, 47);
             btnVolver.TabIndex = 9;
@@ -153,11 +160,65 @@
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
+            // txtFechaActual
+            // 
+            txtFechaActual.Location = new System.Drawing.Point(247, 106);
+            txtFechaActual.Name = "txtFechaActual";
+            txtFechaActual.Size = new System.Drawing.Size(327, 27);
+            txtFechaActual.TabIndex = 10;
+            // 
+            // txtNombreCliente
+            // 
+            txtNombreCliente.Location = new System.Drawing.Point(247, 152);
+            txtNombreCliente.Name = "txtNombreCliente";
+            txtNombreCliente.Size = new System.Drawing.Size(327, 27);
+            txtNombreCliente.TabIndex = 11;
+            // 
+            // txtActividadesRealizadas
+            // 
+            txtActividadesRealizadas.Location = new System.Drawing.Point(309, 202);
+            txtActividadesRealizadas.Name = "txtActividadesRealizadas";
+            txtActividadesRealizadas.Size = new System.Drawing.Size(671, 27);
+            txtActividadesRealizadas.TabIndex = 12;
+            // 
+            // txtFechaVencimiento
+            // 
+            txtFechaVencimiento.Location = new System.Drawing.Point(309, 251);
+            txtFechaVencimiento.Name = "txtFechaVencimiento";
+            txtFechaVencimiento.Size = new System.Drawing.Size(265, 27);
+            txtFechaVencimiento.TabIndex = 13;
+            // 
+            // txtFormaPago
+            // 
+            txtFormaPago.Location = new System.Drawing.Point(247, 308);
+            txtFormaPago.Name = "txtFormaPago";
+            txtFormaPago.Size = new System.Drawing.Size(208, 27);
+            txtFormaPago.TabIndex = 14;
+            // 
+            // txtMonto
+            // 
+            txtMonto.Location = new System.Drawing.Point(151, 366);
+            txtMonto.Name = "txtMonto";
+            txtMonto.Size = new System.Drawing.Size(179, 27);
+            txtMonto.TabIndex = 15;
+            // 
+            // txtCuotas
+            // 
+            txtCuotas.Location = new System.Drawing.Point(568, 366);
+            txtCuotas.Name = "txtCuotas";
+            txtCuotas.Size = new System.Drawing.Size(200, 27);
+            txtCuotas.TabIndex = 16;
+            // 
             // FrmFactura
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(823, 560);
+            ClientSize = new System.Drawing.Size(992, 655);
+            Controls.Add(txtCuotas);
+            Controls.Add(txtMonto);
+            Controls.Add(txtFormaPago);
+            Controls.Add(txtFechaVencimiento);
+            Controls.Add(txtActividadesRealizadas);
+            Controls.Add(txtNombreCliente);
+            Controls.Add(txtFechaActual);
             Controls.Add(btnVolver);
             Controls.Add(lblClub);
             Controls.Add(btnImprimir);
@@ -186,6 +247,13 @@
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Label lblClub;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.TextBox txtFechaActual;
+        private System.Windows.Forms.TextBox txtNombreCliente;
+        private System.Windows.Forms.TextBox txtActividadesRealizadas;
+        private System.Windows.Forms.TextBox txtFechaVencimiento;
+        private System.Windows.Forms.TextBox txtFormaPago;
+        private System.Windows.Forms.TextBox txtMonto;
+        private System.Windows.Forms.TextBox txtCuotas;
     }
 }
 

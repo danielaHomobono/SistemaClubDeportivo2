@@ -100,7 +100,7 @@ namespace SistemaClubDeportivo2
                 IdInscri = idInscri,
                 EsSocio = esSocio,
                 TipoPago = tipoPago ? "Cuota" : "Actividad",
-                FechaVencimiento = fechaVencimiento ,
+                FechaVencimiento = fechaVencimiento,
                 EsCuotaMensual = esCuotaMensual
             };
 
@@ -109,13 +109,13 @@ namespace SistemaClubDeportivo2
             pago.IDPago = nuevoID;
 
 
-           // float montoTotalReal = esCuotaMensual ? 2000 : 100; // Ajustar el monto total real
+            // float montoTotalReal = esCuotaMensual ? 2000 : 100; // Ajustar el monto total real
             //pago.Monto = montoTotalReal;
 
 
 
             string resultado = gestionPago.RealizarPago(pago);
-            
+
             if (resultado.StartsWith("Error"))
             {
                 MessageBox.Show($"Error al realizar el pago: {resultado}");
@@ -130,7 +130,7 @@ namespace SistemaClubDeportivo2
             string actividadesLog = string.Join(", ", pago.ActividadesInscritas);
             Console.WriteLine("Actividades Inscritas en btnPagar_Click: " + actividadesLog);
             MessageBox.Show("Actividades Inscritas en btnPagar_Click: " + actividadesLog);
-            
+
         }
 
 
@@ -197,19 +197,7 @@ namespace SistemaClubDeportivo2
             lblMontoTotal.Text = "Monto Total a Pagar: $" + montoTotal.ToString("0.00");
             lblMontoDiario.Text = "Monto Diario: $" + montoDiario.ToString("0.00");
             lblFechaVencimiento.Text = "Fecha de Vencimiento: " + fechaVencimiento.ToString("dd/MM/yyyy");
-            lblTipoPago.Text = "Tipo de Pago: " + tipoPago ;
+            lblTipoPago.Text = "Tipo de Pago: " + tipoPago;
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

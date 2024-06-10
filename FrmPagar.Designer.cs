@@ -52,10 +52,10 @@ namespace SistemaClubDeportivo2
             // 
             // txtDNI
             // 
-            txtDNI.Location = new System.Drawing.Point(293, 39);
+            txtDNI.Location = new System.Drawing.Point(331, 43);
             txtDNI.Margin = new Padding(3, 4, 3, 4);
             txtDNI.Name = "txtDNI";
-            txtDNI.Size = new System.Drawing.Size(141, 27);
+            txtDNI.Size = new System.Drawing.Size(232, 27);
             txtDNI.TabIndex = 0;
             // 
             // lblNCliente
@@ -69,11 +69,14 @@ namespace SistemaClubDeportivo2
             // lblNcli
             // 
             lblNcli.AutoSize = true;
+            lblNcli.BackColor = System.Drawing.SystemColors.ControlLight;
+            lblNcli.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblNcli.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             lblNcli.Location = new System.Drawing.Point(70, 39);
             lblNcli.Name = "lblNcli";
-            lblNcli.Size = new System.Drawing.Size(217, 20);
+            lblNcli.Size = new System.Drawing.Size(221, 28);
             lblNcli.TabIndex = 2;
-            lblNcli.Text = "Ingrese Número Dni del Cliente";
+            lblNcli.Text = " Número Dni del Cliente";
             // 
             // grpFormaPago
             // 
@@ -176,35 +179,41 @@ namespace SistemaClubDeportivo2
             // 
             // btnPagar
             // 
-            btnPagar.Location = new System.Drawing.Point(70, 530);
+            btnPagar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            btnPagar.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnPagar.Location = new System.Drawing.Point(98, 530);
             btnPagar.Margin = new Padding(3, 4, 3, 4);
             btnPagar.Name = "btnPagar";
-            btnPagar.Size = new System.Drawing.Size(86, 39);
+            btnPagar.Size = new System.Drawing.Size(114, 39);
             btnPagar.TabIndex = 6;
             btnPagar.Text = "Pagar";
-            btnPagar.UseVisualStyleBackColor = true;
+            btnPagar.UseVisualStyleBackColor = false;
             btnPagar.Click += btnPagar_Click;
             // 
             // btnVolver
             // 
-            btnVolver.Location = new System.Drawing.Point(406, 530);
+            btnVolver.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            btnVolver.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnVolver.Location = new System.Drawing.Point(744, 530);
             btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new System.Drawing.Size(86, 39);
             btnVolver.TabIndex = 7;
             btnVolver.Text = "Volver";
-            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
             // btnComprobante
             // 
-            btnComprobante.Location = new System.Drawing.Point(225, 530);
+            btnComprobante.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            btnComprobante.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnComprobante.Location = new System.Drawing.Point(374, 530);
             btnComprobante.Margin = new Padding(3, 4, 3, 4);
             btnComprobante.Name = "btnComprobante";
-            btnComprobante.Size = new System.Drawing.Size(119, 39);
+            btnComprobante.Size = new System.Drawing.Size(175, 39);
             btnComprobante.TabIndex = 8;
             btnComprobante.Text = "Comprobante";
-            btnComprobante.UseVisualStyleBackColor = true;
+            btnComprobante.UseVisualStyleBackColor = false;
             btnComprobante.Click += btnComprobante_Click;
             // 
             // lblNombreCliente
@@ -227,10 +236,11 @@ namespace SistemaClubDeportivo2
             // 
             // btnBuscar
             // 
-            btnBuscar.BackColor = System.Drawing.Color.DarkSalmon;
-            btnBuscar.Location = new System.Drawing.Point(468, 39);
+            btnBuscar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            btnBuscar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnBuscar.Location = new System.Drawing.Point(640, 39);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new System.Drawing.Size(94, 29);
+            btnBuscar.Size = new System.Drawing.Size(144, 44);
             btnBuscar.TabIndex = 11;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = false;
@@ -239,7 +249,7 @@ namespace SistemaClubDeportivo2
             // lblFechaVencimiento
             // 
             lblFechaVencimiento.AutoSize = true;
-            lblFechaVencimiento.Location = new System.Drawing.Point(107, 197);
+            lblFechaVencimiento.Location = new System.Drawing.Point(80, 202);
             lblFechaVencimiento.Name = "lblFechaVencimiento";
             lblFechaVencimiento.Size = new System.Drawing.Size(178, 20);
             lblFechaVencimiento.TabIndex = 12;
@@ -248,7 +258,7 @@ namespace SistemaClubDeportivo2
             // lblTipoPago
             // 
             lblTipoPago.AutoSize = true;
-            lblTipoPago.Location = new System.Drawing.Point(107, 242);
+            lblTipoPago.Location = new System.Drawing.Point(80, 243);
             lblTipoPago.Name = "lblTipoPago";
             lblTipoPago.Size = new System.Drawing.Size(104, 20);
             lblTipoPago.TabIndex = 13;
@@ -257,8 +267,8 @@ namespace SistemaClubDeportivo2
             // optCuotaMensual
             // 
             optCuotaMensual.AutoSize = true;
-            optCuotaMensual.BackColor = System.Drawing.Color.IndianRed;
-            optCuotaMensual.Location = new System.Drawing.Point(107, 274);
+            optCuotaMensual.BackColor = System.Drawing.SystemColors.HotTrack;
+            optCuotaMensual.Location = new System.Drawing.Point(70, 296);
             optCuotaMensual.Name = "optCuotaMensual";
             optCuotaMensual.Size = new System.Drawing.Size(128, 24);
             optCuotaMensual.TabIndex = 14;
@@ -269,8 +279,8 @@ namespace SistemaClubDeportivo2
             // optCuotaDiaria
             // 
             optCuotaDiaria.AutoSize = true;
-            optCuotaDiaria.BackColor = System.Drawing.Color.IndianRed;
-            optCuotaDiaria.Location = new System.Drawing.Point(293, 274);
+            optCuotaDiaria.BackColor = System.Drawing.SystemColors.HotTrack;
+            optCuotaDiaria.Location = new System.Drawing.Point(331, 296);
             optCuotaDiaria.Name = "optCuotaDiaria";
             optCuotaDiaria.Size = new System.Drawing.Size(113, 24);
             optCuotaDiaria.TabIndex = 15;
@@ -289,7 +299,7 @@ namespace SistemaClubDeportivo2
             // 
             // FrmPagar
             // 
-            ClientSize = new System.Drawing.Size(875, 616);
+            ClientSize = new System.Drawing.Size(1032, 616);
             Controls.Add(lblMontoDiario);
             Controls.Add(optCuotaDiaria);
             Controls.Add(optCuotaMensual);

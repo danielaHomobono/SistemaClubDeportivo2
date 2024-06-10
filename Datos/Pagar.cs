@@ -331,7 +331,7 @@ namespace SistemaClubDeportivo2
 
                     comando.ExecuteNonQuery();
 
-                    
+
                     return "Pago realizado con éxito.";
                 }
                 catch (Exception ex)
@@ -375,7 +375,7 @@ namespace SistemaClubDeportivo2
         }
 
 
-        
+
         public List<(string nombreCompleto, DateTime fechaUltimoPago, string email, float montoCuota)> ObtenerSociosCuotaVenceHoy()
         {
             List<(string, DateTime, string, float)> sociosCuotaVenceHoy = new List<(string, DateTime, string, float)>();
@@ -582,10 +582,3 @@ return sociosCuotaVenceHoy;
             MessageBox.Show("Error al obtener los socios cuya cuota vence hoy: " + ex.Message);
         }
     }*/
-
-
-
-
-
-
-

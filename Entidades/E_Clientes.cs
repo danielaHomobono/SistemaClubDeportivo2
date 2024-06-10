@@ -23,6 +23,8 @@ namespace SistemaClubDeportivo2.Entidades
             public string Email { get; set; }
             public DateTime UltimoPago { get; set; }
             public float MontoCuota { get; set; }
+
+       
     }
 }
     
