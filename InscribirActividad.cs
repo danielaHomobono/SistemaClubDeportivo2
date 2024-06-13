@@ -122,6 +122,7 @@ namespace SistemaClubDeportivo2
             }
         }
 
+
         private void btnInscribir_Click(object sender, EventArgs e)
         {
             if (NCliente == 0)
@@ -145,15 +146,34 @@ namespace SistemaClubDeportivo2
                             int idSesion = Convert.ToInt32(row.Cells[4].Value);
                             string nombreActividad = row.Cells[0].Value.ToString();
                             float precioActividad = Convert.ToSingle(row.Cells[3].Value);
-                            string query = "INSERT INTO inscripcion (NCliente, idSesion, fecha) VALUES (@NCliente, @idSesion, @fecha)";
-                            MySqlCommand comando = new MySqlCommand(query, sqlCon, transaction);
-                            comando.Parameters.AddWithValue("@NCliente", NCliente);
-                            comando.Parameters.AddWithValue("@idSesion", idSesion);
-                            comando.Parameters.AddWithValue("@fecha", DateTime.Now);
 
-                            comando.ExecuteNonQuery();
-                            actividadesInscritas.Add(nombreActividad);
-                            montoTotal += precioActividad;
+                            // Verificar el cupo disponible
+                            string queryCupo = "SELECT a.cupo - COUNT(i.idSesion) AS CupoDisponible " +
+                                               "FROM actividad a " +
+                                               "INNER JOIN sesion s ON a.NActividad = s.NActividad " +
+                                               "LEFT JOIN inscripcion i ON s.idSesion = i.idSesion " +
+                                               "WHERE s.idSesion = @idSesion " +
+                                               "GROUP BY a.cupo";
+                            MySqlCommand comandoCupo = new MySqlCommand(queryCupo, sqlCon, transaction);
+                            comandoCupo.Parameters.AddWithValue("@idSesion", idSesion);
+                            int cupoDisponible = Convert.ToInt32(comandoCupo.ExecuteScalar());
+
+                            if (cupoDisponible > 0)
+                            {
+                                string query = "INSERT INTO inscripcion (NCliente, idSesion, fecha) VALUES (@NCliente, @idSesion, @fecha)";
+                                MySqlCommand comando = new MySqlCommand(query, sqlCon, transaction);
+                                comando.Parameters.AddWithValue("@NCliente", NCliente);
+                                comando.Parameters.AddWithValue("@idSesion", idSesion);
+                                comando.Parameters.AddWithValue("@fecha", DateTime.Now);
+
+                                comando.ExecuteNonQuery();
+                                actividadesInscritas.Add(nombreActividad);
+                                montoTotal += precioActividad;
+                            }
+                            else
+                            {
+                                MessageBox.Show($"No hay cupo disponible para la actividad: {nombreActividad}");
+                            }
                         }
 
                         transaction.Commit();
@@ -165,8 +185,6 @@ namespace SistemaClubDeportivo2
                         string actividades = string.Join(", ", actividadesCliente);
                         MessageBox.Show("Cliente inscrito correctamente en las siguientes actividades: " + actividades);
                     }
-
-
                     catch (Exception ex)
                     {
                         transaction.Rollback();
@@ -179,50 +197,109 @@ namespace SistemaClubDeportivo2
                 MessageBox.Show("Seleccione una o más actividades de la lista.");
             }
         }
+
+
+        /* private void btnInscribir_Click(object sender, EventArgs e)
+         {
+             if (NCliente == 0)
+             {
+                 MessageBox.Show("Debe buscar y seleccionar un cliente antes de inscribir.");
+                 return;
+             }
+             if (dtgvDatos.SelectedRows.Count > 0)
+             {
+                 using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
+                 {
+                     sqlCon.Open();
+                     MySqlTransaction transaction = sqlCon.BeginTransaction();
+                     try
+                     {
+                         List<string> actividadesInscritas = new List<string>();
+                         float montoTotal = 0;
+
+                         foreach (DataGridViewRow row in dtgvDatos.SelectedRows)
+                         {
+                             int idSesion = Convert.ToInt32(row.Cells[4].Value);
+                             string nombreActividad = row.Cells[0].Value.ToString();
+                             float precioActividad = Convert.ToSingle(row.Cells[3].Value);
+                             string query = "INSERT INTO inscripcion (NCliente, idSesion, fecha) VALUES (@NCliente, @idSesion, @fecha)";
+                             MySqlCommand comando = new MySqlCommand(query, sqlCon, transaction);
+                             comando.Parameters.AddWithValue("@NCliente", NCliente);
+                             comando.Parameters.AddWithValue("@idSesion", idSesion);
+                             comando.Parameters.AddWithValue("@fecha", DateTime.Now);
+
+                             comando.ExecuteNonQuery();
+                             actividadesInscritas.Add(nombreActividad);
+                             montoTotal += precioActividad;
+                         }
+
+                         transaction.Commit();
+
+                         List<string> actividadesCliente = ObtenerActividadesCliente(NCliente);
+
+                         pagoActual = new E_Pagar { ActividadesInscritas = actividadesCliente };
+
+                         string actividades = string.Join(", ", actividadesCliente);
+                         MessageBox.Show("Cliente inscrito correctamente en las siguientes actividades: " + actividades);
+                     }
+
+
+                     catch (Exception ex)
+                     {
+                         transaction.Rollback();
+                         MessageBox.Show("Error al inscribir al cliente: " + ex.Message);
+                     }
+                 }
+             }
+             else
+             {
+                 MessageBox.Show("Seleccione una o más actividades de la lista.");
+             }
+         }*/
         public List<string> ObtenerActividadesCliente(int nCliente)
-        {
-            List<string> actividadesCliente = new List<string>();
-            using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
-            {
-                try
-                {
-                    string query = "SELECT DISTINCT c.Nombre AS Nombre_Actividad " +
-                                   "FROM actividad c " +
-                                   "INNER JOIN sesion s ON c.NActividad = s.NActividad " +
-                                   "INNER JOIN inscripcion i ON s.idSesion = i.idSesion " +
-                                   "WHERE i.NCliente = @NCliente AND s.fecha > CURDATE()";
-                    MySqlCommand comando = new MySqlCommand(query, sqlCon);
-                    comando.Parameters.AddWithValue("@NCliente", nCliente);
-                    sqlCon.Open();
+         {
+             List<string> actividadesCliente = new List<string>();
+             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
+             {
+                 try
+                 {
+                     string query = "SELECT DISTINCT c.Nombre AS Nombre_Actividad " +
+                                    "FROM actividad c " +
+                                    "INNER JOIN sesion s ON c.NActividad = s.NActividad " +
+                                    "INNER JOIN inscripcion i ON s.idSesion = i.idSesion " +
+                                    "WHERE i.NCliente = @NCliente AND s.fecha > CURDATE()";
+                     MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                     comando.Parameters.AddWithValue("@NCliente", nCliente);
+                     sqlCon.Open();
 
-                    using (MySqlDataReader reader = comando.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            actividadesCliente.Add(reader.GetString(0));
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al obtener las actividades del cliente: " + ex.Message);
-                }
-            }
-            return actividadesCliente;
-        }
-        
+                     using (MySqlDataReader reader = comando.ExecuteReader())
+                     {
+                         while (reader.Read())
+                         {
+                             actividadesCliente.Add(reader.GetString(0));
+                         }
+                     }
+                 }
+                 catch (Exception ex)
+                 {
+                     MessageBox.Show("Error al obtener las actividades del cliente: " + ex.Message);
+                 }
+             }
+             return actividadesCliente;
+         }
 
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            frmPrincipal principal = new frmPrincipal();
-            principal.Show();
-            this.Hide();
-        }
+
+         private void btnSalir_Click(object sender, EventArgs e)
+         {
+             this.Close();
+         }
+         private void btnVolver_Click(object sender, EventArgs e)
+         {
+             frmPrincipal principal = new frmPrincipal();
+             principal.Show();
+             this.Hide();
+         }
 
 
     }

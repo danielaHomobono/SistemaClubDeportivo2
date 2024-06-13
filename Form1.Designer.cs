@@ -46,8 +46,9 @@
             panel1.Controls.Add(lblTitulo);
             panel1.Dock = System.Windows.Forms.DockStyle.Top;
             panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(398, 38);
+            panel1.Size = new System.Drawing.Size(455, 51);
             panel1.TabIndex = 0;
             // 
             // lblTitulo
@@ -55,9 +56,9 @@
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lblTitulo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            lblTitulo.Location = new System.Drawing.Point(118, 9);
+            lblTitulo.Location = new System.Drawing.Point(135, 12);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new System.Drawing.Size(144, 21);
+            lblTitulo.Size = new System.Drawing.Size(179, 28);
             lblTitulo.TabIndex = 6;
             lblTitulo.Text = "CLUB DEPORTIVO";
             lblTitulo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -65,9 +66,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new System.Drawing.Point(97, 44);
+            pictureBox1.Location = new System.Drawing.Point(111, 59);
+            pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(195, 136);
+            pictureBox1.Size = new System.Drawing.Size(223, 181);
             pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -75,22 +77,23 @@
             // txtUsuario
             // 
             txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            txtUsuario.Location = new System.Drawing.Point(67, 226);
+            txtUsuario.Location = new System.Drawing.Point(77, 301);
+            txtUsuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new System.Drawing.Size(239, 22);
+            txtUsuario.Size = new System.Drawing.Size(273, 26);
             txtUsuario.TabIndex = 2;
             txtUsuario.Text = "Ingrese su Usuario";
             txtUsuario.TextChanged += txtUsuario_TextChanged;
             txtUsuario.Enter += txtUsuario_Enter;
             txtUsuario.Leave += txtUsuario_Leave;
-            txtUsuario.MouseEnter += txtUsuario_Enter;
             // 
             // txtPass
             // 
             txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            txtPass.Location = new System.Drawing.Point(67, 288);
+            txtPass.Location = new System.Drawing.Point(77, 384);
+            txtPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             txtPass.Name = "txtPass";
-            txtPass.Size = new System.Drawing.Size(239, 22);
+            txtPass.Size = new System.Drawing.Size(273, 26);
             txtPass.TabIndex = 3;
             txtPass.Text = "Ingrese su Contraseña";
             txtPass.Enter += txtPass_Enter;
@@ -99,9 +102,10 @@
             // chekMostar
             // 
             chekMostar.AutoSize = true;
-            chekMostar.Location = new System.Drawing.Point(239, 316);
+            chekMostar.Location = new System.Drawing.Point(273, 421);
+            chekMostar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             chekMostar.Name = "chekMostar";
-            chekMostar.Size = new System.Drawing.Size(67, 19);
+            chekMostar.Size = new System.Drawing.Size(82, 24);
             chekMostar.TabIndex = 4;
             chekMostar.Text = "Mostrar";
             chekMostar.UseVisualStyleBackColor = true;
@@ -116,9 +120,10 @@
             btnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(192, 192, 255);
             btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnIngresar.ForeColor = System.Drawing.SystemColors.Window;
-            btnIngresar.Location = new System.Drawing.Point(135, 367);
+            btnIngresar.Location = new System.Drawing.Point(154, 489);
+            btnIngresar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new System.Drawing.Size(108, 23);
+            btnIngresar.Size = new System.Drawing.Size(123, 31);
             btnIngresar.TabIndex = 5;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = false;
@@ -126,10 +131,10 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            ClientSize = new System.Drawing.Size(398, 477);
+            ClientSize = new System.Drawing.Size(455, 636);
             Controls.Add(btnIngresar);
             Controls.Add(chekMostar);
             Controls.Add(txtPass);
@@ -137,6 +142,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(panel1);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;

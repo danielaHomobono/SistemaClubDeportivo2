@@ -35,6 +35,7 @@
             // dgtvProfesores
             // 
             dgtvProfesores.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dgtvProfesores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             dgtvProfesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgtvProfesores.Dock = System.Windows.Forms.DockStyle.Fill;
             dgtvProfesores.Location = new System.Drawing.Point(0, 0);

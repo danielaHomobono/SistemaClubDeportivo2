@@ -51,7 +51,7 @@ namespace SistemaClubDeportivo2
             dtgvDatos.AllowUserToOrderColumns = true;
             dtgvDatos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvDatos.Columns.AddRange(new DataGridViewColumn[] { Nombre_Actividad, Fecha, Nombre_Profesor, Precio, idSesion });
-            dtgvDatos.Location = new System.Drawing.Point(42, 178);
+            dtgvDatos.Location = new System.Drawing.Point(154, 264);
             dtgvDatos.Margin = new Padding(3, 4, 3, 4);
             dtgvDatos.Name = "dtgvDatos";
             dtgvDatos.RowHeadersWidth = 51;
@@ -97,76 +97,82 @@ namespace SistemaClubDeportivo2
             // 
             // btnInscribir
             // 
-            btnInscribir.Location = new System.Drawing.Point(261, 528);
+            btnInscribir.BackColor = System.Drawing.SystemColors.HotTrack;
+            btnInscribir.Location = new System.Drawing.Point(154, 614);
             btnInscribir.Margin = new Padding(3, 4, 3, 4);
             btnInscribir.Name = "btnInscribir";
             btnInscribir.Size = new System.Drawing.Size(114, 40);
             btnInscribir.TabIndex = 2;
             btnInscribir.Text = "Inscribir";
-            btnInscribir.UseVisualStyleBackColor = true;
+            btnInscribir.UseVisualStyleBackColor = false;
             btnInscribir.Click += btnInscribir_Click;
             // 
             // btnSalir
             // 
-            btnSalir.Location = new System.Drawing.Point(593, 528);
+            btnSalir.BackColor = System.Drawing.SystemColors.HotTrack;
+            btnSalir.Location = new System.Drawing.Point(611, 614);
             btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new System.Drawing.Size(114, 40);
             btnSalir.TabIndex = 3;
             btnSalir.Text = "Salir";
-            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
             // txtDNI
             // 
-            txtDNI.Location = new System.Drawing.Point(69, 89);
+            txtDNI.Location = new System.Drawing.Point(229, 119);
             txtDNI.Name = "txtDNI";
-            txtDNI.Size = new System.Drawing.Size(125, 27);
+            txtDNI.Size = new System.Drawing.Size(161, 27);
             txtDNI.TabIndex = 4;
             // 
             // lblClienteNombre
             // 
             lblClienteNombre.AutoSize = true;
-            lblClienteNombre.Location = new System.Drawing.Point(125, 119);
+            lblClienteNombre.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            lblClienteNombre.Location = new System.Drawing.Point(125, 179);
             lblClienteNombre.Name = "lblClienteNombre";
-            lblClienteNombre.Size = new System.Drawing.Size(13, 20);
+            lblClienteNombre.Size = new System.Drawing.Size(0, 28);
             lblClienteNombre.TabIndex = 5;
-            lblClienteNombre.Text = "l";
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new System.Drawing.Point(109, 142);
+            btnBuscar.BackColor = System.Drawing.SystemColors.HotTrack;
+            btnBuscar.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnBuscar.Location = new System.Drawing.Point(420, 119);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new System.Drawing.Size(94, 29);
+            btnBuscar.Size = new System.Drawing.Size(94, 38);
             btnBuscar.TabIndex = 6;
             btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
             // lblIngresoDNI
             // 
             lblIngresoDNI.AutoSize = true;
-            lblIngresoDNI.Location = new System.Drawing.Point(125, 66);
+            lblIngresoDNI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblIngresoDNI.Location = new System.Drawing.Point(87, 119);
             lblIngresoDNI.Name = "lblIngresoDNI";
-            lblIngresoDNI.Size = new System.Drawing.Size(87, 20);
+            lblIngresoDNI.Size = new System.Drawing.Size(114, 28);
             lblIngresoDNI.TabIndex = 7;
             lblIngresoDNI.Text = "lngrese DNI";
             // 
             // btnVolver
             // 
-            btnVolver.Location = new System.Drawing.Point(443, 534);
+            btnVolver.BackColor = System.Drawing.SystemColors.HotTrack;
+            btnVolver.Location = new System.Drawing.Point(407, 614);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new System.Drawing.Size(94, 29);
+            btnVolver.Size = new System.Drawing.Size(94, 40);
             btnVolver.TabIndex = 8;
             btnVolver.Text = "Volver";
-            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
             // InscribirActividad
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(914, 616);
+            ClientSize = new System.Drawing.Size(914, 679);
             Controls.Add(btnVolver);
             Controls.Add(lblIngresoDNI);
             Controls.Add(btnBuscar);

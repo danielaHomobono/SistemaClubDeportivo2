@@ -258,9 +258,11 @@ namespace SistemaClubDeportivo2
             // lblTipoPago
             // 
             lblTipoPago.AutoSize = true;
+            lblTipoPago.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblTipoPago.ForeColor = System.Drawing.SystemColors.HotTrack;
             lblTipoPago.Location = new System.Drawing.Point(80, 243);
             lblTipoPago.Name = "lblTipoPago";
-            lblTipoPago.Size = new System.Drawing.Size(104, 20);
+            lblTipoPago.Size = new System.Drawing.Size(147, 28);
             lblTipoPago.TabIndex = 13;
             lblTipoPago.Text = "Tipo de Pago: ";
             // 

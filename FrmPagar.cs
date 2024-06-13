@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿
+using MySql.Data.MySqlClient;
 using SistemaClubDeportivo2.Datos;
 using SistemaClubDeportivo2.Entidades;
 using System;
@@ -128,8 +129,8 @@ namespace SistemaClubDeportivo2
             pagoActual = pago;
 
             string actividadesLog = string.Join(", ", pago.ActividadesInscritas);
-            Console.WriteLine("Actividades Inscritas en btnPagar_Click: " + actividadesLog);
-            MessageBox.Show("Actividades Inscritas en btnPagar_Click: " + actividadesLog);
+            Console.WriteLine("Actividades Inscritas: " + actividadesLog);
+            MessageBox.Show("Actividades Inscritas: " + actividadesLog);
 
         }
 
