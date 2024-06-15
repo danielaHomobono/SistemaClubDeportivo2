@@ -62,14 +62,7 @@ namespace SistemaClubDeportivo2
             frmPrincipal principal = new frmPrincipal();
             principal.Show();
             this.Close();
-            /*btnImprimir.Visible = false;
-            await Task.Delay(2000);
-            transitionTimer.Start();
-
-            frmPrincipal principal = new frmPrincipal();
-            principal.Show();
-            this.Hide();
-            transitionTimer.Stop();*/
+            
         }
         private void ImprimirForm1(object o, PrintPageEventArgs e)
         {

@@ -22,6 +22,8 @@ namespace SistemaClubDeportivo2
 
             optEfvo.CheckedChanged += new EventHandler(FormaPagoChanged);
             optTarjeta.CheckedChanged += new EventHandler(FormaPagoChanged);
+            optCuotaMensual.CheckedChanged += new EventHandler(CuotaChanged);
+            optCuotaDiaria.CheckedChanged += new EventHandler(CuotaChanged);
         }
         private void FormaPagoChanged(object sender, EventArgs e)
         {
@@ -40,7 +42,21 @@ namespace SistemaClubDeportivo2
                 opt6Cuotas.Enabled = true;
             }
         }
-            private void btnPagar_Click(object sender, EventArgs e)
+            private void CuotaChanged(object sender, EventArgs e)
+            {
+                if (optCuotaDiaria.Checked)
+                {
+                    // Si se selecciona cuota diaria, deshabilitar la opción de tarjeta
+                    optTarjeta.Enabled = false;
+                    optEfvo.Checked = true; // Seleccionar efectivo por defecto
+                }
+                else if (optCuotaMensual.Checked)
+                {
+                    // Si se selecciona cuota mensual, habilitar todas las opciones de pago
+                    optTarjeta.Enabled = true;
+                }
+            }
+        private void btnPagar_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtDNI.Text, out int dniCliente))
             {
@@ -94,17 +110,17 @@ namespace SistemaClubDeportivo2
             {
                 cuotas = opt3Cuotas.Checked ? 3 : 6;
             }
-            //int cuotas = formaPago == "Tarjeta" ? (opt3Cuotas.Checked ? 3 : 6) : 1;
+            
 
             float montoTotal = gestionPago.CalcularMontoTotal(nSocio, esSocio, esCuotaMensual, cuotas);
 
 
-           
+
 
 
             List<string> actividadesInscritas = gestionPago.ObtenerActividadesInscritas(nSocio);
 
-            //DateTime fechaVencimiento = DateTime.Now.AddMonths(1); // Calcula la fecha de vencimiento
+           
             DateTime fechaVencimiento = DateTime.Now.AddMonths(1); // Calcula la fecha de vencimiento mensual
             if (!esCuotaMensual)
             {
@@ -130,8 +146,7 @@ namespace SistemaClubDeportivo2
                 NombreCliente = nombreCliente,
                 ActividadesInscritas = actividadesInscritas,
                 IdInscri = idInscri,
-                EsSocio = esSocio,
-                //TipoPago = tipoPago ? "Cuota" : "Actividad",
+                EsSocio = esSocio,               
                 TipoPago = esSocio ? "Cuota de Socio" : "Actividad",
                 FechaVencimiento = fechaVencimiento,
                 EsCuotaMensual = esCuotaMensual
@@ -187,7 +202,7 @@ namespace SistemaClubDeportivo2
                     pagoActual.FormaPago,
                     pagoActual.Monto,
                     pagoActual.Cuotas
-                    //optCuota.Checked
+                //optCuota.Checked
                 );
 
                 frmFactura.Show();
@@ -220,8 +235,8 @@ namespace SistemaClubDeportivo2
             DateTime fechaVencimiento = gestionPago.ObtenerFechaVencimiento(nSocio);
             string tipoPago = gestionPago.ObtenerTipoPago(nSocio);
             bool esCuotaMensual = optCuotaMensual.Checked;
-            float montoTotal = gestionPago.CalcularMontoTotal(nSocio, esSocio,  optCuotaMensual.Checked);
-            
+            float montoTotal = gestionPago.CalcularMontoTotal(nSocio, esSocio, optCuotaMensual.Checked);
+
 
             float montoDiario = montoTotal / 30;
 

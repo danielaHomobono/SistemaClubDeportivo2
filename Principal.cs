@@ -37,13 +37,7 @@ namespace SistemaClubDeportivo2
             FrmInscripcion inscripcion = new FrmInscripcion();
             inscripcion.Show();
             this.Hide();
-            // Crear una instancia de E_Clientes con los datos necesarios
-
-
-            // Crear una instancia de la clase Clientes
-
-
-            // Mostrar el resultado al usuario
+            
 
         }
 
@@ -52,10 +46,7 @@ namespace SistemaClubDeportivo2
             InscribirActividad inscribirActividad = new InscribirActividad();
             inscribirActividad.Show();
             this.Hide();
-            /* int clienteId = ObtenerClienteId(); // Método ficticio para obtener el clienteId
-             InscribirActividad inscribirActividad = new InscribirActividad(clienteId);
-             inscribirActividad.Show();
-             this.Hide();*/
+            
         }
 
         private void btnPagar_Click(object sender, EventArgs e)
@@ -68,18 +59,13 @@ namespace SistemaClubDeportivo2
 
 
         }
-        // FrmPagar frmPagar = new FrmPagar();
-        //frmPagar.Show();
-        //this.Hide();
+        
 
 
         private int ObtenerClienteId()
         {
-            // Aquí debes implementar la lógica para obtener el clienteId
-            // Esto puede ser a través de una consulta a la base de datos,
-            // desde un formulario previo, etc.
-            // Por ahora, usaremos un valor de ejemplo.
-            return 1; // Valor de ejemplo, deberías obtener el clienteId real aquí
+            
+            return 1; 
         }
         private void btnReportes_Click(object sender, EventArgs e)
         {
