@@ -71,8 +71,8 @@ namespace SistemaClubDeportivo2
             return nombreCliente;
         }
 
-
-        public float CalcularMontoTotal(int nSocio, bool esSocio, bool esPagoCuota, bool esCuotaMensual, int cuotas = 1)
+        public float CalcularMontoTotal(int nSocio, bool esSocio, bool esCuotaMensual, int cuotas = 1)
+        //public float CalcularMontoTotal(int nSocio, bool esSocio, bool esPagoCuota, bool esCuotaMensual, int cuotas = 1)
         {
             float montoTotal = 0;
             using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
@@ -399,7 +399,7 @@ WHERE(YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) = MONTH(CURDATE())) OR
                             bool esSocio = EsSocio(dniCliente); // Determinar si el cliente es socio
 
                             // Calcular el monto de la cuota en base a si es socio o no
-                            float montoCuota = CalcularMontoTotal(nSocio, esSocio, true, true);
+                            float montoCuota = CalcularMontoTotal(nSocio, esSocio, true);
 
                             sociosCuotaVenceHoy.Add((nombreCompleto, fechaUltimoPago, email, montoCuota));
 

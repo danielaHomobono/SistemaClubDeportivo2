@@ -23,14 +23,14 @@ namespace SistemaClubDeportivo2
             DateTime fechaVencimientoCuota,
             string formaPago,
             float monto,
-            int cuotas,
-            bool esPagoCuota
+            int cuotas
+            //bool esPagoCuota
         )
         {
             InitializeComponent();
             txtFechaActual.Text = fechaActual.ToShortDateString();
             txtNombreCliente.Text = nombreCliente;
-            txtActividadesRealizadas.Text = esPagoCuota ? "Cuota Mensual" : string.Join(", ", actividadesRealizadas);
+            //txtActividadesRealizadas.Text = esPagoCuota ? "Cuota Mensual" : string.Join(", ", actividadesRealizadas);
             txtFechaVencimiento.Text = fechaVencimientoCuota.ToShortDateString();
             txtFormaPago.Text = formaPago;
             txtMonto.Text = monto.ToString("C");

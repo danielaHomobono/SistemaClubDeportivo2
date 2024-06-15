@@ -39,12 +39,8 @@ namespace SistemaClubDeportivo2
             optCuotaMensual = new RadioButton();
             optCuotaDiaria = new RadioButton();
             lblMontoDiario = new Label();
-            grpTipoPago = new GroupBox();
-            optCuota = new RadioButton();
-            optActividad = new RadioButton();
             grpFormaPago.SuspendLayout();
             grpCuotas.SuspendLayout();
-            grpTipoPago.SuspendLayout();
             SuspendLayout();
             // 
             // txtDNI
@@ -263,43 +259,9 @@ namespace SistemaClubDeportivo2
             lblMontoDiario.TabIndex = 16;
             lblMontoDiario.Text = "Monto Diario: ";
             // 
-            // grpTipoPago
-            // 
-            grpTipoPago.Controls.Add(optActividad);
-            grpTipoPago.Controls.Add(optCuota);
-            grpTipoPago.Location = new System.Drawing.Point(608, 373);
-            grpTipoPago.Name = "grpTipoPago";
-            grpTipoPago.Size = new System.Drawing.Size(250, 100);
-            grpTipoPago.TabIndex = 17;
-            grpTipoPago.TabStop = false;
-            grpTipoPago.Text = "Tipo de pago";
-            // 
-            // optCuota
-            // 
-            optCuota.AutoSize = true;
-            optCuota.Location = new System.Drawing.Point(3, 23);
-            optCuota.Name = "optCuota";
-            optCuota.Size = new System.Drawing.Size(69, 24);
-            optCuota.TabIndex = 0;
-            optCuota.TabStop = true;
-            optCuota.Text = "Cuota";
-            optCuota.UseVisualStyleBackColor = true;
-            // 
-            // optActividad
-            // 
-            optActividad.AutoSize = true;
-            optActividad.Location = new System.Drawing.Point(3, 53);
-            optActividad.Name = "optActividad";
-            optActividad.Size = new System.Drawing.Size(93, 24);
-            optActividad.TabIndex = 1;
-            optActividad.TabStop = true;
-            optActividad.Text = "Actividad";
-            optActividad.UseVisualStyleBackColor = true;
-            // 
             // FrmPagar
             // 
             ClientSize = new System.Drawing.Size(1032, 616);
-            Controls.Add(grpTipoPago);
             Controls.Add(lblMontoDiario);
             Controls.Add(optCuotaDiaria);
             Controls.Add(optCuotaMensual);
@@ -322,8 +284,6 @@ namespace SistemaClubDeportivo2
             grpFormaPago.PerformLayout();
             grpCuotas.ResumeLayout(false);
             grpCuotas.PerformLayout();
-            grpTipoPago.ResumeLayout(false);
-            grpTipoPago.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -336,9 +296,6 @@ namespace SistemaClubDeportivo2
         private RadioButton optCuotaMensual;
         private RadioButton optCuotaDiaria;
         private Label lblMontoDiario;
-        private GroupBox grpTipoPago;
-        private RadioButton optCuota;
-        private RadioButton optActividad;
     }
 }
 

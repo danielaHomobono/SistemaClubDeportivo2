@@ -86,7 +86,8 @@ namespace SistemaClubDeportivo2
 
 
             string formaPago = optEfvo.Checked ? "Efectivo" : "Tarjeta";
-            bool tipoPago = optCuota.Checked;
+            //bool tipoPago = optCuota.Checked;
+            string tipoPago = esSocio ? "cuota" : "actividad";
             bool esCuotaMensual = optCuotaMensual.Checked;
             int cuotas = 1;
             if (optTarjeta.Checked)
@@ -95,7 +96,7 @@ namespace SistemaClubDeportivo2
             }
             //int cuotas = formaPago == "Tarjeta" ? (opt3Cuotas.Checked ? 3 : 6) : 1;
 
-            float montoTotal = gestionPago.CalcularMontoTotal(nSocio, esSocio, tipoPago, esCuotaMensual, cuotas);
+            float montoTotal = gestionPago.CalcularMontoTotal(nSocio, esSocio, esCuotaMensual, cuotas);
 
 
            
@@ -130,7 +131,8 @@ namespace SistemaClubDeportivo2
                 ActividadesInscritas = actividadesInscritas,
                 IdInscri = idInscri,
                 EsSocio = esSocio,
-                TipoPago = tipoPago ? "Cuota" : "Actividad",
+                //TipoPago = tipoPago ? "Cuota" : "Actividad",
+                TipoPago = esSocio ? "Cuota de Socio" : "Actividad",
                 FechaVencimiento = fechaVencimiento,
                 EsCuotaMensual = esCuotaMensual
             };
@@ -184,8 +186,8 @@ namespace SistemaClubDeportivo2
                     pagoActual.FechaPago.AddMonths(1),
                     pagoActual.FormaPago,
                     pagoActual.Monto,
-                    pagoActual.Cuotas,
-                    optCuota.Checked
+                    pagoActual.Cuotas
+                    //optCuota.Checked
                 );
 
                 frmFactura.Show();
@@ -218,8 +220,9 @@ namespace SistemaClubDeportivo2
             DateTime fechaVencimiento = gestionPago.ObtenerFechaVencimiento(nSocio);
             string tipoPago = gestionPago.ObtenerTipoPago(nSocio);
             bool esCuotaMensual = optCuotaMensual.Checked;
-            float montoTotal = gestionPago.CalcularMontoTotal(nSocio, esSocio, optCuota.Checked, optCuotaMensual.Checked);
+            float montoTotal = gestionPago.CalcularMontoTotal(nSocio, esSocio,  optCuotaMensual.Checked);
             
+
             float montoDiario = montoTotal / 30;
 
             // Mostrar el nombre del cliente y el monto total en las etiquetas correspondientes
