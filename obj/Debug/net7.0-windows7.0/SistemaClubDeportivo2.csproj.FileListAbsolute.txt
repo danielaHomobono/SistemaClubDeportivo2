@@ -78,4 +78,3 @@ C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\Sistema
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.genruntimeconfig.cache
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\ref\SistemaClubDeportivo2.dll
 C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.FrmProfesores.resources
-C:\Users\Daniela\Desktop\SistemaClubDeportivo2 (1)\SistemaClubDeportivo2\SistemaClubDeportivo2\obj\Debug\net7.0-windows7.0\SistemaClubDeportivo2.SeleccionarClienteForm.resources

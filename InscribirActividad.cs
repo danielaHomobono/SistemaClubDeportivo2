@@ -199,63 +199,7 @@ namespace SistemaClubDeportivo2
         }
 
 
-        /* private void btnInscribir_Click(object sender, EventArgs e)
-         {
-             if (NCliente == 0)
-             {
-                 MessageBox.Show("Debe buscar y seleccionar un cliente antes de inscribir.");
-                 return;
-             }
-             if (dtgvDatos.SelectedRows.Count > 0)
-             {
-                 using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
-                 {
-                     sqlCon.Open();
-                     MySqlTransaction transaction = sqlCon.BeginTransaction();
-                     try
-                     {
-                         List<string> actividadesInscritas = new List<string>();
-                         float montoTotal = 0;
-
-                         foreach (DataGridViewRow row in dtgvDatos.SelectedRows)
-                         {
-                             int idSesion = Convert.ToInt32(row.Cells[4].Value);
-                             string nombreActividad = row.Cells[0].Value.ToString();
-                             float precioActividad = Convert.ToSingle(row.Cells[3].Value);
-                             string query = "INSERT INTO inscripcion (NCliente, idSesion, fecha) VALUES (@NCliente, @idSesion, @fecha)";
-                             MySqlCommand comando = new MySqlCommand(query, sqlCon, transaction);
-                             comando.Parameters.AddWithValue("@NCliente", NCliente);
-                             comando.Parameters.AddWithValue("@idSesion", idSesion);
-                             comando.Parameters.AddWithValue("@fecha", DateTime.Now);
-
-                             comando.ExecuteNonQuery();
-                             actividadesInscritas.Add(nombreActividad);
-                             montoTotal += precioActividad;
-                         }
-
-                         transaction.Commit();
-
-                         List<string> actividadesCliente = ObtenerActividadesCliente(NCliente);
-
-                         pagoActual = new E_Pagar { ActividadesInscritas = actividadesCliente };
-
-                         string actividades = string.Join(", ", actividadesCliente);
-                         MessageBox.Show("Cliente inscrito correctamente en las siguientes actividades: " + actividades);
-                     }
-
-
-                     catch (Exception ex)
-                     {
-                         transaction.Rollback();
-                         MessageBox.Show("Error al inscribir al cliente: " + ex.Message);
-                     }
-                 }
-             }
-             else
-             {
-                 MessageBox.Show("Seleccione una o más actividades de la lista.");
-             }
-         }*/
+        
         public List<string> ObtenerActividadesCliente(int nCliente)
          {
              List<string> actividadesCliente = new List<string>();

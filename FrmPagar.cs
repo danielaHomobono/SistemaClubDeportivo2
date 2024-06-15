@@ -19,9 +19,28 @@ namespace SistemaClubDeportivo2
             InitializeComponent();
 
             pagoActual = pago;
-        }
 
-        private void btnPagar_Click(object sender, EventArgs e)
+            optEfvo.CheckedChanged += new EventHandler(FormaPagoChanged);
+            optTarjeta.CheckedChanged += new EventHandler(FormaPagoChanged);
+        }
+        private void FormaPagoChanged(object sender, EventArgs e)
+        {
+            if (optEfvo.Checked)
+            {
+                // Si se selecciona efectivo, deshabilitar opciones de cuotas
+                opt3Cuotas.Enabled = false;
+                opt6Cuotas.Enabled = false;
+                opt3Cuotas.Checked = false; // Desmarcar cualquier opción de cuotas seleccionada
+                opt6Cuotas.Checked = false;
+            }
+            else if (optTarjeta.Checked)
+            {
+                // Si se selecciona tarjeta, habilitar opciones de cuotas
+                opt3Cuotas.Enabled = true;
+                opt6Cuotas.Enabled = true;
+            }
+        }
+            private void btnPagar_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtDNI.Text, out int dniCliente))
             {
@@ -69,14 +88,17 @@ namespace SistemaClubDeportivo2
             string formaPago = optEfvo.Checked ? "Efectivo" : "Tarjeta";
             bool tipoPago = optCuota.Checked;
             bool esCuotaMensual = optCuotaMensual.Checked;
-            int cuotas = formaPago == "Tarjeta" ? (opt3Cuotas.Checked ? 3 : 6) : 1;
+            int cuotas = 1;
+            if (optTarjeta.Checked)
+            {
+                cuotas = opt3Cuotas.Checked ? 3 : 6;
+            }
+            //int cuotas = formaPago == "Tarjeta" ? (opt3Cuotas.Checked ? 3 : 6) : 1;
 
             float montoTotal = gestionPago.CalcularMontoTotal(nSocio, esSocio, tipoPago, esCuotaMensual, cuotas);
 
 
-            lblNombreCliente.Text = "Nombre del Cliente: " + nombreCliente;
-            lblMontoTotal.Text = "Monto Total a Pagar: $" + montoTotal.ToString("0.00");
-
+           
 
 
             List<string> actividadesInscritas = gestionPago.ObtenerActividadesInscritas(nSocio);
@@ -85,8 +107,16 @@ namespace SistemaClubDeportivo2
             DateTime fechaVencimiento = DateTime.Now.AddMonths(1); // Calcula la fecha de vencimiento mensual
             if (!esCuotaMensual)
             {
-                fechaVencimiento = DateTime.Now.AddDays(1); // Calcula la fecha de vencimiento diaria
+                int diasDelMes = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+                montoTotal = montoTotal / diasDelMes;
             }
+            else if (cuotas > 1)
+            {
+                montoTotal = montoTotal / cuotas;
+            }
+            //fechaVencimiento = DateTime.Now.AddDays(1);             }
+            lblNombreCliente.Text = "Nombre del Cliente: " + nombreCliente;
+            lblMontoTotal.Text = "Monto Total a Pagar: $" + montoTotal.ToString("0.00");
 
 
             E_Pagar pago = new E_Pagar
@@ -110,8 +140,6 @@ namespace SistemaClubDeportivo2
             pago.IDPago = nuevoID;
 
 
-            // float montoTotalReal = esCuotaMensual ? 2000 : 100; // Ajustar el monto total real
-            //pago.Monto = montoTotalReal;
 
 
 
@@ -189,8 +217,9 @@ namespace SistemaClubDeportivo2
             bool esSocio = gestionPago.EsSocio(dniCliente);
             DateTime fechaVencimiento = gestionPago.ObtenerFechaVencimiento(nSocio);
             string tipoPago = gestionPago.ObtenerTipoPago(nSocio);
+            bool esCuotaMensual = optCuotaMensual.Checked;
             float montoTotal = gestionPago.CalcularMontoTotal(nSocio, esSocio, optCuota.Checked, optCuotaMensual.Checked);
-
+            
             float montoDiario = montoTotal / 30;
 
             // Mostrar el nombre del cliente y el monto total en las etiquetas correspondientes

@@ -83,9 +83,6 @@ namespace SistemaClubDeportivo2
             Point p = new Point(100, 100);
             e.Graphics.DrawImage(img, p);
         }
-        // public FrmImprimirCarnet()
-        //{
-
-        //}
+        
     }
 }

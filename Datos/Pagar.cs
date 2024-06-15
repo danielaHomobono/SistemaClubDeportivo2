@@ -13,7 +13,7 @@ namespace SistemaClubDeportivo2
 {
     public class Pagar
     {
-        
+
 
         public int ObtenerNSocioPorDNI(int dniCliente)
         {
@@ -105,10 +105,7 @@ namespace SistemaClubDeportivo2
                             montoTotal = Convert.ToSingle(result);
                         }
                     }
-                    if (cuotas > 1)
-                    {
-                        montoTotal = montoTotal / cuotas;
-                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -319,7 +316,7 @@ namespace SistemaClubDeportivo2
                     comando.Parameters.AddWithValue("@FechaPago", pago.FechaPago);
                     comando.Parameters.AddWithValue("@EsCuotaMensual", pago.EsCuotaMensual ? 1 : 0);
 
-                    
+
 
 
                     comando.ExecuteNonQuery();
@@ -384,7 +381,7 @@ LEFT JOIN pago p ON i.idInscri = p.idInscri
 WHERE(YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) = MONTH(CURDATE())) OR
       (YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) < MONTH(CURDATE())) OR
       p.fecha IS NULL";
-                    
+
 
                     MySqlCommand comando = new MySqlCommand(query, sqlCon);
                     sqlCon.Open();
@@ -405,7 +402,7 @@ WHERE(YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) = MONTH(CURDATE())) OR
                             float montoCuota = CalcularMontoTotal(nSocio, esSocio, true, true);
 
                             sociosCuotaVenceHoy.Add((nombreCompleto, fechaUltimoPago, email, montoCuota));
-                            
+
                         }
                     }
                 }
@@ -421,126 +418,3 @@ WHERE(YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) = MONTH(CURDATE())) OR
     }
 }
 
-/*string nombreCompleto = reader.GetString("NombreC") + " " + reader.GetString("ApellidoC");
-string email = reader.IsDBNull(reader.GetOrdinal("Email")) ? string.Empty : reader.GetString("Email");
-int dniCliente = reader.GetInt32("DocC");
-DateTime fechaUltimoPago = reader.IsDBNull(reader.GetOrdinal("FechaUltimoPago")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("FechaUltimoPago"));
-
-bool esSocio = EsSocio(dniCliente); // Determinar si el cliente es socio
-
-// Calcular el monto de la cuota en base a si es socio o no
-float montoCuota = CalcularMontoTotal(dniCliente, esSocio, true, true);
-
-sociosCuotaVenceHoy.Add((nombreCompleto, fechaUltimoPago, email, montoCuota));
-/*
-
-string nombreCompleto = reader.GetString("NombreC") + " " + reader.GetString("ApellidoC");
-//DateTime fechaUltimoPago = reader.IsDBNull(reader.GetOrdinal("FechaUltimoPago")) ? DateTime.MinValue : reader.GetDateTime("FechaUltimoPago");
-
-string email = reader.IsDBNull(reader.GetOrdinal("Email")) ? string.Empty : reader.GetString("Email");
-int nSocio = ObtenerNSocioPorDNI(reader.GetInt32("DocC"));
-DateTime fechaUltimoPago = reader.IsDBNull(reader.GetOrdinal("FechaUltimoPago")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("FechaUltimoPago"));
-
-
-//int nSocio = ObtenerNSocioPorDNI(reader.GetInt32("dniCliente")); // Obtener el NSocio a partir del DNI
-float montoCuota = CalcularMontoTotal(nSocio, false, true, true); // Calcular el monto total de la cuota
-sociosCuotaVenceHoy.Add((nombreCompleto, fechaUltimoPago, email, montoCuota));
-}
-}
-}
-catch (Exception ex)
-{
-MessageBox.Show("Error al obtener los socios cuya cuota vence hoy: " + ex.Message);
-}
-}
-
-return sociosCuotaVenceHoy;
-}
-
-}
-}
-
-/*public List<(string nombreCompleto, DateTime fechaUltimoPago, string email, decimal montoCuota)> ObtenerSociosCuotaVenceHoy()
-{
-List<(string, DateTime, string, decimal)> sociosCuotaVenceHoy = new List<(string, DateTime, string, decimal)>();
-
-using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
-{
-try
-{
-string query = @"
-SELECT c.NombreC, c.ApellidoC, p.fecha AS FechaUltimoPago, c.Email, c.MontoCuota
-FROM cliente c
-LEFT JOIN inscripcion i ON c.NCliente = i.NCliente
-LEFT JOIN pago p ON i.idInscri = p.idInscri
-WHERE (YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) = MONTH(CURDATE())) OR
-(YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) < MONTH(CURDATE())) OR
-p.fecha IS NULL";
-
-MySqlCommand comando = new MySqlCommand(query, sqlCon);
-sqlCon.Open();
-
-using (MySqlDataReader reader = comando.ExecuteReader())
-{
-while (reader.Read())
-{
-string nombreCompleto = reader.GetString("NombreC") + " " + reader.GetString("ApellidoC");
-DateTime fechaUltimoPago = reader.IsDBNull(reader.GetOrdinal("FechaUltimoPago")) ? DateTime.MinValue : reader.GetDateTime("FechaUltimoPago");
-string email = reader.IsDBNull(reader.GetOrdinal("Email")) ? string.Empty : reader.GetString("Email");
-// decimal  montoCuota = reader.IsDBNull(reader.GetOrdinal("MontoCuota")) ? 0 : reader.GetDecimal("MontoCuota");
-decimal? montoCuota = reader.IsDBNull(reader.GetOrdinal("MontoCuota")) ? (decimal?)null : reader.GetDecimal("MontoCuota");
-sociosCuotaVenceHoy.Add((nombreCompleto, fechaUltimoPago, email, montoCuota));
-}
-}
-}
-catch (Exception ex)
-{
-MessageBox.Show("Error al obtener los socios cuya cuota vence hoy: " + ex.Message);
-}
-}
-
-return sociosCuotaVenceHoy;
-}
-}*/
-
-/*public List<string> ObtenerSociosCuotaVenceHoy()
-{
-    List<string> sociosCuotaVenceHoy = new List<string>();
-
-    using (MySqlConnection sqlCon = Conexion.getInstancia().CrearConcexion())
-    {
-        try
-        {
-            string query = @"
-        SELECT c.NombreC, c.ApellidoC
-        FROM cliente c
-        WHERE c.NCliente NOT IN (
-            SELECT DISTINCT i.NCliente
-            FROM inscripcion i
-            INNER JOIN pago p ON i.idInscri = p.idInscri
-            WHERE YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) = MONTH(CURDATE())
-        ) OR c.NCliente IN (
-            SELECT DISTINCT i.NCliente
-            FROM inscripcion i
-            INNER JOIN pago p ON i.idInscri = p.idInscri
-            WHERE YEAR(p.fecha) = YEAR(CURDATE()) AND MONTH(p.fecha) < MONTH(CURDATE())
-        )";
-
-
-            MySqlCommand comando = new MySqlCommand(query, sqlCon);
-            sqlCon.Open();
-
-            using (MySqlDataReader reader = comando.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    string nombreCompleto = reader.GetString("NombreC") + " " + reader.GetString("ApellidoC");
-                    sociosCuotaVenceHoy.Add(nombreCompleto);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show("Error al obtener los socios cuya cuota vence hoy: " + ex.Message);
-        }
-    }*/

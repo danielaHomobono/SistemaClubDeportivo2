@@ -15,11 +15,11 @@ namespace SistemaClubDeportivo2.Entidades
         public DateTime FechaPago { get; set; }        
         public List<string> ActividadesInscritas { get; set; }
         public int IdInscri { get; set; }
-        public bool EsSocio { get; set; }  // Nuevo campo para diferenciar socios de no socios
+        public bool EsSocio { get; set; }  
         public string TipoPago { get; set; }
         public DateTime FechaVencimiento { get; set; }
         public string Cliente { get; set; }
-        public bool EsCuotaMensual { get; set; }// Nueva propiedad
+        public bool EsCuotaMensual { get; set; }
         
 
         public E_Pagar()
