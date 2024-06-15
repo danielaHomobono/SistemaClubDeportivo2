@@ -75,9 +75,10 @@ namespace SistemaClubDeportivo2
             // 
             grpFormaPago.Controls.Add(optEfvo);
             grpFormaPago.Controls.Add(optTarjeta);
-            grpFormaPago.Location = new System.Drawing.Point(98, 373);
+            grpFormaPago.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            grpFormaPago.Location = new System.Drawing.Point(98, 364);
             grpFormaPago.Name = "grpFormaPago";
-            grpFormaPago.Size = new System.Drawing.Size(200, 100);
+            grpFormaPago.Size = new System.Drawing.Size(200, 118);
             grpFormaPago.TabIndex = 3;
             grpFormaPago.TabStop = false;
             grpFormaPago.Text = "Forma de Pago";
@@ -85,9 +86,9 @@ namespace SistemaClubDeportivo2
             // optEfvo
             // 
             optEfvo.AutoSize = true;
-            optEfvo.Location = new System.Drawing.Point(10, 20);
+            optEfvo.Location = new System.Drawing.Point(16, 33);
             optEfvo.Name = "optEfvo";
-            optEfvo.Size = new System.Drawing.Size(83, 24);
+            optEfvo.Size = new System.Drawing.Size(110, 32);
             optEfvo.TabIndex = 0;
             optEfvo.TabStop = true;
             optEfvo.Text = "Efectivo";
@@ -96,9 +97,9 @@ namespace SistemaClubDeportivo2
             // optTarjeta
             // 
             optTarjeta.AutoSize = true;
-            optTarjeta.Location = new System.Drawing.Point(10, 40);
+            optTarjeta.Location = new System.Drawing.Point(16, 58);
             optTarjeta.Name = "optTarjeta";
-            optTarjeta.Size = new System.Drawing.Size(74, 24);
+            optTarjeta.Size = new System.Drawing.Size(98, 32);
             optTarjeta.TabIndex = 1;
             optTarjeta.TabStop = true;
             optTarjeta.Text = "Tarjeta";
@@ -108,9 +109,10 @@ namespace SistemaClubDeportivo2
             // 
             grpCuotas.Controls.Add(opt3Cuotas);
             grpCuotas.Controls.Add(opt6Cuotas);
-            grpCuotas.Location = new System.Drawing.Point(331, 373);
+            grpCuotas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            grpCuotas.Location = new System.Drawing.Point(392, 362);
             grpCuotas.Name = "grpCuotas";
-            grpCuotas.Size = new System.Drawing.Size(240, 100);
+            grpCuotas.Size = new System.Drawing.Size(218, 120);
             grpCuotas.TabIndex = 4;
             grpCuotas.TabStop = false;
             grpCuotas.Text = "Número de Cuotas";
@@ -118,9 +120,9 @@ namespace SistemaClubDeportivo2
             // opt3Cuotas
             // 
             opt3Cuotas.AutoSize = true;
-            opt3Cuotas.Location = new System.Drawing.Point(10, 20);
+            opt3Cuotas.Location = new System.Drawing.Point(10, 33);
             opt3Cuotas.Name = "opt3Cuotas";
-            opt3Cuotas.Size = new System.Drawing.Size(87, 24);
+            opt3Cuotas.Size = new System.Drawing.Size(115, 32);
             opt3Cuotas.TabIndex = 0;
             opt3Cuotas.TabStop = true;
             opt3Cuotas.Text = "3 Cuotas";
@@ -129,9 +131,9 @@ namespace SistemaClubDeportivo2
             // opt6Cuotas
             // 
             opt6Cuotas.AutoSize = true;
-            opt6Cuotas.Location = new System.Drawing.Point(10, 40);
+            opt6Cuotas.Location = new System.Drawing.Point(10, 58);
             opt6Cuotas.Name = "opt6Cuotas";
-            opt6Cuotas.Size = new System.Drawing.Size(87, 24);
+            opt6Cuotas.Size = new System.Drawing.Size(115, 32);
             opt6Cuotas.TabIndex = 1;
             opt6Cuotas.TabStop = true;
             opt6Cuotas.Text = "6 Cuotas";
